@@ -1,0 +1,14 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="General Settings" />
+
+    <PreferenceScreen
+        android:key="account_settings"
+        android:summary="Sync frequency, notifications, etc.">
+        <intent
+            android:action="com.quexten.ulricianumplanner.account.activity.Preferences.ACCOUNT_SETUP"
+            android:targetPackage="com.quexten.ulricianumplanner"
+            android:targetClass="com.quexten.ulricianumplanner.activity.Preferences" />
+    </PreferenceScreen>
+</PreferenceScreen>

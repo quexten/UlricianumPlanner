@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="100dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/subjectView"
+        android:layout_width="fill_parent"
+        android:layout_height="20dp"
+        android:layout_weight=".30"
+        android:text="Fach"
+        android:textSize="15dp"
+        android:textColor="#424242"
+        android:background="#e0e0e0"
+        android:gravity="center"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/roomView"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_weight=".54"
+        android:text="Raum"
+        android:textSize="15dp"
+        android:background="#eeeeee"
+        android:textColor="#757575"
+        android:gravity="center"
+        android:textAlignment="center" />
+
+</LinearLayout>

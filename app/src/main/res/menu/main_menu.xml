@@ -1,0 +1,30 @@
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <item
+        android:id="@+id/action_login"
+        android:orderInCategory="100"
+        android:title="Login"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_sync"
+        android:orderInCategory="200"
+        android:title="Aktualisieren"
+        app:showAsAction="never"
+        ></item>
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="400"
+        android:title="Einstellungen"
+        app:showAsAction="never"
+        ></item>
+    <item
+        android:id="@+id/action_help"
+        android:orderInCategory="600"
+        android:title="Hilfe"
+        app:showAsAction="never"
+        ></item>
+</menu>

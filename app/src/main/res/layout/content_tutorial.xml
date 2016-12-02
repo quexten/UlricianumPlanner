@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.quexten.ulricianumplanner.TutorialActivity"
+    tools:showIn="@layout/activity_tutorial">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <TextView
+            android:text="Funktion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginTop="@dimen/text_margin"
+            android:textStyle="normal|bold"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/helpColorTextview0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:text="@string/help_1" />
+        <TextView
+            android:text="Farben"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginBottom="16dp"
+            android:textStyle="normal|bold"
+            android:textSize="18sp" />
+        <TextView
+            android:text="Entfall"
+            android:background="#ef9a9a"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="@dimen/text_margin"
+            android:textSize="20sp"/>
+        <TextView
+            android:text="Verlegung"
+            android:background="#B39DDB"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="@dimen/text_margin"
+            android:textSize="20sp" />
+        <TextView
+            android:text="Raumänderung"
+            android:background="#80CBC4"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="@dimen/text_margin"
+            android:textSize="20sp" />
+        <TextView
+            android:text="Vertretung"
+            android:background="#FFE082"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+        android:layout_marginLeft="@dimen/text_margin"
+            android:textSize="20sp" />
+        <TextView
+            android:text="Tausch"
+            android:background="#90CAF9"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="@dimen/text_margin"
+            android:textSize="20sp" />
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
