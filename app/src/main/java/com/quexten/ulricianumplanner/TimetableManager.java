@@ -97,24 +97,37 @@ public class TimetableManager {
                 layout.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View v) {
+                        final Course selectedCourse = coursePlan.getCourse(dayNumber, hourNumber);
+
                         AlertDialog.Builder builderSingle = new AlertDialog.Builder(activity);
                         builderSingle.setTitle("Bearbeiten");
 
                         View child = activity.getLayoutInflater().inflate(R.layout.edit_dialog, null);
                         LinearLayout childLayout = ((LinearLayout) child);
 
+                        builderSingle.setNeutralButton("Löschen", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Day day = dayNumber == 0 ? Day.MON : dayNumber == 1 ? Day.TUE : dayNumber == 2 ? Day.WED : dayNumber == 3 ? Day.THU : dayNumber == 4 ? Day.FRI : Day.FRI;
+                                Hour hour = hourNumber == 0 ? Hour.ONETWO : hourNumber == 1 ? Hour.THREFOUR: hourNumber == 2 ? Hour.FIVESIX : hourNumber == 3 ? Hour.EIGHTNINE : hourNumber == 4 ? Hour.TENELEVEN : Hour.TENELEVEN;
+                                coursePlan.setCourse(day, hour, new Course("", "", ""));
+                                coursePlan.save();
+                                TimetableManager.this.generateVisuals();
+                            }
+                        });
+
                         final AutoCompleteTextView teacherView = ((AutoCompleteTextView ) childLayout.findViewById(R.id.TeacherText));
-                        teacherView.setText(coursePlan.getCourse(dayNumber, hourNumber).teacher);
+                        teacherView.setText(selectedCourse.teacher);
                         teacherView.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
 
 
                         final AutoCompleteTextView roomView = ((AutoCompleteTextView) childLayout.findViewById(R.id.RoomText));
-                        roomView.setText(coursePlan.getCourse(dayNumber, hourNumber).room);
+                        roomView.setText(selectedCourse.room);
 
                         final Spinner subjectSpinner = ((Spinner) childLayout.findViewById(R.id.SubjectSpinner));
                         String[] subjects = activity.getResources().getStringArray(R.array.subjects);
                         for(int i = 0; i < subjects.length; i++)
-                            if(subjects[i].equals(coursePlan.getCourse(dayNumber, hourNumber).subject)) {
+                            if(subjects[i].equals(selectedCourse.subject)) {
                                 subjectSpinner.setSelection(i);
                                 break;
                             }
