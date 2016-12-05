@@ -14,5 +14,10 @@ public enum Hour {
         hour = (string.equals("10") || string.equals("10 - 11") || string.equals("10 - 12")|| string.equals("11") || string.equals("12")) ? Hour.TENELEVEN : hour;
         return hour;
     }
-    
+
+    public static Hour fromInt(int integer) {
+        Hour hour = integer == 0 ? Hour.ONETWO : integer == 1 ? Hour.THREFOUR: integer == 2 ? Hour.FIVESIX : integer == 3 ? Hour.EIGHTNINE : integer == 4 ? Hour.TENELEVEN : Hour.TENELEVEN;
+        return hour;
+    }
+
 }

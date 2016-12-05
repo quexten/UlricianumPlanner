@@ -122,4 +122,9 @@
         <item>SP</item>
     </string-array>
 
+    <string name="dialog_title">Bearbeiten</string>
+    <string name="dialog_positive">Ok</string>
+    <string name="dialog_negative">Abbrechen</string>
+    <string name="dialog_delete">Löschen</string>
+
 </resources>

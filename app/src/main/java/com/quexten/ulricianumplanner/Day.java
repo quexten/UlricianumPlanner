@@ -17,4 +17,9 @@ public enum Day {
         return name;
     }
 
+    public static Day fromInt(int integer) {
+        Day day = integer == 0 ? Day.MON : integer == 1 ? Day.TUE : integer == 2 ? Day.WED : integer == 3 ? Day.THU : integer == 4 ? Day.FRI : Day.FRI;
+        return day;
+    }
+
 }

@@ -10,7 +10,6 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
-import android.media.audiofx.BassBoost;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,7 +21,6 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 

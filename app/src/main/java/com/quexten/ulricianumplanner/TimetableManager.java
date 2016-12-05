@@ -3,25 +3,13 @@ package com.quexten.ulricianumplanner;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.net.Network;
 import android.text.InputFilter;
-import android.text.InputType;
-import android.util.Log;
-import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.ArrayAdapter;
+import android.view.View;;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 /**
@@ -100,16 +88,16 @@ public class TimetableManager {
                         final Course selectedCourse = coursePlan.getCourse(dayNumber, hourNumber);
 
                         AlertDialog.Builder builderSingle = new AlertDialog.Builder(activity);
-                        builderSingle.setTitle("Bearbeiten");
+                        builderSingle.setTitle(R.string.dialog_title);
 
                         View child = activity.getLayoutInflater().inflate(R.layout.edit_dialog, null);
                         LinearLayout childLayout = ((LinearLayout) child);
 
-                        builderSingle.setNeutralButton("Löschen", new DialogInterface.OnClickListener() {
+                        builderSingle.setNeutralButton(R.string.dialog_delete, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Day day = dayNumber == 0 ? Day.MON : dayNumber == 1 ? Day.TUE : dayNumber == 2 ? Day.WED : dayNumber == 3 ? Day.THU : dayNumber == 4 ? Day.FRI : Day.FRI;
-                                Hour hour = hourNumber == 0 ? Hour.ONETWO : hourNumber == 1 ? Hour.THREFOUR: hourNumber == 2 ? Hour.FIVESIX : hourNumber == 3 ? Hour.EIGHTNINE : hourNumber == 4 ? Hour.TENELEVEN : Hour.TENELEVEN;
+                                Day day = Day.fromInt(dayNumber);
+                                Hour hour = Hour.fromInt(hourNumber);
                                 coursePlan.setCourse(day, hour, new Course("", "", ""));
                                 coursePlan.save();
                                 TimetableManager.this.generateVisuals();
@@ -134,20 +122,19 @@ public class TimetableManager {
 
                         builderSingle.setView(child);
 
-                        builderSingle.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        builderSingle.setPositiveButton(R.string.dialog_positive, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Day day = dayNumber == 0 ? Day.MON : dayNumber == 1 ? Day.TUE : dayNumber == 2 ? Day.WED : dayNumber == 3 ? Day.THU : dayNumber == 4 ? Day.FRI : Day.FRI;
-                                Hour hour = hourNumber == 0 ? Hour.ONETWO : hourNumber == 1 ? Hour.THREFOUR: hourNumber == 2 ? Hour.FIVESIX : hourNumber == 3 ? Hour.EIGHTNINE : hourNumber == 4 ? Hour.TENELEVEN : Hour.TENELEVEN;
+                                Day day = Day.fromInt(dayNumber);
+                                Hour hour = Hour.fromInt(hourNumber);
                                 coursePlan.setCourse(day, hour, new Course(subjectSpinner.getSelectedItem().toString(), roomView.getText().toString(), teacherView.getText().toString()));
                                 coursePlan.save();
                                 TimetableManager.this.generateVisuals();
                             }
                         });
-                        builderSingle.setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
+                        builderSingle.setNegativeButton(R.string.dialog_negative, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Log.v("cancel", which+"");
                             }
                         });
                         builderSingle.show();
