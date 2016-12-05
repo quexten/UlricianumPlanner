@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         coursePlan.readClassName();
         if(!coursePlan.hasClassName()) {
             AlertDialog.Builder builderSingle = new AlertDialog.Builder(this);
-            builderSingle.setTitle("Klasse Auswählen");
+            builderSingle.setTitle(R.string.builder_title);
 
             final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                     this,
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 });
 
-            builderSingle.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            builderSingle.setPositiveButton(R.string.dialog_positive, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which)
                 {
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                     coursePlan.saveClassName();
                 }
             });
-            builderSingle.setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
+            builderSingle.setNegativeButton(R.string.dialog_negative, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
@@ -113,29 +113,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_login:
                 Intent myIntent = new Intent(MainActivity.this, LoginActivity.class);
                 MainActivity.this.startActivity(myIntent);
-                return true;
-            case R.id.action_sync:
-                new SyncTask(this, new Runnable() {
-                    @Override
-                    public void run() {
-                        MainActivity.this.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                substitutions.readSubstitutions();
-                                timetableManager.generateVisuals();
-                                try {
-                                    CharSequence text = "Synchronisiert!";
-                                    int duration = Toast.LENGTH_SHORT;
-
-                                    Toast toast = Toast.makeText(MainActivity.this.getApplicationContext(), text, duration);
-                                    toast.show();
-                                } catch (Exception ex) {
-                                    ex.printStackTrace();
-                                }
-                            }
-                        });
-                    }
-                }).execute();
                 return true;
             case R.id.action_settings:
                 Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);

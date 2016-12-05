@@ -127,4 +127,8 @@
     <string name="dialog_negative">Abbrechen</string>
     <string name="dialog_delete">Löschen</string>
 
+    <string name="builder_title">Klasse Auswählen</string>
+
+    <string name="synced">Synchroniziert</string>
+
 </resources>

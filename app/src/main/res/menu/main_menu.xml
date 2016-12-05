@@ -8,13 +8,6 @@
         android:orderInCategory="100"
         android:title="Login"
         app:showAsAction="never" />
-
-    <item
-        android:id="@+id/action_sync"
-        android:orderInCategory="200"
-        android:title="Aktualisieren"
-        app:showAsAction="never"
-        ></item>
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="400"

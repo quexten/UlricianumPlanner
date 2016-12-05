@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;;
@@ -11,6 +12,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by Quexten on 01-Sep-16.
@@ -23,10 +25,46 @@ public class TimetableManager {
     public CoursePlan coursePlan;
     public Substitutions substitutions;
 
-    public TimetableManager(Activity activity, CoursePlan coursePlan, Substitutions substitutions) {
+    public TimetableManager(final Activity activity, CoursePlan coursePlan, Substitutions substitutions) {
         this.activity = activity;
         this.coursePlan = coursePlan;
         this.substitutions = substitutions;
+
+        final SwipeRefreshLayout swipeRefreshLayout = ((SwipeRefreshLayout) activity.findViewById(R.id.swiperefreshlayout));
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setRefreshing(true);
+                    }
+                });
+                new SyncTask(activity, new Runnable() {
+                    @Override
+                    public void run() {
+                        TimetableManager.this.activity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                TimetableManager.this.substitutions.readSubstitutions();
+                                TimetableManager.this.generateVisuals();
+                                try {
+                                    CharSequence text = activity.getResources().getString(R.string.synced);
+                                    int duration = Toast.LENGTH_SHORT;
+
+                                    Toast toast = Toast.makeText(TimetableManager.this.activity.getApplicationContext(), text, duration);
+                                    toast.show();
+                                } catch (Exception ex) {
+                                    ex.printStackTrace();
+                                }
+                                swipeRefreshLayout.setRefreshing(false);
+                            }
+                        });
+                    }
+                }).execute();
+            }
+        });
+        swipeRefreshLayout.setColorSchemeColors(activity.getResources().getColor(R.color.colorPrimary));
     }
 
     public void generateVisuals() {
@@ -36,8 +74,8 @@ public class TimetableManager {
         for(int x = 0; x < coursePlan.courseArray.length; x++) {
             for(int y = 0; y < coursePlan.courseArray[0].length; y++) {
                 Course course = coursePlan.getCourse(x, y);
-                Day day = x == 0 ? Day.MON : x == 1 ? Day.TUE : x == 2 ? Day.WED : x == 3 ? Day.THU : x == 4 ? Day.FRI : Day.FRI;
-                Hour hour = y == 0 ? Hour.ONETWO : y == 1 ? Hour.THREFOUR: y == 2 ? Hour.FIVESIX : y == 3 ? Hour.EIGHTNINE : y == 4 ? Hour.TENELEVEN : Hour.TENELEVEN;
+                Day day = Day.fromInt(x);
+                Hour hour = Hour.fromInt(y);
                 LinearLayout layout = getTableEntryLayout(day, hour);
                 TextView subjectView = ((TextView) layout.findViewById(R.id.subjectView));
                 TextView roomView = ((TextView) layout.findViewById(R.id.roomView));
