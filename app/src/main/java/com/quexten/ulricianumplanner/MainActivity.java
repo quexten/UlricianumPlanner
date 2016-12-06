@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final String FEEDBACK_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeRL32fUNVbj6NccWst-81efIhMMYCkX-du94FF7_QJPmFiXw/viewform?usp=sendform";
 
     AccountManager accountManager;
     CoursePlan coursePlan;
@@ -121,6 +124,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_help:
                 Intent tutorialIntent = new Intent(MainActivity.this, TutorialActivity.class);
                 MainActivity.this.startActivity(tutorialIntent);
+                return true;
+            case R.id.action_feedback:
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(FEEDBACK_URL));
+                startActivity(browserIntent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

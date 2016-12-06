@@ -20,4 +20,10 @@
         android:title="Hilfe"
         app:showAsAction="never"
         ></item>
+    <item
+        android:id="@+id/action_feedback"
+        android:orderInCategory="800"
+        android:title="Feedback"
+        app:showAsAction="never"
+        ></item>
 </menu>
