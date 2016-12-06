@@ -4,11 +4,15 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.InputFilter;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;;
 import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -129,7 +133,19 @@ public class TimetableManager {
                         builderSingle.setTitle(R.string.dialog_title);
 
                         View child = activity.getLayoutInflater().inflate(R.layout.edit_dialog, null);
-                        LinearLayout childLayout = ((LinearLayout) child);
+                        final LinearLayout childLayout = ((LinearLayout) child);
+
+                        //View for Second Teacher Option, is initially hidden
+                        final LinearLayout teacherLayout = ((LinearLayout) childLayout.findViewById(R.id.teacher_text_layout));
+                        final EditText secondTeacherView = new EditText(activity);
+                        secondTeacherView.setHint("Lehrer");
+                        secondTeacherView.setAllCaps(true);
+                        secondTeacherView.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+                        secondTeacherView.setEms(10);
+                        secondTeacherView.setLayoutParams(new DrawerLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                        secondTeacherView.setEnabled(true);
+                        secondTeacherView.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+
 
                         builderSingle.setNeutralButton(R.string.dialog_delete, new DialogInterface.OnClickListener() {
                             @Override
@@ -142,10 +158,30 @@ public class TimetableManager {
                             }
                         });
 
-                        final AutoCompleteTextView teacherView = ((AutoCompleteTextView ) childLayout.findViewById(R.id.TeacherText));
-                        teacherView.setText(selectedCourse.teacher);
-                        teacherView.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+                        final ImageButton addButton = ((ImageButton) childLayout.findViewById(R.id.add_teacher_button));
+                        addButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if(secondTeacherView.getParent() == null) {
+                                    addButton.setBackgroundResource(R.drawable.ic_action_delete);
+                                    secondTeacherView.setText("");
+                                    teacherLayout.addView(secondTeacherView, 1);
+                                } else {
+                                    addButton.setBackgroundResource(R.drawable.ic_action_add);
+                                    teacherLayout.removeView(secondTeacherView);
+                                }
+                            }
+                        });
 
+                        if(selectedCourse.getTeachers().length > 1) {
+                            teacherLayout.addView(secondTeacherView, 1);
+                            secondTeacherView.setText(selectedCourse.getTeachers()[1]);
+                            addButton.setBackgroundResource(R.drawable.ic_action_delete);
+                        }
+
+                        final TextView teacherView = ((TextView ) childLayout.findViewById(R.id.TeacherText));
+                        teacherView.setText(selectedCourse.getTeachers()[0]);
+                        teacherView.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
 
                         final AutoCompleteTextView roomView = ((AutoCompleteTextView) childLayout.findViewById(R.id.RoomText));
                         roomView.setText(selectedCourse.room);
@@ -165,7 +201,8 @@ public class TimetableManager {
                             public void onClick(DialogInterface dialog, int which) {
                                 Day day = Day.fromInt(dayNumber);
                                 Hour hour = Hour.fromInt(hourNumber);
-                                coursePlan.setCourse(day, hour, new Course(subjectSpinner.getSelectedItem().toString(), roomView.getText().toString(), teacherView.getText().toString()));
+                                String teacherString = teacherView.getText().toString() + (secondTeacherView.getParent() != null ? (" " + secondTeacherView.getText()) : "");
+                                coursePlan.setCourse(day, hour, new Course(subjectSpinner.getSelectedItem().toString(), roomView.getText().toString(), teacherString));
                                 coursePlan.save();
                                 TimetableManager.this.generateVisuals();
                             }

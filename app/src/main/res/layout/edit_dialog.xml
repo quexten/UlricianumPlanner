@@ -6,14 +6,35 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <AutoCompleteTextView
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAllCaps="true"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/TeacherText"
-        android:hint="Lehrer" />
+        android:id="@+id/teacher_text_layout">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/TeacherText"
+            android:hint="Lehrer"
+            android:layout_weight="9999" />
+
+        <ImageButton
+            android:layout_height="wrap_content"
+            android:id="@+id/add_teacher_button"
+            android:layout_weight="1"
+            app:backgroundTint="#FFFFFF"
+            android:background="@drawable/ic_action_add"
+            android:cropToPadding="false"
+            android:adjustViewBounds="false"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="8dp"
+            android:layout_width="24dp" />
+
+    </LinearLayout>
 
     <Space
         android:layout_width="match_parent"

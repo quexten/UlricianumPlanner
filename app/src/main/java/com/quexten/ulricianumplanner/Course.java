@@ -1,5 +1,7 @@
 package com.quexten.ulricianumplanner;
 
+import android.util.Log;
+
 /**
  * Created by Quexten on 03-Sep-16.
  */
@@ -19,6 +21,10 @@ public class Course {
 	@Override
 	public String toString() {
 		return subject+"|"+room+"|"+teacher;
+	}
+
+	public String[] getTeachers() {
+		return teacher.split("\\s");
 	}
 	
 }
