@@ -120,6 +120,7 @@
         <item>SF</item>
         <item>SN</item>
         <item>SP</item>
+        <item>ÖK</item>
     </string-array>
 
     <string name="dialog_title">Bearbeiten</string>
