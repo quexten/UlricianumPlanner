@@ -131,5 +131,7 @@
     <string name="builder_title">Klasse Auswählen</string>
 
     <string name="synced">Synchronisiert!</string>
-
+    <string name="feedback_title">Feedback</string>
+    <string name="feedback_description">Was ist das Problem?</string>
+    <string name="feedback_attachtimetable">Stundenplan Anhängen</string>
 </resources>

@@ -122,4 +122,10 @@ public class CoursePlan {
         return resultArray;
     }
 
+    @Override
+    public String toString() {
+        Gson gson = new Gson();
+        return gson.toJson(courseArray);
+    }
+
 }

@@ -12,17 +12,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
+import android.widget.LinearLayout;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String FEEDBACK_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeRL32fUNVbj6NccWst-81efIhMMYCkX-du94FF7_QJPmFiXw/viewform?usp=sendform";
-
     AccountManager accountManager;
     CoursePlan coursePlan;
+    FeedbackManager feedbackManager;
     NetworkManager networkManager;
     NotificationPoster notificationPoster;
     Substitutions substitutions;
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         accountManager = new AccountManager(this.getApplicationContext());
         coursePlan = new CoursePlan(this.getApplicationContext());
+        feedbackManager = new FeedbackManager(this.getApplicationContext(), coursePlan);
         networkManager = new NetworkManager(this.getApplicationContext());
         notificationPoster = new NotificationPoster(this.getApplicationContext());
         substitutions = new Substitutions(this.getApplicationContext());
@@ -126,8 +129,21 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(tutorialIntent);
                 return true;
             case R.id.action_feedback:
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(FEEDBACK_URL));
-                startActivity(browserIntent);
+                AlertDialog.Builder builderSingle = new AlertDialog.Builder(this);
+                builderSingle.setTitle(getResources().getString(R.string.feedback_title));
+
+                View child = this.getLayoutInflater().inflate(R.layout.feedback_dialog, null);
+                final LinearLayout childLayout = ((LinearLayout) child);
+                final TextView feedbackDescriptionView = ((TextView) childLayout.findViewById(R.id.feedback_description));
+                final Switch feedbackAddTimetableSwitch = ((Switch) childLayout.findViewById(R.id.feedback_attachtimetable));
+                builderSingle.setView(child);
+                builderSingle.setPositiveButton(getResources().getString(R.string.dialog_positive), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        feedbackManager.submitFeedback(feedbackDescriptionView.getText().toString(), feedbackAddTimetableSwitch.isChecked());
+                    }
+                });
+                builderSingle.show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
