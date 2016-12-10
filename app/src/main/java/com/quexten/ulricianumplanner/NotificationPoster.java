@@ -19,6 +19,8 @@ public class NotificationPoster {
 
     Context context;
 
+    static int notificationId = 0;
+
     public NotificationPoster(Context context) {
         this.context = context;
     }
@@ -87,7 +89,7 @@ public class NotificationPoster {
         builder.setContentIntent(resultPendingIntent);
         NotificationManager notificationManager =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify((int)(Math.random() * Float.MAX_VALUE), builder.build());
+        notificationManager.notify(notificationId++, builder.build());
     }
 
 }

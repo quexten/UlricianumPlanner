@@ -1,6 +1,5 @@
 package com.quexten.ulricianumplanner;
 
-import android.app.Activity;
 import android.content.Context;
 
 import java.io.BufferedReader;
