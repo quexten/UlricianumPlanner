@@ -62,11 +62,12 @@ public class NetworkManager {
                 if(element.getName().equals("PHPSESSPW"))
                     phpSessionPassword = element.getValue();
             }
+            return response.getStatusLine().getStatusCode() == 302;
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return response.getStatusLine().getStatusCode() == 302;
+        return false;
     }
 
     public boolean isLoggedIn() {
