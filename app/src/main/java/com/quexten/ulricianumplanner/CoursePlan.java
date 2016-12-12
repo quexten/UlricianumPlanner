@@ -104,14 +104,10 @@ public class CoursePlan {
         ArrayList<TableEntry> filteredEntries = new ArrayList<TableEntry>();
         for(TableEntry entry : entries) {
             if(entry.className.contains(className)) {
-                Hour hour = (entry.time.equals("3") || entry.time.equals("3 - 4") || entry.time.equals("4")) ? Hour.THREFOUR : Hour.ONETWO;
-                hour = (entry.time.equals("5") || entry.time.equals("5 - 6") || entry.time.equals("6")) ? Hour.FIVESIX : hour;
-                hour = (entry.time.equals("8") || entry.time.equals("8 - 9") || entry.time.equals("9")) ? Hour.EIGHTNINE : hour;
-                hour = (entry.time.equals("10") || entry.time.equals("10 - 11") || entry.time.equals("10 - 12")|| entry.time.equals("11") || entry.time.equals("12")) ? Hour.TENELEVEN : hour;
+                Hour hour = Hour.fromString(entry.time);
                 for(String teacher : getCourse(day.ordinal(), hour.ordinal()).getTeachers())
-                    if(teacher.equals(entry.teacher)) {
+                    if(teacher.equals(entry.teacher))
                         filteredEntries.add(entry);
-                    }
             }
         }
 
