@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.github.triplet.play'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion '22.0.1'
+    compileSdkVersion 24
+    buildToolsVersion '24.0.3'
     defaultConfig {
         applicationId "com.quexten.ulricianumplanner"
         minSdkVersion 14
-        targetSdkVersion 22
+        targetSdkVersion 24
         versionCode 15
         versionName "1.1.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
