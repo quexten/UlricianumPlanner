@@ -16,7 +16,7 @@ android {
     signingConfigs {
         release {
 			if(System.getenv('CI')) {
-				storeFile file(System.getenv('RELEASE_STORE_FILE'))
+				storeFile file(System.properties['user.home']+"/travis/build/Quexten/UlricianumPlanner/quexten.keystore")
 				storePassword System.getenv('RELEASE_STORE_PASSWORD')
 				keyAlias System.getenv('RELEASE_KEY_ALIAS')
 				keyPassword System.getenv('RELEASE_KEY_PASSWORD')
@@ -39,7 +39,7 @@ android {
 
     play {
 		if(System.getenv('CI')) {
-			jsonFile = file(System.getenv('API_CONFIG_FILE'))
+			jsonFile = file(System.properties['user.home']+"/travis/build/Quexten/UlricianumPlanner/google-play-api.json")
 		} else {
 			jsonFile = file(API_CONFIG_FILE)
 		}		
