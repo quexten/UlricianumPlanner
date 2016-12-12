@@ -15,10 +15,17 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file(System.getenv('RELEASE_STORE_FILE'))
-            storePassword System.getenv('RELEASE_STORE_PASSWORD')
-            keyAlias System.getenv('RELEASE_KEY_ALIAS')
-            keyPassword System.getenv('RELEASE_KEY_PASSWORD')
+			if(System.getenv('CI')) {
+				storeFile file(System.getenv('RELEASE_STORE_FILE'))
+				storePassword System.getenv('RELEASE_STORE_PASSWORD')
+				keyAlias System.getenv('RELEASE_KEY_ALIAS')
+				keyPassword System.getenv('RELEASE_KEY_PASSWORD')
+			} else {
+				storeFile file(RELEASE_STORE_FILE)
+				storePassword RELEASE_STORE_PASSWORD
+				keyAlias RELEASE_KEY_ALIAS
+				keyPassword RELEASE_KEY_PASSWORD
+			}
         }
     }
     buildTypes {
@@ -31,9 +38,17 @@ android {
 
 
     play {
-        jsonFile = file(System.getenv('API_CONFIG_FILE'))
+		if(System.getenv('CI')) {
+			jsonFile = file(System.getenv('API_CONFIG_FILE'))
+		} else {
+			jsonFile = file(API_CONFIG_FILE)
+		}		
     }
 
+	lintOptions {
+        abortOnError false
+    }
+	
     productFlavors {
     }
 }
