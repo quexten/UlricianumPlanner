@@ -15,6 +15,12 @@ before_install:
   -in secrets.tar.enc -out secrets.tar -d
 - tar xvf secrets.tar
 - chmod +x gradlew
+after_success:
+  if ([ "$TRAVIS_BRANCH" == "master" ] || [ ! -z "$TRAVIS_TAG" ]) && 
+      [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+    ./gradlew publishApkRelease
+  else
+  fi
 notifications:
   email: false
   webhooks:
