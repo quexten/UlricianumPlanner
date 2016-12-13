@@ -164,7 +164,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     protected boolean isValidFragment(String fragmentName) {
         return PreferenceFragment.class.getName().equals(fragmentName)
                 || GeneralPreferenceFragment.class.getName().equals(fragmentName)
-                || DataSyncPreferenceFragment.class.getName().equals(fragmentName)
                 || NotificationPreferenceFragment.class.getName().equals(fragmentName);
     }
 
@@ -274,30 +273,4 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         }
     }
 
-    /**
-     * This fragment shows data and sync preferences only. It is used when the
-     * activity is showing a two-pane settings UI.
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static class DataSyncPreferenceFragment extends PreferenceFragment {
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.pref_data_sync);
-
-            final SharedPreferences sharedPref = DataSyncPreferenceFragment.this.getActivity().getSharedPreferences("com.quexten.ulricianumplanner.MainActivity", Context.MODE_PRIVATE);
-
-            findPreference("sync_enabled").setDefaultValue(sharedPref.getBoolean("sync_enabled", true));
-            findPreference("sync_enabled").setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putBoolean("sync_enabled", Boolean.valueOf(String.valueOf(newValue)));
-                    editor.commit();
-                    return true;
-                }
-            });
-        }
-
-    }
 }

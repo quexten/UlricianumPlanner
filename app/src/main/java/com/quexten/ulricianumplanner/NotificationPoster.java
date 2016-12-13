@@ -97,6 +97,8 @@ public class NotificationPoster {
 
     public void postNextRoomNotification(Course course) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        if(!sharedPref.getBoolean("notifications_room_enabled", true))
+            return;
 
         //Notification
         String header = "Gleich " + course.subject + " in " + course.room;

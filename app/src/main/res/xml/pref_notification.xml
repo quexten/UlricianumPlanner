@@ -23,6 +23,6 @@
         android:key="notifications_room_enabled"
         android:title="@string/pref_title_room_notifications"
         android:summary="@string/pref_description_room_notifications"
-        android:enabled="false"/>
+        android:enabled="true"/>
 
 </PreferenceScreen>
