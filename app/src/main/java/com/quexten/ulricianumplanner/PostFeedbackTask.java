@@ -1,8 +1,10 @@
 package com.quexten.ulricianumplanner;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -29,11 +31,13 @@ class PostFeedbackTask extends AsyncTask<String, Boolean, Boolean> {
     static final String ENTRY_DEVICEINFO = "entry.1210007803";
     static final String ENTRY_TIMETABLE = "entry.1799750604";
 
+    Activity activity;
     Context context;
     FeedbackManager.FeedbackOptions feedbackOptions;
 
-    public PostFeedbackTask(Context context, FeedbackManager.FeedbackOptions feedbackOptions) {
-        this.context = context;
+    public PostFeedbackTask(Activity activity, FeedbackManager.FeedbackOptions feedbackOptions) {
+        this.activity = activity;
+        this.context = activity.getApplicationContext();
         this.feedbackOptions = feedbackOptions;
     }
 
@@ -51,12 +55,30 @@ class PostFeedbackTask extends AsyncTask<String, Boolean, Boolean> {
             request.setEntity(new UrlEncodedFormEntity(postParameters));
 
             httpClient.execute(request);
-        } catch (UnsupportedEncodingException ex) {
-            ex.printStackTrace();
+            postToast("Feedback wurde eingereicht, vielen Dank!");
         } catch(Exception ex) {
             ex.printStackTrace();
+            postToast("Netzwerkfehler beim senden des Feedbacks");
         }
         return true;
+    }
+
+    private void postToast(String toast) {
+        final String toastMessage = toast;
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    CharSequence text = toastMessage;
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
 
 }

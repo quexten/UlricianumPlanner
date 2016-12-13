@@ -18,11 +18,11 @@ public class FeedbackManager {
             + " " + Build.VERSION_CODES.class.getFields()[android.os.Build.VERSION.SDK_INT].getName();
     private String BUILD_VERSION = String.valueOf(BuildConfig.VERSION_CODE);
 
-    Context context;
+    Activity activity;
     CoursePlan coursePlan;
 
-    public FeedbackManager(Context context, CoursePlan coursePlan) {
-        this.context = context;
+    public FeedbackManager(Activity activity, CoursePlan coursePlan) {
+        this.activity = activity;
         this.coursePlan = coursePlan;
     }
 
@@ -36,7 +36,7 @@ public class FeedbackManager {
     }
 
     private void uploadFeedback(FeedbackOptions options) {
-        new PostFeedbackTask(context.getApplicationContext(), options).execute();
+        new PostFeedbackTask(activity, options).execute();
     }
 
     class FeedbackOptions {

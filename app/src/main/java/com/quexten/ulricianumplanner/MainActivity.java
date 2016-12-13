@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         accountManager = new AccountManager(this.getApplicationContext());
         coursePlan = new CoursePlan(this.getApplicationContext());
-        feedbackManager = new FeedbackManager(this.getApplicationContext(), coursePlan);
+        feedbackManager = new FeedbackManager(this, coursePlan);
         networkManager = new NetworkManager(this.getApplicationContext());
         notificationPoster = new NotificationPoster(this.getApplicationContext());
         substitutions = new Substitutions(this.getApplicationContext());
