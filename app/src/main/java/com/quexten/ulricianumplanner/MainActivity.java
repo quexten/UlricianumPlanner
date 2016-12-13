@@ -99,9 +99,18 @@ public class MainActivity extends AppCompatActivity {
 
         timetableManager.generateVisuals();
 
-        setSyncTimer(5,0);
-        setSyncTimer(14,1);
-        setSyncTimer(19,2);
+        //Sync Timers
+        setDailyTask(5, 0, 0, new Intent(MainActivity.this, SyncReceiver.class));
+        setDailyTask(14, 0, 1, new Intent(MainActivity.this, SyncReceiver.class));
+        setDailyTask(19, 0, 2, new Intent(MainActivity.this, SyncReceiver.class));
+
+        //Room Tasks
+        setDailyTask(7, 40, 3, new Intent(MainActivity.this, RoomReceiver.class));
+        setDailyTask(9, 30, 3, new Intent(MainActivity.this, RoomReceiver.class));
+        setDailyTask(11, 25, 3, new Intent(MainActivity.this, RoomReceiver.class));
+        setDailyTask(13, 50, 3, new Intent(MainActivity.this, RoomReceiver.class));
+        setDailyTask(16, 30, 3, new Intent(MainActivity.this, RoomReceiver.class));
+
     }
 
 
@@ -150,22 +159,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    void setSyncTimer(int hour, int id) {
-        AlarmManager alarmMgr0 = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+    private void setDailyTask(int hour, int minute, int id, Intent intent) {
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
 
-        Intent intent0 = new Intent(MainActivity.this, SyncReceiver.class);
         Calendar timeOff9 = Calendar.getInstance();
         timeOff9.set(Calendar.HOUR_OF_DAY, hour);
-        timeOff9.set(Calendar.MINUTE, 0);
+        timeOff9.set(Calendar.MINUTE, minute);
         timeOff9.set(Calendar.SECOND, 0);
         int millisDay = 1000 * 60 * 60 * 24;
         long startMillis = timeOff9.getTimeInMillis();
         if(startMillis < System.currentTimeMillis()) {
             startMillis += millisDay;
         }
-        PendingIntent pendingIntent =  PendingIntent.getBroadcast(this, id, intent0, 0);
+        PendingIntent pendingIntent =  PendingIntent.getBroadcast(this, id, intent, 0);
 
-        alarmMgr0.setRepeating(AlarmManager.RTC_WAKEUP, startMillis, millisDay, pendingIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, startMillis, millisDay, pendingIntent);
     }
 
 }

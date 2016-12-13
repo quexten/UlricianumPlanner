@@ -1,10 +1,8 @@
 package com.quexten.ulricianumplanner;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -12,7 +10,7 @@ import java.util.Calendar;
  * Created by Quexten on 01-Sep-16.
  */
 
-class SyncTask extends AsyncTask<String, Boolean, Boolean> {
+class NextRoomTask extends AsyncTask<String, Boolean, Boolean> {
 
     Context context;
 
@@ -22,9 +20,7 @@ class SyncTask extends AsyncTask<String, Boolean, Boolean> {
     NotificationPoster notificationPoster;
     Substitutions substitutions;
 
-    Runnable onCompletionListener;
-
-    public SyncTask(Context context) {
+    public NextRoomTask(Context context) {
         this.context = context;
 
         accountManager = new AccountManager(context);
@@ -34,16 +30,8 @@ class SyncTask extends AsyncTask<String, Boolean, Boolean> {
         substitutions = new Substitutions(context);
     }
 
-    public SyncTask(Context context, Runnable onCompletionListener) {
-        this(context);
-        this.onCompletionListener = onCompletionListener;
-    }
-
     @Override
     protected Boolean doInBackground(String... params) {
-        if(!networkManager.isLoggedIn())
-            networkManager.login(accountManager.getUsername(), accountManager.getPassword());
-
         coursePlan.readClassName();
         coursePlan.read();
 
@@ -53,6 +41,7 @@ class SyncTask extends AsyncTask<String, Boolean, Boolean> {
         substitutions.saveSubstitutions();
 
         Day todayDay = substitutions.getTodayDay();
+        Day tomorrowDay = substitutions.getTomorrowDay();
         TableEntry[] todaySubstitutions = substitutions.getTodaySubstitutions();
         TableEntry[] tomorrowSubstitutions = substitutions.getTomorrowSubstitutions();
 
@@ -74,49 +63,45 @@ class SyncTask extends AsyncTask<String, Boolean, Boolean> {
                 : todayDay.equals(Day.FRI) ? 4
                 : 7;
 
-        if(currentDayIndex < todayDayIndex)
-            for(int i = 0; i < todaySubstitutions.length; i++) {
-                notificationPoster.postSubstitutionNotification(todaySubstitutions[i]);
+        Course nextCourse = coursePlan.getCourse(Day.fromInt(currentDayIndex), getNextHour());
+
+        Course notificationCourse = new Course("Subject", "Room", "Teacher");
+        notificationCourse.subject = nextCourse.subject;
+        notificationCourse.teacher = nextCourse.teacher;
+        notificationCourse.room = nextCourse.room;
+
+        TableEntry[] currentSubstitutions = new TableEntry[0];
+        if(todayDay.ordinal() == currentDayIndex)
+            currentSubstitutions = todaySubstitutions;
+        if(tomorrowDay.ordinal() == currentDayIndex)
+            currentSubstitutions = tomorrowSubstitutions;
+
+        for(TableEntry entry : currentSubstitutions) {
+            if(Hour.fromString(entry.time).equals(getNextHour())) {
+                notificationCourse.subject = entry.substituteSubject;
+                notificationCourse.teacher = entry.substituteTeacher;
+                notificationCourse.room = entry.room;
             }
-        if(currentDayIndex == todayDayIndex)
-            for(int i = 0; i < todaySubstitutions.length; i++) {
-                TableEntry entry = todaySubstitutions[i];
-
-                Hour hour = Hour.fromString(entry.time);
-                int notificationHour = getEndTimeForHour(hour);
-
-                int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-
-                if(currentHour <= notificationHour)
-                    notificationPoster.postSubstitutionNotification(todaySubstitutions[i]);
-            }
-
-        for(int i = 0; i < tomorrowSubstitutions.length; i++) {
-            notificationPoster.postSubstitutionNotification(tomorrowSubstitutions[i]);
         }
 
-        if(onCompletionListener != null)
-            onCompletionListener.run();
+        notificationPoster.postNextRoomNotification(notificationCourse);
         return true;
     }
 
-    protected void onPostExecute(Void post) {
-    }
+    static Hour getNextHour() {
+        Calendar cal = Calendar.getInstance();
+        int hour = cal.get(Calendar.HOUR);
 
-    static int getEndTimeForHour(Hour hour) {
-        switch(hour) {
-            case ONETWO:
-                return 9;
-            case THREFOUR:
-                return 11;
-            case FIVESIX:
-                return 13;
-            case EIGHTNINE:
-                return 15;
-            case TENELEVEN:
-                return 17;
-        }
-        return 0;
+        if(hour < 8)
+            return Hour.ONETWO;
+        else if (hour < 10)
+            return Hour.THREFOUR;
+        else if (hour < 12)
+            return Hour.FIVESIX;
+        else if (hour < 15)
+            return Hour.EIGHTNINE;
+        else
+            return Hour.TENELEVEN;
     }
 
 }

@@ -33,6 +33,7 @@
         </activity>
 
         <receiver android:name=".SyncReceiver" />
+        <receiver android:name=".RoomReceiver" />
 
         <activity
             android:name=".SettingsActivity"
