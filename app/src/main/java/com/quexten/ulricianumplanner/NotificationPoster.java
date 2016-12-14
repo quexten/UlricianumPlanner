@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
@@ -106,7 +107,8 @@ public class NotificationPoster {
 
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context)
-                        .setSmallIcon(R.drawable.ic_school_black_24dp)
+                        .setSmallIcon(Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP ? R.drawable.ic_school_black_24dp :
+                                R.mipmap.icon)
                         .setLargeIcon(BitmapFactory.decodeResource(context.getResources(),
                                 R.mipmap.icon))
                         .setContentTitle(header)
