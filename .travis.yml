@@ -25,6 +25,6 @@ notifications:
     on_start: never     # options: [always|never|change] default: always
 deploy:
   provider: script
-  script: gradlew publishApkRelease
+  script: ./gradlew publishApkRelease
   on:
     tags: true
