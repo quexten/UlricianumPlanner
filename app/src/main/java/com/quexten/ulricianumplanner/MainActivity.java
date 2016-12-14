@@ -20,6 +20,9 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 
+import hotchemi.android.rate.AppRate;
+import hotchemi.android.rate.OnClickButtonListener;
+
 public class MainActivity extends AppCompatActivity {
 
     AccountManager accountManager;
@@ -111,6 +114,16 @@ public class MainActivity extends AppCompatActivity {
         setDailyTask(13, 50, 6, new Intent(MainActivity.this, RoomReceiver.class));
         setDailyTask(16, 30, 7, new Intent(MainActivity.this, RoomReceiver.class));
 
+        AppRate.with(this)
+                .setInstallDays(5) // default 10, 0 means install day.
+                .setLaunchTimes(5) // default 10
+                .setRemindInterval(1) // default 1
+                .setShowLaterButton(true) // default true
+                .setDebug(false)
+                .monitor();
+
+        // Show a dialog if meets conditions
+        AppRate.showRateDialogIfMeetsConditions(this);
     }
 
 
