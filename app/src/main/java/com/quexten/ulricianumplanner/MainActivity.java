@@ -106,10 +106,10 @@ public class MainActivity extends AppCompatActivity {
 
         //Room Tasks
         setDailyTask(7, 40, 3, new Intent(MainActivity.this, RoomReceiver.class));
-        setDailyTask(9, 30, 3, new Intent(MainActivity.this, RoomReceiver.class));
-        setDailyTask(11, 25, 3, new Intent(MainActivity.this, RoomReceiver.class));
-        setDailyTask(13, 50, 3, new Intent(MainActivity.this, RoomReceiver.class));
-        setDailyTask(16, 30, 3, new Intent(MainActivity.this, RoomReceiver.class));
+        setDailyTask(9, 30, 4, new Intent(MainActivity.this, RoomReceiver.class));
+        setDailyTask(11, 25, 5, new Intent(MainActivity.this, RoomReceiver.class));
+        setDailyTask(13, 50, 6, new Intent(MainActivity.this, RoomReceiver.class));
+        setDailyTask(16, 30, 7, new Intent(MainActivity.this, RoomReceiver.class));
 
     }
 

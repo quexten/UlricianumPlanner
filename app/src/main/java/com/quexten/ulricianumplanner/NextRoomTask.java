@@ -70,6 +70,9 @@ class NextRoomTask extends AsyncTask<String, Boolean, Boolean> {
         notificationCourse.teacher = nextCourse.teacher;
         notificationCourse.room = nextCourse.room;
 
+        if(notificationCourse.teacher.isEmpty())
+            return true;
+
         TableEntry[] currentSubstitutions = new TableEntry[0];
         if(todayDay.ordinal() == currentDayIndex)
             currentSubstitutions = todaySubstitutions;
@@ -78,6 +81,8 @@ class NextRoomTask extends AsyncTask<String, Boolean, Boolean> {
 
         for(TableEntry entry : currentSubstitutions) {
             if(Hour.fromString(entry.time).equals(getNextHour())) {
+                if(entry.type.equals("Entfall"))
+                    return true;
                 notificationCourse.subject = entry.substituteSubject;
                 notificationCourse.teacher = entry.substituteTeacher;
                 notificationCourse.room = entry.room;
