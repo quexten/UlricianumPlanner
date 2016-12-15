@@ -95,7 +95,7 @@ class NextRoomTask extends AsyncTask<String, Boolean, Boolean> {
 
     static Hour getNextHour() {
         Calendar cal = Calendar.getInstance();
-        int hour = cal.get(Calendar.HOUR);
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
 
         if(hour < 8)
             return Hour.ONETWO;
