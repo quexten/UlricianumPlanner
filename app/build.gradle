@@ -8,8 +8,8 @@ android {
         applicationId "com.quexten.ulricianumplanner"
         minSdkVersion 14
         targetSdkVersion 24
-        versionCode 18
-        versionName "1.1.8"
+        versionCode 19
+        versionName "1.1.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -38,6 +38,7 @@ android {
 
 
     play {
+        track = 'production'
 		if(System.getenv('CI')) {
 			jsonFile = file(System.properties['user.home']+"/build/Quexten/UlricianumPlanner/google-play-api.json")
 		} else {
@@ -56,6 +57,7 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'cz.msebera.android:httpclient:4.4.1.1'
+    compile group: 'commons-net', name: 'commons-net', version: '3.5'
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile 'com.android.support:design:24.0.0'
     compile 'org.jsoup:jsoup:1.8.3'
