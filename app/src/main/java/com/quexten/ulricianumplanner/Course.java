@@ -1,7 +1,5 @@
 package com.quexten.ulricianumplanner;
 
-import android.util.Log;
-
 /**
  * Created by Quexten on 03-Sep-16.
  */
