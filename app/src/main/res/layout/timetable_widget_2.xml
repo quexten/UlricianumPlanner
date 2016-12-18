@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1.0">
+
+            <TextView
+                android:id="@+id/subjectView_widget_1_left"
+                android:layout_width="fill_parent"
+                android:layout_height="20dp"
+                android:layout_weight=".30"
+                android:text="Fach"
+                android:textSize="15dp"
+                android:textColor="#424242"
+                android:background="#e0e0e0"
+                android:gravity="center"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/roomView_widget_1_left"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_weight=".54"
+                android:text="Raum"
+                android:textSize="15dp"
+                android:background="#eeeeee"
+                android:textColor="#757575"
+                android:gravity="center"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1.0">
+
+            <TextView
+                android:id="@+id/subjectView_widget_1_right"
+                android:layout_width="fill_parent"
+                android:layout_height="20dp"
+                android:layout_weight=".30"
+                android:text="Fach"
+                android:textSize="15dp"
+                android:textColor="#424242"
+                android:background="#e0e0e0"
+                android:gravity="center"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/roomView_widget_1_right"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_weight=".54"
+                android:text="Raum"
+                android:textSize="15dp"
+                android:background="#eeeeee"
+                android:textColor="#757575"
+                android:gravity="center"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1.0">
+
+            <TextView
+                android:id="@+id/subjectView_widget_2_left"
+                android:layout_width="fill_parent"
+                android:layout_height="20dp"
+                android:layout_weight=".30"
+                android:text="Fach"
+                android:textSize="15dp"
+                android:textColor="#424242"
+                android:background="#e0e0e0"
+                android:gravity="center"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/roomView_widget_2_left"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_weight=".54"
+                android:text="Raum"
+                android:textSize="15dp"
+                android:background="#eeeeee"
+                android:textColor="#757575"
+                android:gravity="center"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1.0">
+
+            <TextView
+                android:id="@+id/subjectView_widget_2_right"
+                android:layout_width="fill_parent"
+                android:layout_height="20dp"
+                android:layout_weight=".30"
+                android:text="Fach"
+                android:textSize="15dp"
+                android:textColor="#424242"
+                android:background="#e0e0e0"
+                android:gravity="center"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/roomView_widget_2_right"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_weight=".54"
+                android:text="Raum"
+                android:textSize="15dp"
+                android:background="#eeeeee"
+                android:textColor="#757575"
+                android:gravity="center"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
