@@ -238,12 +238,7 @@ public class TimetableManager {
             else
                 roomView.setText(entry.room);
 
-            subjectView.setBackgroundColor(entry.type.equals("Entfall") ? Color.parseColor("#ef9a9a")
-                                        : entry.type.equals("Verleg.") ? Color.parseColor("#B39DDB")
-                                        : entry.type.equals("Raum�.") ? Color.parseColor("#80CBC4")
-                                        : (entry.type.equals("Vertret.") || entry.type.equals("Betreu.") || entry.type.equals("trotz A.")) ? Color.parseColor("#FFE082")
-                                        : entry.type.equals("Tausch") ? Color.parseColor("#90CAF9")
-                                        : Color.parseColor("#BCAAA4"));
+            subjectView.setBackgroundColor(getColorForSubstitution(entry.type));
         }
     }
 
@@ -348,6 +343,15 @@ public class TimetableManager {
                 break;
         }
         return (TextView) activity.findViewById(viewId);
+    }
+
+    public static int getColorForSubstitution(String substitution) {
+        return substitution.equals("Entfall") ? Color.parseColor("#ef9a9a")
+                : substitution.equals("Verleg.") ? Color.parseColor("#B39DDB")
+                : substitution.equals("Raum�.") ? Color.parseColor("#80CBC4")
+                : (substitution.equals("Vertret.") || substitution.equals("Betreu.") || substitution.equals("trotz A.")) ? Color.parseColor("#FFE082")
+                : substitution.equals("Tausch") ? Color.parseColor("#90CAF9")
+                : Color.parseColor("#BCAAA4");
     }
 
 }

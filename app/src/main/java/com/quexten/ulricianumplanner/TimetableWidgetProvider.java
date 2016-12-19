@@ -20,6 +20,7 @@ public class TimetableWidgetProvider extends AppWidgetProvider {
     int[] SUBJECTVIEW_IDS_LEFT = {R.id.subjectView_widget_1_left, R.id.subjectView_widget_2_left, R.id.subjectView_widget_3_left, R.id.subjectView_widget_4_left, R.id.subjectView_widget_5_left};
     int[] SUBJECTVIEW_IDS_RIGHT = {R.id.subjectView_widget_1_right, R.id.subjectView_widget_2_right, R.id.subjectView_widget_3_right, R.id.subjectView_widget_4_right, R.id.subjectView_widget_5_right};
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         final int count = appWidgetIds.length;
@@ -27,8 +28,11 @@ public class TimetableWidgetProvider extends AppWidgetProvider {
         for (int i = 0; i < count; i++) {
             int widgetId = appWidgetIds[i];
 
-            RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
-                    R.layout.timetable_widget_1);
+            Bundle options = appWidgetManager.getAppWidgetOptions(widgetId);
+
+            int minHeight = options
+                    .getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT);
+            RemoteViews remoteViews = getRemoteViews(context, minHeight);
 
             appWidgetManager.updateAppWidget(widgetId, remoteViews);
         }
@@ -42,20 +46,18 @@ public class TimetableWidgetProvider extends AppWidgetProvider {
         Bundle options = appWidgetManager.getAppWidgetOptions(appWidgetId);
 
         // Get min width and height.
-        int minWidth = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH);
         int minHeight = options
                 .getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT);
 
         // Obtain appropriate widget and update it.
         appWidgetManager.updateAppWidget(appWidgetId,
-                getRemoteViews(context, minWidth, minHeight));
+                getRemoteViews(context, minHeight));
 
         super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId,
                 newOptions);
     }
 
-    private RemoteViews getRemoteViews(Context context, int minWidth,
-                                       int minHeight) {
+    private RemoteViews getRemoteViews(Context context, int minHeight) {
         int rows = getCellsForSize(minHeight);
 
         CoursePlan coursePlan = new CoursePlan(context);
@@ -76,6 +78,23 @@ public class TimetableWidgetProvider extends AppWidgetProvider {
             todaySubject = todaySubject.isEmpty() ? " " : todaySubject;
             tomorrowRoom = tomorrowRoom.isEmpty() ? " " : tomorrowRoom;
             tomorrowSubject = tomorrowSubject.isEmpty() ? " " : tomorrowSubject;
+
+            for(TableEntry entry : substitutions.getTodaySubstitutions()) {
+                if(Hour.fromString(entry.time).equals(Hour.fromInt(i))) {
+                    todaySubject = entry.substituteSubject;
+                    todayRoom = entry.room;
+                    views.setInt(SUBJECTVIEW_IDS_LEFT[i], "setBackgroundColor",
+                            TimetableManager.getColorForSubstitution(entry.type));
+                }
+            }
+            for(TableEntry entry : substitutions.getTomorrowSubstitutions()) {
+                if(Hour.fromString(entry.time).equals(Hour.fromInt(i))) {
+                    tomorrowSubject = entry.substituteSubject;
+                    tomorrowRoom = entry.room;
+                    views.setInt(SUBJECTVIEW_IDS_RIGHT[i], "setBackgroundColor",
+                            TimetableManager.getColorForSubstitution(entry.type));
+                }
+            }
 
             views.setTextViewText(ROOMVIEW_IDS_LEFT[i], todayRoom);
             views.setTextViewText(SUBJECTVIEW_IDS_LEFT[i], todaySubject);
