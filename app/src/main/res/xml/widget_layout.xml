@@ -3,8 +3,8 @@
     android:minWidth="120dp"
     android:minHeight="60dp"
     android:updatePeriodMillis="1800000"
-    android:initialLayout="@layout/timetable_widget_1"
+    android:initialLayout="@layout/timetable_widget_5"
     android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen|keyguard"
-    android:previewImage="@mipmap/ic_launcher">
+    android:previewImage="@drawable/widget_preview">
 </appwidget-provider>
