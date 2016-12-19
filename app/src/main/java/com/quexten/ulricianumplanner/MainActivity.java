@@ -104,7 +104,9 @@ public class MainActivity extends AppCompatActivity {
 
         //Sync Timers
         setDailyTask(5, 0, 0, new Intent(MainActivity.this, SyncReceiver.class));
-        setDailyTask(14, 0, 1, new Intent(MainActivity.this, SyncReceiver.class));
+        setDailyTask(9, 0, 0, new Intent(MainActivity.this, SyncReceiver.class));
+        setDailyTask(11, 0, 0, new Intent(MainActivity.this, SyncReceiver.class));
+        setDailyTask(13, 30, 1, new Intent(MainActivity.this, SyncReceiver.class));
         setDailyTask(19, 0, 2, new Intent(MainActivity.this, SyncReceiver.class));
 
         //Room Tasks
