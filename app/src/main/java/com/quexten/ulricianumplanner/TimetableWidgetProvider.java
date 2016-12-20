@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.RemoteViews;
@@ -68,7 +69,15 @@ public class TimetableWidgetProvider extends AppWidgetProvider {
 
         RemoteViews views = new RemoteViews(context.getPackageName(),
                 LAYOUT_IDS[rows - 1]);
+        views.setInt(SUBJECTVIEW_IDS_LEFT[rows - 1], "setBackgroundColor",
+                Color.parseColor("#bdbdbd"));
+
         for(int i = 0; i < rows; i++) {
+            views.setInt(SUBJECTVIEW_IDS_LEFT[i], "setBackgroundColor",
+                    Color.parseColor("#bdbdbd"));
+            views.setInt(SUBJECTVIEW_IDS_RIGHT[i], "setBackgroundColor",
+                    Color.parseColor("#bdbdbd"));
+
             String todayRoom = coursePlan.getCourse(substitutions.getTodayDay(), Hour.fromInt(i)).room;
             String todaySubject = coursePlan.getCourse(substitutions.getTodayDay(), Hour.fromInt(i)).subject;
             String tomorrowRoom = coursePlan.getCourse(substitutions.getTomorrowDay(), Hour.fromInt(i)).room;
