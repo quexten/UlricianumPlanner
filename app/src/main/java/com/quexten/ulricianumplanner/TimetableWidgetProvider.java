@@ -70,13 +70,13 @@ public class TimetableWidgetProvider extends AppWidgetProvider {
         RemoteViews views = new RemoteViews(context.getPackageName(),
                 LAYOUT_IDS[rows - 1]);
         views.setInt(SUBJECTVIEW_IDS_LEFT[rows - 1], "setBackgroundColor",
-                Color.parseColor("#bdbdbd"));
+                Color.parseColor("#e0e0e0"));
 
         for(int i = 0; i < rows; i++) {
             views.setInt(SUBJECTVIEW_IDS_LEFT[i], "setBackgroundColor",
-                    Color.parseColor("#bdbdbd"));
+                    Color.parseColor("#e0e0e0"));
             views.setInt(SUBJECTVIEW_IDS_RIGHT[i], "setBackgroundColor",
-                    Color.parseColor("#bdbdbd"));
+                    Color.parseColor("#e0e0e0"));
 
             String todayRoom = coursePlan.getCourse(substitutions.getTodayDay(), Hour.fromInt(i)).room;
             String todaySubject = coursePlan.getCourse(substitutions.getTodayDay(), Hour.fromInt(i)).subject;
