@@ -1,11 +1,7 @@
 package com.quexten.ulricianumplanner;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.AsyncTask;
-
-import java.sql.Time;
-import java.util.Calendar;
 
 /**
  * Created by Quexten on 15-Dec-16.
