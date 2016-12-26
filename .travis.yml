@@ -11,7 +11,7 @@ android:
   - extra-google-m2repository
   - extra-android-support
 before_install:
-- openssl aes-256-cbc -K $encrypted_8bf9e2e639dc_key -iv $encrypted_8bf9e2e639dc_iv 
+- openssl aes-256-cbc -K $encrypted_8bf9e2e639dc_key -iv $encrypted_8bf9e2e639dc_iv
   -in secrets.tar.enc -out secrets.tar -d
 - tar xvf secrets.tar
 - chmod +x gradlew
