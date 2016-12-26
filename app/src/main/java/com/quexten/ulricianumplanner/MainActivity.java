@@ -17,14 +17,16 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import java.util.Calendar;
 
 import hotchemi.android.rate.AppRate;
-import hotchemi.android.rate.OnClickButtonListener;
 
 public class MainActivity extends AppCompatActivity {
 
     AccountManager accountManager;
+    SubscriptionManager subscriptionManager;
     CoursePlan coursePlan;
     FeedbackManager feedbackManager;
     NetworkManager networkManager;
@@ -40,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         accountManager = new AccountManager(this.getApplicationContext());
-        coursePlan = new CoursePlan(this.getApplicationContext());
+        subscriptionManager = new SubscriptionManager(this.getApplicationContext());
+        coursePlan = new CoursePlan(this.getApplicationContext(), subscriptionManager);
         feedbackManager = new FeedbackManager(this, coursePlan);
         networkManager = new NetworkManager(this.getApplicationContext());
         notificationPoster = new NotificationPoster(this.getApplicationContext());
@@ -70,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    FirebaseMessaging.getInstance().subscribeToTopic("substitutionplan-updates-"+arrayAdapter.getItem(which));
                     coursePlan.className = arrayAdapter.getItem(which);
                     coursePlan.saveClassName();
                 }
@@ -79,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which)
                 {
+                    FirebaseMessaging.getInstance().subscribeToTopic("substitutionplan-updates-"+arrayAdapter.getItem(which));
                     coursePlan.className = arrayAdapter.getItem(which);
                     coursePlan.saveClassName();
                 }
@@ -125,8 +130,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Show a dialog if meets conditions
         AppRate.showRateDialogIfMeetsConditions(this);
+        coursePlan.read();
+        subscriptionManager.subscribeToPlan(coursePlan);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

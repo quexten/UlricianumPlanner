@@ -61,7 +61,7 @@ public class TimetableWidgetProvider extends AppWidgetProvider {
     private RemoteViews getRemoteViews(Context context, int minHeight) {
         int rows = getCellsForSize(minHeight);
 
-        CoursePlan coursePlan = new CoursePlan(context);
+        CoursePlan coursePlan = new CoursePlan(context, null);
         coursePlan.read();
         coursePlan.readClassName();
         Substitutions substitutions = new Substitutions(context);

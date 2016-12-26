@@ -22,4 +22,10 @@ public enum Day {
         return day;
     }
 
+    public static Day fromString(String string) {
+        string = string.toLowerCase();
+        Day day = string.equals("mon") ? Day.MON : string.equals("tue") ? Day.TUE : string.equals("wed") ? Day.WED : string.equals("thu") ? Day.THU : string.equals("fri") ? Day.FRI : Day.FRI;
+        return day;
+    }
+
 }

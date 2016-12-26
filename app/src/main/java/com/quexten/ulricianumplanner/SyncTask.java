@@ -28,7 +28,7 @@ class SyncTask extends AsyncTask<String, Boolean, Boolean> {
         this.context = context;
 
         accountManager = new AccountManager(context);
-        coursePlan = new CoursePlan(context);
+        coursePlan = new CoursePlan(context, null);
         networkManager = new NetworkManager(context);
         notificationPoster = new NotificationPoster(context);
         substitutions = new Substitutions(context);

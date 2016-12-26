@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+
 /**
  * Created by Quexten on 01-Dec-16.
  */
@@ -57,6 +59,32 @@ public class Substitutions {
 
     public TableEntry[] getTodaySubstitutions() {
         return this.todaySubstitutions;
+    }
+
+    public void insertSubstitution(TableEntry entry, Day day) {
+        if(day.ordinal() > tomorrowDay.ordinal() || (day.equals(Day.MON) && tomorrowDay.equals(Day.FRI))) {
+            setTodayDay(getTomorrowDay());
+            setTomorrowDay(day);
+            setTodaySubstitutions(getTomorrowSubstitutions());
+            setTomorrowSubstitutions(new TableEntry[] {});
+        }
+
+        boolean today = day.equals(todayDay);
+        ArrayList<TableEntry> entries = new ArrayList<TableEntry>();
+        for(TableEntry temp : (today ? getTodaySubstitutions() : getTomorrowSubstitutions())) {
+            entries.add(temp);
+        }
+        for(TableEntry temp : entries) {
+            if(temp.time.equals(entry.time)) {
+                entries.remove(temp);
+            }
+        }
+        entries.add(entry);
+
+        if(today)
+            setTodaySubstitutions(entries.toArray(new TableEntry[entries.size()]));
+        else
+            setTomorrowSubstitutions(entries.toArray(new TableEntry[entries.size()]));
     }
 
     public void setTomorrowSubstitutions(TableEntry[] tomorrowSubstitutions) {

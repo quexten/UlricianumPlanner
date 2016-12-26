@@ -19,9 +19,11 @@ public class CoursePlan {
 	Course[][] courseArray = new Course[5][5];
 	String className = "12";
     Context context;
+    SubscriptionManager subscriptionManager;
 
-    public CoursePlan(Context context) {
+    public CoursePlan(Context context, SubscriptionManager subscriptionManager) {
         this.context = context;
+        this.subscriptionManager = subscriptionManager;
     }
 
     /**
@@ -31,7 +33,10 @@ public class CoursePlan {
      * @param course - the course to be set
      */
 	public void setCourse(Day day, Hour hour, Course course) {
+        Course oldCourse = getCourse(day, hour);
 		courseArray[day.ordinal()][hour.ordinal()] = course;
+
+        subscriptionManager.setCourse(oldCourse, course, day, hour);
 	}
 
     /**

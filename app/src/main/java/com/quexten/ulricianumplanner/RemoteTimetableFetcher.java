@@ -80,8 +80,7 @@ public class RemoteTimetableFetcher {
                                         for(int day = 0; day < 5; day++) {
                                             for(int hour = 0; hour < 5; hour++) {
                                                 Course course = remoteTimetable.timetable[day][hour];
-                                                if(course != null)
-                                                    RemoteTimetableFetcher.this.coursePlan.setCourse(Day.fromInt(day), Hour.fromInt(hour), course);
+                                                RemoteTimetableFetcher.this.coursePlan.setCourse(Day.fromInt(day), Hour.fromInt(hour), course != null ? course : new Course("", "", ""));
                                             }
                                         }
                                         RemoteTimetableFetcher.this.coursePlan.saveClassName();

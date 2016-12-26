@@ -16,6 +16,8 @@ import android.preference.PreferenceFragment;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import java.util.List;
 
 /**
@@ -101,7 +103,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             // updated to reflect the new value, per the Android Design
             // guidelines.
 
-            final CoursePlan coursePlan = new CoursePlan(this.getActivity().getApplicationContext());
+            final CoursePlan coursePlan = new CoursePlan(this.getActivity().getApplicationContext(), null);
 
             final Preference classPreference = findPreference("className");
             coursePlan.readClassName();
