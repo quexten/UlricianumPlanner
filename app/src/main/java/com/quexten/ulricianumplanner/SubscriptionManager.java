@@ -40,12 +40,11 @@ public class SubscriptionManager {
 
     private String getTopicName(String day, String time, String teacher, String subject) {
         return ("substitution-updates-"+day + "-" + time + "-" + teacher + "-" + subject)
-                .replace("Ö", "O_")
+                .toLowerCase()
                 .replace("ö", "o_")
-                .replace("Ä", "A_")
                 .replace("ä", "a_")
-                .replace("Ü", "U_")
                 .replace("ü", "u_");
+
     }
 
     String getShortDayName(Day day) {
