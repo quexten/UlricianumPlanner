@@ -106,13 +106,6 @@ public class MainActivity extends AppCompatActivity {
 
         timetableManager.generateVisuals();
 
-        //Sync Timers
-        setDailyTask(5, 0, 0, new Intent(MainActivity.this, SyncReceiver.class));
-        setDailyTask(9, 0, 0, new Intent(MainActivity.this, SyncReceiver.class));
-        setDailyTask(11, 0, 0, new Intent(MainActivity.this, SyncReceiver.class));
-        setDailyTask(13, 30, 1, new Intent(MainActivity.this, SyncReceiver.class));
-        setDailyTask(19, 0, 2, new Intent(MainActivity.this, SyncReceiver.class));
-
         //Room Tasks
         setDailyTask(7, 30, 3, new Intent(MainActivity.this, RoomReceiver.class));
         setDailyTask(9, 20, 4, new Intent(MainActivity.this, RoomReceiver.class));
