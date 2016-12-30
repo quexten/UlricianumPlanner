@@ -52,6 +52,10 @@ public class NotificationPoster {
                 message = "Raumänderung in " + entry.subject + " nach " + entry.room;
                 header = entry.subject + " Raumänderung";
                 break;
+            case "Raumä.":
+                message = "Raumänderung in " + entry.subject + " nach " + entry.room;
+                header = entry.subject + " Raumänderung";
+                break;
             case "Vertret.":
                 message = entry.subject + " wird vertreten durch " + entry.substituteTeacher;
                 header = entry.subject + " Vertretung";
