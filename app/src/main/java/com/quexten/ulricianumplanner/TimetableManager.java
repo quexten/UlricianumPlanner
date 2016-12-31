@@ -84,7 +84,7 @@ public class TimetableManager {
                 TextView subjectView = ((TextView) layout.findViewById(R.id.subjectView));
                 TextView roomView = ((TextView) layout.findViewById(R.id.roomView));
 
-                subjectView.setText(course.subject);
+                subjectView.setText(Course.getLongSubjectName(activity.getApplicationContext(), course.subject));
                 roomView.setText(course.room);
 
                 subjectView.setBackgroundColor(course.subject.isEmpty() ? Color.parseColor("#eeeeee") : Color.parseColor("#e0e0e0"));
@@ -187,9 +187,9 @@ public class TimetableManager {
                         roomView.setText(selectedCourse.room);
 
                         final Spinner subjectSpinner = ((Spinner) childLayout.findViewById(R.id.SubjectSpinner));
-                        String[] subjects = activity.getResources().getStringArray(R.array.subjects);
+                        String[] subjects = activity.getResources().getStringArray(R.array.subjects_long);
                         for(int i = 0; i < subjects.length; i++)
-                            if(subjects[i].equals(selectedCourse.subject)) {
+                            if(subjects[i].equals(Course.getLongSubjectName(activity.getApplicationContext(), selectedCourse.subject))) {
                                 subjectSpinner.setSelection(i);
                                 break;
                             }
@@ -202,7 +202,7 @@ public class TimetableManager {
                                 Day day = Day.fromInt(dayNumber);
                                 Hour hour = Hour.fromInt(hourNumber);
                                 String teacherString = teacherView.getText().toString() + (secondTeacherView.getParent() != null ? (" " + secondTeacherView.getText()) : "");
-                                coursePlan.setCourse(day, hour, new Course(subjectSpinner.getSelectedItem().toString(), roomView.getText().toString(), teacherString));
+                                coursePlan.setCourse(day, hour, new Course(Course.getShortSubjectName(activity.getApplicationContext(), subjectSpinner.getSelectedItem().toString()), roomView.getText().toString(), teacherString));
                                 coursePlan.save();
                                 TimetableManager.this.generateVisuals();
                             }
@@ -231,7 +231,7 @@ public class TimetableManager {
             TextView roomView = ((TextView) layout.findViewById(R.id.roomView));
 
             if(!entry.type.equals("Entfall"))
-                subjectView.setText(entry.substituteSubject);
+                subjectView.setText(Course.getLongSubjectName(activity.getApplicationContext(), entry.substituteSubject));
 
             if(entry.type.equals("Vertret."))
                 roomView.setText(entry.substituteTeacher + "-" + entry.room);

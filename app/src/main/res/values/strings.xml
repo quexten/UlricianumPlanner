@@ -122,6 +122,29 @@
         <item>SP</item>
         <item>ÖK</item>
     </string-array>
+    <string-array name="subjects_long">
+        <item>Biologie</item>
+        <item>Chemie</item>
+        <item>Deutsch</item>
+        <item>Darstellendes Spiel</item>
+        <item>Erdkunde</item>
+        <item>Englisch</item>
+        <item>Französisch</item>
+        <item>Geschichte</item>
+        <item>Informatik</item>
+        <item>Kunst</item>
+        <item>Latein</item>
+        <item>Mathematik</item>
+        <item>Musik</item>
+        <item>Physik</item>
+        <item>Philosophie</item>
+        <item>Politik</item>
+        <item>Religion</item>
+        <item>Seminarfach</item>
+        <item>Spanisch</item>
+        <item>Sport</item>
+        <item>Ökokurs</item>
+    </string-array>
 
     <string name="dialog_title">Bearbeiten</string>
     <string name="dialog_positive">Ok</string>

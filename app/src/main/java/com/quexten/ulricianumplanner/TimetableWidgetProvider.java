@@ -83,14 +83,14 @@ public class TimetableWidgetProvider extends AppWidgetProvider {
             String tomorrowRoom = coursePlan.getCourse(substitutions.getTomorrowDay(), Hour.fromInt(i)).room;
             String tomorrowSubject = coursePlan.getCourse(substitutions.getTomorrowDay(), Hour.fromInt(i)).subject;
 
-            todayRoom = todayRoom.isEmpty() ? " " : todayRoom;
-            todaySubject = todaySubject.isEmpty() ? " " : todaySubject;
-            tomorrowRoom = tomorrowRoom.isEmpty() ? " " : tomorrowRoom;
-            tomorrowSubject = tomorrowSubject.isEmpty() ? " " : tomorrowSubject;
+            todayRoom = Course.getLongSubjectName(context, todayRoom.isEmpty() ? " " : todayRoom);
+            todaySubject = Course.getLongSubjectName(context, todaySubject.isEmpty() ? " " : todaySubject);
+            tomorrowRoom = Course.getLongSubjectName(context, tomorrowRoom.isEmpty() ? " " : tomorrowRoom);
+            tomorrowSubject = Course.getLongSubjectName(context, tomorrowSubject.isEmpty() ? " " : tomorrowSubject);
 
             for(TableEntry entry : substitutions.getTodaySubstitutions()) {
                 if(Hour.fromString(entry.time).equals(Hour.fromInt(i))) {
-                    todaySubject = entry.substituteSubject;
+                    todaySubject = Course.getLongSubjectName(context, entry.substituteSubject);
                     todayRoom = entry.room;
                     views.setInt(SUBJECTVIEW_IDS_LEFT[i], "setBackgroundColor",
                             TimetableManager.getColorForSubstitution(entry.type));
@@ -98,7 +98,7 @@ public class TimetableWidgetProvider extends AppWidgetProvider {
             }
             for(TableEntry entry : substitutions.getTomorrowSubstitutions()) {
                 if(Hour.fromString(entry.time).equals(Hour.fromInt(i))) {
-                    tomorrowSubject = entry.substituteSubject;
+                    tomorrowSubject = Course.getLongSubjectName(context, entry.substituteSubject);
                     tomorrowRoom = entry.room;
                     views.setInt(SUBJECTVIEW_IDS_RIGHT[i], "setBackgroundColor",
                             TimetableManager.getColorForSubstitution(entry.type));
