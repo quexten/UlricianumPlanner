@@ -83,9 +83,9 @@ public class TimetableWidgetProvider extends AppWidgetProvider {
             String tomorrowRoom = coursePlan.getCourse(substitutions.getTomorrowDay(), Hour.fromInt(i)).room;
             String tomorrowSubject = coursePlan.getCourse(substitutions.getTomorrowDay(), Hour.fromInt(i)).subject;
 
-            todayRoom = Course.getLongSubjectName(context, todayRoom.isEmpty() ? " " : todayRoom);
+            todayRoom = todayRoom.isEmpty() ? " " : todayRoom;
             todaySubject = Course.getLongSubjectName(context, todaySubject.isEmpty() ? " " : todaySubject);
-            tomorrowRoom = Course.getLongSubjectName(context, tomorrowRoom.isEmpty() ? " " : tomorrowRoom);
+            tomorrowRoom = tomorrowRoom.isEmpty() ? " " : tomorrowRoom;
             tomorrowSubject = Course.getLongSubjectName(context, tomorrowSubject.isEmpty() ? " " : tomorrowSubject);
 
             for(TableEntry entry : substitutions.getTodaySubstitutions()) {
