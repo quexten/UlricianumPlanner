@@ -157,6 +157,14 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                     return true;
                 }
             });
+
+            findPreference("className").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    new TimetableFetchTask(getActivity(), coursePlan, null).execute();
+                    return true;
+                }
+            });
         }
 
         @Override

@@ -85,7 +85,8 @@ public class RemoteTimetableFetcher {
                                         }
                                         RemoteTimetableFetcher.this.coursePlan.saveClassName();
                                         RemoteTimetableFetcher.this.coursePlan.save();
-                                        RemoteTimetableFetcher.this.timetableManager.generateVisuals();
+                                        if(RemoteTimetableFetcher.this.timetableManager != null)
+                                            RemoteTimetableFetcher.this.timetableManager.generateVisuals();
                                         sharedPref.edit()
                                                 .putString(PREFERENCE_DATE_KEY, getStringFromDate(remoteFileModificationDate))
                                                 .commit();
