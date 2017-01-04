@@ -160,4 +160,5 @@
 
     <string name="fetch_timetable_dialog_title">Stundenplan Aktualisierung</string>
     <string name="fetch_timetable_dialog_description">Es ist ein neuer Stundenplan verfügbar, soll dieser heruntergeladen werden?</string>
+    <string name="pref_timetable_refresh_display_name">Stundenplan Abrufen</string>
 </resources>
