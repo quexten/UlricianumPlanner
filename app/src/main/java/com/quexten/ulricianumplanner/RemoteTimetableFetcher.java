@@ -17,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -56,7 +57,11 @@ public class RemoteTimetableFetcher {
         this.coursePlan = coursePlan;
         this.timetableManager = timetableManager;
 
-        login();
+        if(!login()) {
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(RemoteTimetableFetcher.this.activity.getApplicationContext(), activity.getResources().getString(R.string.login_unsuccessful), duration);
+            toast.show();
+        }
         if(hasFile(TIMETABLE_FILE_PATH)) {
             remoteFileModificationDate = getModificationTime(TIMETABLE_FILE_PATH);
 
@@ -118,16 +123,19 @@ public class RemoteTimetableFetcher {
     }
 
 
-    private void login() {
+    private boolean login() {
         try {
             ftpClient = new FTPClient();
             ftpClient.connect(InetAddress.getByName(FTP_URL));
-            ftpClient.login(accountManager.getUsername(), accountManager.getPassword());
+            if(!ftpClient.login(accountManager.getUsername(), accountManager.getPassword()))
+                return false;
             ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
 
             ftpClient.enterLocalPassiveMode();
+            return true;
         } catch (Exception ex) {
             ex.printStackTrace();
+            return false;
         }
     }
 
