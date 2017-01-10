@@ -154,7 +154,9 @@ public class NetworkManager {
                 result.append(line);
             }
 
-            return parser.parseResponse(result.toString(), today);
+            String resultText = result.toString()
+                    .replace("�", "Ö");
+            return parser.parseResponse(resultText, today);
         } catch (Exception exception) {
             exception.printStackTrace();
         }
