@@ -163,4 +163,5 @@
     <string name="pref_timetable_refresh_display_name">Stundenplan Abrufen</string>
 
     <string name="login_unsuccessful">Login nicht möglich!</string>
+    <string name="pref_developer">Entwickler</string>
 </resources>
