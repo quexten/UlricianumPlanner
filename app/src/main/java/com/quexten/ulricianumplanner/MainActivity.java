@@ -113,6 +113,12 @@ public class MainActivity extends AppCompatActivity {
         setDailyTask(13, 45, 6, new Intent(MainActivity.this, RoomReceiver.class));
         setDailyTask(15, 35, 7, new Intent(MainActivity.this, RoomReceiver.class));
 
+        setDailyTask(6, 00, 3, new Intent(MainActivity.this, RoomReceiver.class));
+        setDailyTask(7, 40, 4, new Intent(MainActivity.this, RoomReceiver.class));
+        setDailyTask(9, 25, 5, new Intent(MainActivity.this, RoomReceiver.class));
+        setDailyTask(16, 00, 6, new Intent(MainActivity.this, RoomReceiver.class));
+        setDailyTask(19, 00, 7, new Intent(MainActivity.this, RoomReceiver.class));
+
         AppRate.with(this)
                 .setInstallDays(5) // default 10, 0 means install day.
                 .setLaunchTimes(5) // default 10
