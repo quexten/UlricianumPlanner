@@ -43,8 +43,8 @@ public class SubscriptionManager {
                 .toLowerCase()
                 .replace("ö", "o_")
                 .replace("ä", "a_")
-                .replace("ü", "u_");
-
+                .replace("ü", "u_")
+                .replace(" ", "%");
     }
 
     String getShortDayName(Day day) {
