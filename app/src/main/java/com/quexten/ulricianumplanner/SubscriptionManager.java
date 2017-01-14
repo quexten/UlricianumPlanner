@@ -29,7 +29,8 @@ public class SubscriptionManager {
 
     private void subscribe(Course course, Day day, Hour hour) {
         if((course != null) && !course.teacher.isEmpty()) {
-            FirebaseMessaging.getInstance().subscribeToTopic(getTopicName(getShortDayName(day), getShortTimeName(hour), course.teacher, course.subject));
+            for(String teacher : course.getTeachers())
+                FirebaseMessaging.getInstance().subscribeToTopic(getTopicName(getShortDayName(day), getShortTimeName(hour), teacher, course.subject));
         }
     }
 
@@ -43,8 +44,7 @@ public class SubscriptionManager {
                 .toLowerCase()
                 .replace("ö", "o_")
                 .replace("ä", "a_")
-                .replace("ü", "u_")
-                .replace(" ", "%");
+                .replace("ü", "u_");
     }
 
     String getShortDayName(Day day) {
