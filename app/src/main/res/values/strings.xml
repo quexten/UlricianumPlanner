@@ -75,7 +75,7 @@
 
     <string-array name="multi_select_list_preference_default_value" />
 
-    <string name="pref_title_system_sync_settings">Atomatische Synchronisation</string>
+    <string name="pref_title_system_sync_settings">Automatische Synchronisation</string>
 
     <!-- Example settings for Notifications -->
     <string name="pref_header_notifications">Benachrichtigungen</string>
@@ -95,7 +95,7 @@
 
     <string name="action_settings">Einstellungen</string>
     <string name="help_1">Damit die App automatisch Nachrichten zum Vertretungsplan senden kann muss der Stundenplan eingerichtet werden.
-        \n\nZum hinzufügen oder bearbeiten von einträgen im Stundenplan einfach auf den jeweiligen eintrag tippen und gedrückt halten. Es öffnet sich ein Dialog zum bearbeiten des Faches. Lehrer, Fach und Raum müssen groß geschrieben werden.
+        \n\nZum hinzufügen oder Bearbeiten von Einträgen im Stundenplan einfach auf den jeweiligen Eintrag tippen und gedrückt halten. Es öffnet sich ein Dialog zum bearbeiten des Faches. Lehrer, Fach und Raum müssen groß geschrieben werden.
         \n\nDer Stundenplan aktualisiert sich automatisch und Benachrichtigungen werden ausgesandt. Außerdem verändert sich der Stundenplan bei Einträgen im Vertretungsplan entsprechend.
     </string>
 
