@@ -8,16 +8,26 @@
         android:id="@+id/table"
         android:layout_width="match_parent">
         <TableRow android:id="@+id/Dayrow" android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center_horizontal" android:padding="0dp">
-            <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="0.2" android:text="Montag" android:gravity="center" android:textSize="15sp" android:background="#eeeeee"
-                android:id="@+id/day_monday" />
-            <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="0.2" android:text="Dienstag" android:gravity="center" android:textSize="15sp" android:background="#eeeeee"
-                android:id="@+id/day_tuesday" />
-            <TextView android:layout_width="match_parent" android:layout_height="50dp" android:layout_weight="0.2" android:text="Mittwoch" android:gravity="center" android:textSize="15sp" android:background="#eeeeee"
-                android:id="@+id/day_wednesday" />
-            <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="0.2" android:text="Donnerstag" android:gravity="center" android:textSize="14sp" android:background="#eeeeee"
-                android:id="@+id/day_thursday" />
-            <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="0.2" android:text="Freitag" android:gravity="center" android:textSize="15sp" android:background="#eeeeee"
-                android:id="@+id/day_friday" />
+            <TextView
+                android:layout_height="match_parent" android:layout_weight="0.2" android:text="Montag" android:gravity="center" android:textSize="15sp" android:background="#eeeeee"
+                android:id="@+id/day_monday"
+                android:layout_width="0dp" />
+            <TextView
+                android:layout_height="match_parent" android:layout_weight="0.2" android:text="Dienstag" android:gravity="center" android:textSize="15sp" android:background="#eeeeee"
+                android:id="@+id/day_tuesday"
+                android:layout_width="0dp" />
+            <TextView
+                android:layout_height="50dp" android:layout_weight="0.2" android:text="Mittwoch" android:gravity="center" android:textSize="15sp" android:background="#eeeeee"
+                android:id="@+id/day_wednesday"
+                android:layout_width="0dp" />
+            <TextView
+                android:layout_height="match_parent" android:layout_weight="0.2" android:text="Donnerstag" android:gravity="center" android:textSize="14sp" android:background="#eeeeee"
+                android:id="@+id/day_thursday"
+                android:layout_width="0dp" />
+            <TextView
+                android:layout_height="match_parent" android:layout_weight="0.2" android:text="Freitag" android:gravity="center" android:textSize="15sp" android:background="#eeeeee"
+                android:id="@+id/day_friday"
+                android:layout_width="0dp" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -27,27 +37,27 @@
             android:gravity="center_horizontal" android:padding="0dp"
             android:layout_height="match_parent">
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/mon12" />
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/tue12" />
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/wed12" />
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/thu12" />
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/fri12" />
@@ -60,27 +70,27 @@
             android:gravity="center_horizontal" android:padding="0dp"
             android:layout_height="match_parent">
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/mon34" />
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/tue34" />
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/wed34" />
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/thu34" />
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/fri34" />
@@ -93,27 +103,27 @@
             android:gravity="center_horizontal" android:padding="0dp"
             android:layout_height="match_parent">
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/mon56" />
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/tue56" />
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/wed56" />
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/thu56" />
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/fri56" />
@@ -126,27 +136,27 @@
             android:gravity="center_horizontal" android:padding="0dp"
             android:layout_height="match_parent">
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/mon89" />
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/tue89" />
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/wed89" />
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/thu89" />
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/fri89" />
@@ -159,27 +169,27 @@
             android:gravity="center_horizontal" android:padding="0dp"
             android:layout_height="match_parent">
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/monAB" />
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/tueAB" />
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/wedAB" />
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/thuAB" />
             <include
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 layout="@layout/tableentry"
                 android:id="@+id/friAB" />
