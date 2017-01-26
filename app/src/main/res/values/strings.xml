@@ -162,6 +162,6 @@
     <string name="fetch_timetable_dialog_description">Es ist ein neuer Stundenplan verfügbar, soll dieser heruntergeladen werden?</string>
     <string name="pref_timetable_refresh_display_name">Stundenplan Abrufen</string>
 
-    <string name="login_unsuccessful">Login nicht möglich!</string>
+    <string name="login_unsuccessful">Login fehlgeschlagen!</string>
     <string name="pref_developer">Entwickler</string>
 </resources>
