@@ -164,4 +164,22 @@
 
     <string name="login_unsuccessful">Login fehlgeschlagen!</string>
     <string name="pref_developer">Entwickler</string>
+
+    <string name="tutorial_title_01">Einrichten des Stundenplans</string>
+    <string name="tutorial_description_01">Um deinen Stundenplan einzurichen drücke auf eines der Felder bis
+ein Dialog erscheint.</string>
+
+    <string name="tutorial_title_02">Lehrer einstellen</string>
+    <string name="tutorial_description_02">Gib hier das Kürzel deines Lehrers ein.</string>
+
+    <string name="tutorial_title_03">Fach einstellen</string>
+    <string name="tutorial_description_03">Hier kannst du das Fach einstellen.</string>
+
+    <string name="tutorial_title_04">Raum einstellen</string>
+    <string name="tutorial_description_04">Den Raum kannst du hier eintragen.</string>
+
+    <string name="tutorial_title_05">Aktualisierung</string>
+    <string name="tutorial_description_05">Der Stundenplan aktualisiert sich nun automatisch, und zeigt dir eine Pushnachricht, wenn du
+    Entfall, Raumänderung oder Änliches hast. Trage nun den Rest deiner Fächer ein und du bist fertig. </string>
+
 </resources>

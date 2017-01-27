@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,6 +18,10 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.github.amlcurran.showcaseview.ShowcaseView;
+import com.github.amlcurran.showcaseview.targets.ActionViewTarget;
+import com.github.amlcurran.showcaseview.targets.Target;
+import com.github.amlcurran.showcaseview.targets.ViewTarget;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.Calendar;
@@ -116,7 +121,9 @@ public class MainActivity extends AppCompatActivity {
         setDailyTask(6, 00, 0, new Intent(MainActivity.this, SyncReceiver.class));
         setDailyTask(9, 30, 1, new Intent(MainActivity.this, SyncReceiver.class));
         setDailyTask(15, 25, 2, new Intent(MainActivity.this, SyncReceiver.class));
-        
+
+        new TutorialManager(this);
+
         AppRate.with(this)
                 .setInstallDays(5) // default 10, 0 means install day.
                 .setLaunchTimes(5) // default 10

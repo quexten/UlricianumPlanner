@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="vertical" android:background="#eeeeee" android:id="@+id/timetable">
-    <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/swiperefreshlayout"
-        android:layout_marginTop="?android:attr/actionBarSize">
+        android:id="@+id/framelayout">
 
-        <ScrollView
+        <android.support.v4.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <include
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/timetable" />
-        </ScrollView>
+            android:layout_height="match_parent"
+            android:id="@+id/swiperefreshlayout"
+            android:layout_marginTop="?android:attr/actionBarSize">
 
-    </android.support.v4.widget.SwipeRefreshLayout>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <include
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/timetable" />
+            </ScrollView>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </FrameLayout>
+
 </LinearLayout>
