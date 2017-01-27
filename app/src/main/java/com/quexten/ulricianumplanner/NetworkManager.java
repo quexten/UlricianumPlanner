@@ -155,7 +155,7 @@ public class NetworkManager {
             }
 
             String resultText = result.toString()
-                    .replace("�", "Ö");
+                    .replace("�", "ä");
             return parser.parseResponse(resultText, today);
         } catch (Exception exception) {
             exception.printStackTrace();
