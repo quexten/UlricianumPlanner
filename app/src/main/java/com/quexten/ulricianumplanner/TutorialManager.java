@@ -82,9 +82,6 @@ public class TutorialManager {
                                 .beginTransaction()
                                 .add(R.id.framelayout, fragment, "Some_tag")
                                 .commit();
-
-                        //final View editingDialogView = TimetableManager.showEditingDialog(activity, null, activity.coursePlan, 0, 1);
-
                     }
                 });
     }
