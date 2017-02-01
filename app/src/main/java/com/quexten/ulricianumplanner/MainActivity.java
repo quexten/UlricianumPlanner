@@ -125,10 +125,10 @@ public class MainActivity extends AppCompatActivity {
         new TutorialManager(this);
 
         AppRate.with(this)
-                .setInstallDays(5) // default 10, 0 means install day.
-                .setLaunchTimes(5) // default 10
-                .setRemindInterval(1) // default 1
-                .setShowLaterButton(true) // default true
+                .setInstallDays(5)
+                .setLaunchTimes(5)
+                .setRemindInterval(1)
+                .setShowLaterButton(true)
                 .setDebug(false)
                 .monitor();
 
