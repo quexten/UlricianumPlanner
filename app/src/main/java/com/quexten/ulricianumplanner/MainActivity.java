@@ -132,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
                 .setDebug(false)
                 .monitor();
 
-        // Show a dialog if meets conditions
         AppRate.showRateDialogIfMeetsConditions(this);
         coursePlan.read();
         subscriptionManager.subscribeToPlan(coursePlan);
