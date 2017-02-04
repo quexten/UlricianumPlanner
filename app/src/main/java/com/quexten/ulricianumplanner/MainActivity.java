@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
         setDailyTask(6, 00, 0, new Intent(MainActivity.this, SyncReceiver.class));
         setDailyTask(9, 30, 1, new Intent(MainActivity.this, SyncReceiver.class));
-        setDailyTask(15, 25, 2, new Intent(MainActivity.this, SyncReceiver.class));
+        setDailyTask(15, 30, 2, new Intent(MainActivity.this, SyncReceiver.class));
 
         new TutorialManager(this);
 
