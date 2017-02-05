@@ -33,7 +33,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         setupActionBar();
         addPreferencesFromResource(R.xml.pref_general);
 
-        final CoursePlan coursePlan = new CoursePlan(this.getApplicationContext(), null);
+        SubscriptionManager subscriptionManager = new SubscriptionManager(this.getApplicationContext());
+        final CoursePlan coursePlan = new CoursePlan(this.getApplicationContext(), subscriptionManager);
 
         final Preference classPreference = findPreference("className");
         coursePlan.readClassName();
