@@ -82,7 +82,8 @@ public class NotificationPoster {
                                 R.mipmap.icon))
                         .setContentTitle(header)
                         .setContentText(message)
-                        .setColor(Color.argb(255, 196, 0, 0));
+                        .setColor(Color.argb(255, 196, 0, 0))
+                        .addAction(R.drawable.ic_share, "Teilen", getSharingIntent(context, message));
 
         Intent resultIntent = new Intent(context, MainActivity.class);
 
@@ -134,6 +135,22 @@ public class NotificationPoster {
         NotificationManager notificationManager =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(-1, builder.build());
+    }
+
+    PendingIntent getSharingIntent(Context context, String message) {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, message);
+        sendIntent.setType("text/plain");
+
+        PendingIntent resultPendingIntent =
+                PendingIntent.getActivity(
+                        context,
+                        0,
+                        sendIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+        return resultPendingIntent;
     }
 
 }
