@@ -83,6 +83,7 @@ public class NotificationPoster {
                         .setContentTitle(header)
                         .setContentText(message)
                         .setColor(Color.argb(255, 196, 0, 0))
+                        .setLights(Color.argb(255, 255, 255, 0), 500, 500)
                         .addAction(R.drawable.ic_share, "Teilen", getSharingIntent(context, message));
 
         Intent resultIntent = new Intent(context, MainActivity.class);
