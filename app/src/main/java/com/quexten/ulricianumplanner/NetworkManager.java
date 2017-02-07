@@ -155,6 +155,11 @@ public class NetworkManager {
             }
 
             String resultText = result.toString()
+                    .replace("�", "ä")
+                    .replace("\u00E4", "ä")
+                    .replace("\u00F6", "ö")
+                    .replace("\u00FC",  "ü")
+                    .replace("�", "ö")
                     .replace("�", "ä");
             return parser.parseResponse(resultText, today);
         } catch (Exception exception) {
