@@ -32,7 +32,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 AlertDialog.Builder builderSingle = new AlertDialog.Builder(SettingsActivity.this);
-                builderSingle.setTitle("Klasse Auswählen");
+                builderSingle.setTitle("Wähle deine Klasse aus");
 
                 final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                         SettingsActivity.this.getApplicationContext(),
