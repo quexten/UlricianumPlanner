@@ -41,7 +41,7 @@ public class NotificationPoster {
         String header = "";
         switch(entry.type) {
             case "Entfall":
-                message = entry.time + " entfällt " + entry.subject + " bei " + entry.teacher;
+                message = entry.time + " entfällt " + Course.getLongSubjectName(context, entry.subject) + " bei " + entry.teacher;
                 header = entry.time + " Entfall";
                 break;
             case "Verleg.":
@@ -49,11 +49,11 @@ public class NotificationPoster {
                 header = entry.subject + " Verlegung";
                 break;
             case "Raum�.":
-                message = "Raumänderung in " + entry.subject + " nach " + entry.room;
+                message = "Raumänderung in " + Course.getLongSubjectName(context, entry.subject) + " nach " + entry.room;
                 header = entry.subject + " Raumänderung";
                 break;
             case "Raumä.":
-                message = "Raumänderung in " + entry.subject + " nach " + entry.room;
+                message = "Raumänderung in " + Course.getLongSubjectName(context, entry.subject) + " nach " + entry.room;
                 header = entry.subject + " Raumänderung";
                 break;
             case "Vertret.":
