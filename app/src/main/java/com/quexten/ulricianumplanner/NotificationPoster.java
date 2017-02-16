@@ -45,7 +45,7 @@ public class NotificationPoster {
                 header = entry.time + " Entfall";
                 break;
             case "Verleg.":
-                message = entry.subject + " wird verlegt.";
+                message = Course.getLongSubjectName(context, entry.subject) + " wird verlegt.";
                 header = Course.getLongSubjectName(context, entry.subject) + " Verlegung";
                 break;
             case "Raum�.":
