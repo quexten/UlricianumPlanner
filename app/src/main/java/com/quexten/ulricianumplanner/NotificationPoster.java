@@ -49,27 +49,27 @@ public class NotificationPoster {
                 header = Course.getLongSubjectName(context, entry.subject) + " Verlegung";
                 break;
             case "Raum�.":
-                message = "Raumänderung in " + Course.getLongSubjectName(context, entry.subject) + " nach " + entry.room;
+                message = "Nach " + entry.room;
                 header = Course.getLongSubjectName(context, entry.subject) + " Raumänderung";
                 break;
             case "Raumä.":
-                message = "Raumänderung in " + Course.getLongSubjectName(context, entry.subject) + " nach " + entry.room;
+                message = "Nach " + entry.room;
                 header = Course.getLongSubjectName(context, entry.subject) + " Raumänderung";
                 break;
             case "Vertret.":
-                message = Course.getLongSubjectName(context, entry.subject) + " wird vertreten durch " + entry.substituteTeacher;
+                message = "durch " + entry.substituteTeacher;
                 header = Course.getLongSubjectName(context, entry.subject) + " Vertretung";
                 break;
             case "Tausch":
-                message = Course.getLongSubjectName(context, entry.subject) + " wird getauscht mit " + Course.getLongSubjectName(context, entry.substituteSubject) + " bei " + entry.substituteTeacher;
+                message = "mit " + Course.getLongSubjectName(context, entry.substituteSubject) + " bei " + entry.substituteTeacher;
                 header = Course.getLongSubjectName(context, entry.subject) + " Tausch";
                 break;
             case "trotz A.":
-                message = Course.getLongSubjectName(context, entry.subject)+ " findet in " + entry.room + " statt";
+                message = "in " + entry.room + " statt";
                 header = Course.getLongSubjectName(context, entry.subject) + " findet statt.";
                 break;
             case "Betreu.":
-                message = entry.subject + " wird betreut durch " + entry.substituteTeacher + " in " + entry.room;
+                message = "Bei " + entry.substituteTeacher + " in " + entry.room;
                 header = entry.subject + " Betreuung";
                 break;
         }
