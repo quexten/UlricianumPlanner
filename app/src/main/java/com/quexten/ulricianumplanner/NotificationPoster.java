@@ -57,15 +57,15 @@ public class NotificationPoster {
                 header = Course.getLongSubjectName(context, entry.subject) + " Raumänderung";
                 break;
             case "Vertret.":
-                message = "durch " + entry.substituteTeacher;
+                message = "Durch " + entry.substituteTeacher;
                 header = Course.getLongSubjectName(context, entry.subject) + " Vertretung";
                 break;
             case "Tausch":
-                message = "mit " + Course.getLongSubjectName(context, entry.substituteSubject) + " bei " + entry.substituteTeacher;
+                message = "Mit " + Course.getLongSubjectName(context, entry.substituteSubject) + " bei " + entry.substituteTeacher;
                 header = Course.getLongSubjectName(context, entry.subject) + " Tausch";
                 break;
             case "trotz A.":
-                message = "in " + entry.room + " statt";
+                message = "In " + entry.room + " statt";
                 header = Course.getLongSubjectName(context, entry.subject) + " findet statt.";
                 break;
             case "Betreu.":
