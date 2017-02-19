@@ -110,7 +110,7 @@ public class NotificationPoster {
 
         //Notification
         String header = "Gleich " + Course.getLongSubjectName(context, course.subject) + " in " + course.room;
-        String message = header + " bei " + (course.getTeachers().length > 0 ? course.getTeachers()[0] : "");
+        String message = "bei " + (course.getTeachers().length > 0 ? course.getTeachers()[0] : "");
 
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context)
