@@ -34,7 +34,7 @@ public class NotificationPoster {
 
         //Vibration
         if(sharedPref.getBoolean("notifications_vibrate", true))
-            ((Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE)).vibrate(1000);
+            ((Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE)).vibrate(new long[] {200, 100, 200, 100, 200, 100, 200}, -1);
 
         //Notification
         String message = "";
