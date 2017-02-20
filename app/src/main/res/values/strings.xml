@@ -182,4 +182,6 @@ ein Dialog erscheint.</string>
     <string name="tutorial_description_05">Der Stundenplan aktualisiert sich nun automatisch, und zeigt dir eine Pushnachricht, wenn du
     Entfall, Raumänderung oder Änliches hast. Trage nun den Rest deiner Fächer ein und du bist fertig. </string>
 
+    <string name="share_button">Share</string>
+
 </resources>
