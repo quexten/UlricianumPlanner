@@ -177,7 +177,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
-                    if (accountCreated) {  //Pass the new account back to the account manager
+                    if (accountCreated) {
+                        //Pass the new account back to the account manager
                         AccountAuthenticatorResponse response = extras.getParcelable(android.accounts.AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE);
                         Bundle result = new Bundle();
                         result.putString(android.accounts.AccountManager.KEY_ACCOUNT_NAME, username);
