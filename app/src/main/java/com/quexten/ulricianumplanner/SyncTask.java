@@ -22,7 +22,7 @@ class SyncTask extends AsyncTask<String, Boolean, Boolean> {
     NotificationPoster notificationPoster;
     Substitutions substitutions;
 
-    Runnable onCompletionListener;
+    SynchronizationListener onCompletionListener;
 
     public SyncTask(Context context) {
         this.context = context;
@@ -34,7 +34,7 @@ class SyncTask extends AsyncTask<String, Boolean, Boolean> {
         substitutions = new Substitutions(context);
     }
 
-    public SyncTask(Context context, Runnable onCompletionListener) {
+    public SyncTask(Context context, SynchronizationListener onCompletionListener) {
         this(context);
         this.onCompletionListener = onCompletionListener;
     }
@@ -48,6 +48,12 @@ class SyncTask extends AsyncTask<String, Boolean, Boolean> {
         coursePlan.read();
 
         Substitutions substitutions = networkManager.getSubstitutions();
+        //Check whether the sync was successful
+        if(substitutions == null) {
+            if (onCompletionListener != null)
+                onCompletionListener.onSync(false);
+            return true;
+        }
         substitutions.setTodaySubstitutions(coursePlan.getMatching(substitutions.getTodaySubstitutions(), substitutions.getTodayDay()));
         substitutions.setTomorrowSubstitutions(coursePlan.getMatching(substitutions.getTomorrowSubstitutions(), substitutions.getTomorrowDay()));
         substitutions.saveSubstitutions();
@@ -96,7 +102,7 @@ class SyncTask extends AsyncTask<String, Boolean, Boolean> {
         }
 
         if(onCompletionListener != null)
-            onCompletionListener.run();
+            onCompletionListener.onSync(true);
         return true;
     }
 

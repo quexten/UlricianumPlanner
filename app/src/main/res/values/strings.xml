@@ -183,5 +183,6 @@ ein Dialog erscheint.</string>
     Entfall, Raumänderung oder Änliches hast. Trage nun den Rest deiner Fächer ein und du bist fertig. </string>
 
     <string name="share_button">Share</string>
+    <string name="no_internet_connection">Keine Netzwerkverbindung möglich</string>
 
 </resources>

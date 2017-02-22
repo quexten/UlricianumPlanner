@@ -1,6 +1,10 @@
 package com.quexten.ulricianumplanner;
 
+import android.app.Activity;
 import android.content.Context;
+import android.support.annotation.UiThread;
+import android.support.design.widget.Snackbar;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -94,6 +98,9 @@ public class NetworkManager {
         int todayScans = 0;
         while(todayScans < pageNum && todayScans < 10) { // todayScans < 10 is a safeguard against spamming the scan
             IServPlanParser.PlanPage planPage = getPlan(true, todayScans + 1);
+            if(planPage == null) {
+                return null;
+            }
             for(TableEntry entry : planPage.getEntries())
                 tableEntries.add(entry);
 

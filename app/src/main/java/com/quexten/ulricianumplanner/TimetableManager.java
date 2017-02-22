@@ -44,16 +44,18 @@ public class TimetableManager {
                         swipeRefreshLayout.setRefreshing(true);
                     }
                 });
-                new SyncTask(activity, new Runnable() {
+                new SyncTask(activity, new SynchronizationListener() {
                     @Override
-                    public void run() {
+                    public void onSync(boolean successful) {
+                        final boolean wasSuccessful = successful;
+
                         TimetableManager.this.activity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 TimetableManager.this.substitutions.readSubstitutions();
                                 TimetableManager.this.generateVisuals();
                                 try {
-                                    CharSequence text = activity.getResources().getString(R.string.synced);
+                                    int text = wasSuccessful ? R.string.synced : R.string.no_internet_connection;
                                     int duration = Toast.LENGTH_SHORT;
 
                                     Toast toast = Toast.makeText(TimetableManager.this.activity.getApplicationContext(), text, duration);
