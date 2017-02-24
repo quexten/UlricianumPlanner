@@ -2,8 +2,11 @@ package com.quexten.ulricianumplanner;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.InputFilter;
@@ -17,6 +20,8 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 /**
  * Created by Quexten on 01-Sep-16.
@@ -153,7 +158,7 @@ public class TimetableManager {
             else
                 roomView.setText(entry.room);
 
-            subjectView.setBackgroundColor(getColorForSubstitution(entry.type));
+            subjectView.setBackgroundColor(getColorForSubstitution(activity, entry.type));
         }
     }
 
@@ -260,13 +265,14 @@ public class TimetableManager {
         return (TextView) activity.findViewById(viewId);
     }
 
-    public static int getColorForSubstitution(String substitution) {
-        return substitution.equals("Entfall") ? Color.parseColor("#ef9a9a")
-                : substitution.equals("Verleg.") ? Color.parseColor("#B39DDB")
-                : substitution.equals("Raum�.") ? Color.parseColor("#80CBC4")
-                : substitution.equals("Raumä.") ? Color.parseColor("#80CBC4")
-                : (substitution.equals("Vertret.") || substitution.equals("Betreu.") || substitution.equals("trotz A.")) ? Color.parseColor("#FFE082")
-                : substitution.equals("Tausch") ? Color.parseColor("#90CAF9")
+    public static int getColorForSubstitution(Context context, String substitution) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        return substitution.equals("Entfall") ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_cancelled", 0)))
+                : substitution.equals("Verleg.") ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_delayed", 0)))
+                : substitution.equals("Raum�.") ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_roomchange", 0)))
+                : substitution.equals("Raumä.") ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_roomchange", 0)))
+                : (substitution.equals("Vertret.") || substitution.equals("Betreu.") || substitution.equals("trotz A.")) ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_substitution", 0)))
+                : substitution.equals("Tausch") ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_swap", 0)))
                 : Color.parseColor("#BCAAA4");
     }
 

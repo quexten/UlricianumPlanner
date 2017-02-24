@@ -47,6 +47,38 @@
         android:summary="@string/pref_description_room_notifications"
         android:enabled="true"/>
 
+    <net.margaritov.preference.colorpicker.ColorPickerPreference
+        android:key="color_cancelled"
+        android:title="@string/event_cancelled"
+        android:summary=""
+        android:defaultValue="#ef9a9a"  >
+    </net.margaritov.preference.colorpicker.ColorPickerPreference>
+    <net.margaritov.preference.colorpicker.ColorPickerPreference
+        android:key="color_delayed"
+        android:title="@string/event_delayed"
+        android:summary=""
+        android:defaultValue="#B39DDB"  >
+    </net.margaritov.preference.colorpicker.ColorPickerPreference>
+    <net.margaritov.preference.colorpicker.ColorPickerPreference
+        android:key="color_roomchange"
+        android:title="@string/event_roomchange"
+        android:summary=""
+        android:defaultValue="#80CBC4"  >
+    </net.margaritov.preference.colorpicker.ColorPickerPreference>
+    <net.margaritov.preference.colorpicker.ColorPickerPreference
+        android:key="color_substitution"
+        android:title="@string/event_substitution"
+        android:summary=""
+        android:defaultValue="#FFE082"  >
+    </net.margaritov.preference.colorpicker.ColorPickerPreference>
+    <net.margaritov.preference.colorpicker.ColorPickerPreference
+        android:key="color_swap"
+        android:title="@string/event_swap"
+        android:summary=""
+        android:defaultValue="#90CAF9"  >
+    </net.margaritov.preference.colorpicker.ColorPickerPreference>
+
+
     <Preference
         android:capitalize="words"
         android:defaultValue=""

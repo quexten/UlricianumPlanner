@@ -93,7 +93,7 @@ public class TimetableWidgetProvider extends AppWidgetProvider {
                     todaySubject = Course.getLongSubjectName(context, entry.substituteSubject);
                     todayRoom = entry.room;
                     views.setInt(SUBJECTVIEW_IDS_LEFT[i], "setBackgroundColor",
-                            TimetableManager.getColorForSubstitution(entry.type));
+                            TimetableManager.getColorForSubstitution(context, entry.type));
                 }
             }
             for(TableEntry entry : substitutions.getTomorrowSubstitutions()) {
@@ -101,7 +101,7 @@ public class TimetableWidgetProvider extends AppWidgetProvider {
                     tomorrowSubject = Course.getLongSubjectName(context, entry.substituteSubject);
                     tomorrowRoom = entry.room;
                     views.setInt(SUBJECTVIEW_IDS_RIGHT[i], "setBackgroundColor",
-                            TimetableManager.getColorForSubstitution(entry.type));
+                            TimetableManager.getColorForSubstitution(context, entry.type));
                 }
             }
 
