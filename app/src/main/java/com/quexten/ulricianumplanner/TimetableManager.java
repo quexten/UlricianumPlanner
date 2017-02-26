@@ -267,12 +267,13 @@ public class TimetableManager {
 
     public static int getColorForSubstitution(Context context, String substitution) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        return substitution.equals("Entfall") ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_cancelled", 0)))
-                : substitution.equals("Verleg.") ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_delayed", 0)))
-                : substitution.equals("Raum�.") ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_roomchange", 0)))
-                : substitution.equals("Raumä.") ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_roomchange", 0)))
-                : (substitution.equals("Vertret.") || substitution.equals("Betreu.") || substitution.equals("trotz A.")) ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_substitution", 0)))
-                : substitution.equals("Tausch") ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_swap", 0)))
+
+        return substitution.equals("Entfall") ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_cancelled", -1074534)))
+                : substitution.equals("Verleg.") ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_delayed", -5005861)))
+                : substitution.equals("Raum�.") ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_roomchange", -8336444)))
+                : substitution.equals("Raumä.") ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_roomchange", -8336444)))
+                : (substitution.equals("Vertret.") || substitution.equals("Betreu.") || substitution.equals("trotz A.")) ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_substitution", -8062)))
+                : substitution.equals("Tausch") ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_swap", -7288071)))
                 : Color.parseColor("#BCAAA4");
     }
 
