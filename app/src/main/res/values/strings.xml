@@ -30,8 +30,6 @@
 
     <string name="pref_title_vibrate">Vibrieren</string>
     <string name="title_activity_tutorial">Hilfe</string>
-    <string name="large_text">
-    </string>
 
     <string name="pref_title_room_notifications">Raum Benachrichtigungen</string>
     <string name="pref_description_room_notifications">Benachrichtigungen zum jeweils nächsten Raum</string>
