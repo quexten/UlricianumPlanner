@@ -8,8 +8,6 @@
     <string name="action_sign_in_short">Login</string>
     <string name="error_incorrect_password">Der Nutzername oder das Passwort ist falsch.</string>
     <string name="error_field_required">Eingabe notwendig</string>
-    <string name="title_activity_main">MainActivity</string>
-
     <string name="title_activity_settings">Einstellungen</string>
 
     <string name="pref_header_general">Allgemein</string>
