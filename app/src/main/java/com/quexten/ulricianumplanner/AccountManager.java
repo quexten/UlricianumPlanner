@@ -1,8 +1,16 @@
 package com.quexten.ulricianumplanner;
 
+import android.*;
+import android.Manifest;
 import android.accounts.Account;
+import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.PermissionChecker;
+
 
 /**
  * Created by Quexten on 01-Dec-16.
@@ -11,6 +19,7 @@ import android.os.Bundle;
 public class AccountManager {
 
     public static final String ACCOUNT_TYPE = "com.quexten.ulricianumplanner.account";
+    public static final String PERMISSION_ACCOUNS = Manifest.permission.GET_ACCOUNTS;
 
     Context context;
 
@@ -28,20 +37,27 @@ public class AccountManager {
     }
 
     public String getUsername() {
-        Account[] accounts = android.accounts.AccountManager.get(context).getAccounts();
-        for (Account account : accounts) {
-            if (account.type.equals(ACCOUNT_TYPE))
-                return account.name;
+        if (ContextCompat.checkSelfPermission(context, PERMISSION_ACCOUNS) == PackageManager.PERMISSION_GRANTED) {
+            Account[] accounts = android.accounts.AccountManager.get(context).getAccounts();
+            for (Account account : accounts) {
+                if (account.type.equals(ACCOUNT_TYPE))
+                    return account.name;
+            }
         }
         return null;
     }
 
     public String getPassword() {
-        Account[] accounts = android.accounts.AccountManager.get(context).getAccounts();
-        for (Account account : accounts)
-            if(account.type.equals(ACCOUNT_TYPE))
-                return android.accounts.AccountManager.get(context).getPassword(account);
+        if (ContextCompat.checkSelfPermission(context, PERMISSION_ACCOUNS) == PackageManager.PERMISSION_GRANTED) {
+            Account[] accounts = android.accounts.AccountManager.get(context).getAccounts();
+            for (Account account : accounts)
+                if(account.type.equals(ACCOUNT_TYPE))
+                    return android.accounts.AccountManager.get(context).getPassword(account);
+        }
+
         return null;
     }
+
+
 
 }
