@@ -10,6 +10,7 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     NotificationPoster notificationPoster;
     Substitutions substitutions;
     TimetableManager timetableManager;
+    TeacherManager teacherManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         notificationPoster = new NotificationPoster(this.getApplicationContext());
         substitutions = new Substitutions(this.getApplicationContext());
         timetableManager = new TimetableManager(MainActivity.this, coursePlan, substitutions);
+        teacherManager = new TeacherManager(this.getApplicationContext());
 
         //Class Selection Screen when no class is chosen yet
         coursePlan.readClassName();

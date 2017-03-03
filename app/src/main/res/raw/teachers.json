@@ -1,0 +1,857 @@
+{
+	"list": [{
+		"fullName": "Antes",
+		"shortName": "At",
+		"subjects": ["En",
+		"Po"]
+	},
+	{
+		"fullName": "Bandemer",
+		"shortName": "Bm",
+		"subjects": ["Bi",
+		"Ch"]
+	},
+	{
+		"fullName": "Bathmann",
+		"shortName": "Ba",
+		"subjects": ["Ph",
+		"Ch"]
+	},
+	{
+		"fullName": "Baumann",
+		"shortName": "Bau",
+		"subjects": ["Bi",
+		"Sp"]
+	},
+	{
+		"fullName": "Becker",
+		"shortName": "Bc",
+		"subjects": ["En",
+		"La"]
+	},
+	{
+		"fullName": "Beekmann",
+		"shortName": "Bn",
+		"subjects": ["De",
+		"Re"]
+	},
+	{
+		"fullName": "Berger",
+		"shortName": "Be",
+		"subjects": ["Ge",
+		"Mu"]
+	},
+	{
+		"fullName": "Bernd",
+		"shortName": "Bd",
+		"subjects": ["Ek",
+		"Rk"]
+	},
+	{
+		"fullName": "Birkner",
+		"shortName": "Bi",
+		"subjects": ["Bi",
+		"Sp"]
+	},
+	{
+		"fullName": "Bollmeyer",
+		"shortName": "Bo",
+		"subjects": ["Ch",
+		"La",
+		"Re"]
+	},
+	{
+		"fullName": "Brandenburg",
+		"shortName": "Bg",
+		"subjects": ["Mu"]
+	},
+	{
+		"fullName": "Breithaupt",
+		"shortName": "Bpt",
+		"subjects": ["Gr",
+		"La"]
+	},
+	{
+		"fullName": "Brinker",
+		"shortName": "Bk",
+		"subjects": ["Ek",
+		"Sp"]
+	},
+	{
+		"fullName": "Brinkmann",
+		"shortName": "Bri",
+		"subjects": ["De",
+		"La"]
+	},
+	{
+		"fullName": "Britz",
+		"shortName": "Bz",
+		"subjects": ["En",
+		"Ku"]
+	},
+	{
+		"fullName": "Brüning",
+		"shortName": "Br",
+		"subjects": ["De",
+		"Re"]
+	},
+	{
+		"fullName": "Budowitsch",
+		"shortName": "Bw",
+		"subjects": ["De",
+		"Ds",
+		"En"]
+	},
+	{
+		"fullName": "Cramer",
+		"shortName": "Cr",
+		"subjects": ["Bi",
+		"Ch"]
+	},
+	{
+		"fullName": "deBuhr",
+		"shortName": "H.",
+		"subjects": ["De",
+		"Ch",
+		"Bi",
+		"Ph"]
+	},
+	{
+		"fullName": "deBuhr",
+		"shortName": "M.",
+		"subjects": ["Db",
+		"Bi",
+		"Ch",
+		"Ku"]
+	},
+	{
+		"fullName": "Dietl",
+		"shortName": "Di",
+		"subjects": ["Bi",
+		"Ch"]
+	},
+	{
+		"fullName": "Dirks",
+		"shortName": "Dk",
+		"subjects": ["Ma",
+		"Ek"]
+	},
+	{
+		"fullName": "Donath",
+		"shortName": "Dt",
+		"subjects": ["De",
+		"En"]
+	},
+	{
+		"fullName": "Dresp",
+		"shortName": "Dsp",
+		"subjects": ["Ma",
+		"Sp"]
+	},
+	{
+		"fullName": "Duensing",
+		"shortName": "Dg",
+		"subjects": ["De",
+		"Sp"]
+	},
+	{
+		"fullName": "Elfroth",
+		"shortName": "Eh",
+		"subjects": ["En",
+		"Ge"]
+	},
+	{
+		"fullName": "Engelbart",
+		"shortName": "Eg",
+		"subjects": ["Ma",
+		"Ph"]
+	},
+	{
+		"fullName": "Fallert",
+		"shortName": "Ft",
+		"subjects": ["Ma",
+		"Ek"]
+	},
+	{
+		"fullName": "Fangmeyer",
+		"shortName": "Fg",
+		"subjects": ["Fr",
+		"Ek"]
+	},
+	{
+		"fullName": "Feddern",
+		"shortName": "Fe",
+		"subjects": ["La",
+		"Ge"]
+	},
+	{
+		"fullName": "Fenderl",
+		"shortName": "Fl",
+		"subjects": ["En",
+		"Fr"]
+	},
+	{
+		"fullName": "Flug",
+		"shortName": "F",
+		"subjects": ["Sn",
+		"Sp"]
+	},
+	{
+		"fullName": "Frerichs",
+		"shortName": "Fre",
+		"subjects": ["Po",
+		"Ge"]
+	},
+	{
+		"fullName": "Frerichs",
+		"shortName": "Fs",
+		"subjects": ["Ma",
+		"Ch"]
+	},
+	{
+		"fullName": "Frerichs",
+		"shortName": "Fr",
+		"subjects": ["En",
+		"Bi"]
+	},
+	{
+		"fullName": "Fresemann",
+		"shortName": "Fm",
+		"subjects": ["Mu",
+		"Ek"]
+	},
+	{
+		"fullName": "Gastmann",
+		"shortName": "Ga",
+		"subjects": ["Po",
+		"Sp"]
+	},
+	{
+		"fullName": "Gerdes",
+		"shortName": "Ge",
+		"subjects": ["Po",
+		"Ge"]
+	},
+	{
+		"fullName": "Glorius",
+		"shortName": "Gl",
+		"subjects": ["Ge",
+		"Po"]
+	},
+	{
+		"fullName": "Groen",
+		"shortName": "Gn",
+		"subjects": ["De",
+		"Re"]
+	},
+	{
+		"fullName": "Grote",
+		"shortName": "Gt",
+		"subjects": ["En",
+		"Ge"]
+	},
+	{
+		"fullName": "Grottke",
+		"shortName": "Gk",
+		"subjects": ["Sn",
+		"En"]
+	},
+	{
+		"fullName": "Grünhage",
+		"shortName": "Gr",
+		"subjects": ["Ma",
+		"Ph",
+		"If"]
+	},
+	{
+		"fullName": "Gunzelmann",
+		"shortName": "Gu",
+		"subjects": ["De",
+		"Ds",
+		"Ge"]
+	},
+	{
+		"fullName": "Hagen",
+		"shortName": "Hg",
+		"subjects": ["De",
+		"Sp"]
+	},
+	{
+		"fullName": "Hans",
+		"shortName": "H",
+		"subjects": ["En",
+		"Re"]
+	},
+	{
+		"fullName": "Harbers",
+		"shortName": "Hr",
+		"subjects": ["Ku",
+		"Ge"]
+	},
+	{
+		"fullName": "Harms",
+		"shortName": "Hs",
+		"subjects": ["Sp",
+		"En"]
+	},
+	{
+		"fullName": "Harms",
+		"shortName": "Hms",
+		"subjects": ["De",
+		"Ku"]
+	},
+	{
+		"fullName": "Haseborg",
+		"shortName": "Hb",
+		"subjects": ["Ma",
+		"Sp"]
+	},
+	{
+		"fullName": "Haseborg",
+		"shortName": "Ha",
+		"subjects": ["Mu",
+		"Re"]
+	},
+	{
+		"fullName": "Haupt",
+		"shortName": "Hp",
+		"subjects": ["Ku",
+		"En"]
+	},
+	{
+		"fullName": "Heidrich",
+		"shortName": "Hd",
+		"subjects": ["De",
+		"Pl"]
+	},
+	{
+		"fullName": "Dr.Henschel",
+		"shortName": "Hsl",
+		"subjects": ["Ma",
+		"Ph"]
+	},
+	{
+		"fullName": "Hensing",
+		"shortName": "Hen",
+		"subjects": ["De",
+		"Re"]
+	},
+	{
+		"fullName": "Heseding",
+		"shortName": "He",
+		"subjects": ["De",
+		"Rk"]
+	},
+	{
+		"fullName": "Hettmann",
+		"shortName": "Het",
+		"subjects": ["De",
+		"SP"]
+	},
+	{
+		"fullName": "Hinrichs",
+		"shortName": "Hi",
+		"subjects": ["Ma",
+		"Ph"]
+	},
+	{
+		"fullName": "Hinrichs",
+		"shortName": "Hn",
+		"subjects": ["Ma",
+		"Ch"]
+	},
+	{
+		"fullName": "Hohmeier",
+		"shortName": "Ho",
+		"subjects": ["De",
+		"Ge"]
+	},
+	{
+		"fullName": "Holz",
+		"shortName": "Hz",
+		"subjects": ["De",
+		"En"]
+	},
+	{
+		"fullName": "Dr.Homann",
+		"shortName": "Hm",
+		"subjects": ["La",
+		"Pl",
+		"WN"]
+	},
+	{
+		"fullName": "Homeier",
+		"shortName": "Hom",
+		"subjects": ["Ch"]
+	},
+	{
+		"fullName": "Hüls",
+		"shortName": "Hül",
+		"subjects": ["Ma",
+		"Ph"]
+	},
+	{
+		"fullName": "Hüneke",
+		"shortName": "Hün",
+		"subjects": ["En",
+		"Fr"]
+	},
+	{
+		"fullName": "Jansing",
+		"shortName": "Ja",
+		"subjects": ["De",
+		"Ge",
+		"Wl"]
+	},
+	{
+		"fullName": "Dr.Janssen",
+		"shortName": "Jan",
+		"subjects": ["Ma"]
+	},
+	{
+		"fullName": "Dr.Janssen",
+		"shortName": "Jn",
+		"subjects": ["Ma",
+		"Sp"]
+	},
+	{
+		"fullName": "Jary",
+		"shortName": "Jy",
+		"subjects": ["Ma",
+		"Ph"]
+	},
+	{
+		"fullName": "Jugl",
+		"shortName": "Ju",
+		"subjects": ["De",
+		"En"]
+	},
+	{
+		"fullName": "Kleen",
+		"shortName": "Kn",
+		"subjects": ["En",
+		"Ku"]
+	},
+	{
+		"fullName": "Klimaschka-Behrends",
+		"shortName": "Kli",
+		"subjects": ["En",
+		"Fr"]
+	},
+	{
+		"fullName": "Kolch",
+		"shortName": "Koh",
+		"subjects": ["Sp",
+		"Bi"]
+	},
+	{
+		"fullName": "Könekamp-Glashof",
+		"shortName": "Gf",
+		"subjects": ["Mu",
+		"Re"]
+	},
+	{
+		"fullName": "Korneli",
+		"shortName": "Ki",
+		"subjects": ["De",
+		"Mu"]
+	},
+	{
+		"fullName": "Korte",
+		"shortName": "Kt",
+		"subjects": ["De",
+		"Re"]
+	},
+	{
+		"fullName": "Kraffczyk",
+		"shortName": "Kf",
+		"subjects": ["De",
+		"Pl"]
+	},
+	{
+		"fullName": "Krebs",
+		"shortName": "Ks",
+		"subjects": ["La",
+		"Ge"]
+	},
+	{
+		"fullName": "Krull",
+		"shortName": "Kr",
+		"subjects": ["Ma"]
+	},
+	{
+		"fullName": "Kutschke",
+		"shortName": "Kk",
+		"subjects": ["De",
+		"Re"]
+	},
+	{
+		"fullName": "Lange",
+		"shortName": "La",
+		"subjects": ["De",
+		"Po"]
+	},
+	{
+		"fullName": "Lefers",
+		"shortName": "Le",
+		"subjects": ["En",
+		"Fr"]
+	},
+	{
+		"fullName": "Lengert",
+		"shortName": "Lt",
+		"subjects": ["Ph",
+		"Ch"]
+	},
+	{
+		"fullName": "Lengert",
+		"shortName": "Len",
+		"subjects": ["Bi",
+		"Ch"]
+	},
+	{
+		"fullName": "Lischinsky",
+		"shortName": "Li",
+		"subjects": ["Ph",
+		"Ma"]
+	},
+	{
+		"fullName": "Löbker",
+		"shortName": "Lö",
+		"subjects": ["La",
+		"Gr"]
+	},
+	{
+		"fullName": "Lüder-Ackermann",
+		"shortName": "Ak",
+		"subjects": ["Re"]
+	},
+	{
+		"fullName": "Lüngen",
+		"shortName": "Lü",
+		"subjects": ["La",
+		"Ge"]
+	},
+	{
+		"fullName": "Marggraf",
+		"shortName": "Mf",
+		"subjects": ["Sp",
+		"Po"]
+	},
+	{
+		"fullName": "Martinet",
+		"shortName": "Mar",
+		"subjects": ["La",
+		"Ge"]
+	},
+	{
+		"fullName": "Memenga",
+		"shortName": "Mg",
+		"subjects": ["De",
+		"Ek",
+		"Eb"]
+	},
+	{
+		"fullName": "Mennenga",
+		"shortName": "Men",
+		"subjects": ["Ma",
+		"Ph"]
+	},
+	{
+		"fullName": "Meyer",
+		"shortName": "Me",
+		"subjects": ["Mu",
+		"Ch"]
+	},
+	{
+		"fullName": "Meyer",
+		"shortName": "Mr",
+		"subjects": ["Fr",
+		"Ek"]
+	},
+	{
+		"fullName": "Meyer",
+		"shortName": "My",
+		"subjects": ["Ge",
+		"Sp"]
+	},
+	{
+		"fullName": "Michels",
+		"shortName": "Mi",
+		"subjects": ["En",
+		"Po",
+		"Pb"]
+	},
+	{
+		"fullName": "Musolf",
+		"shortName": "Mu",
+		"subjects": ["La",
+		"Ge"]
+	},
+	{
+		"fullName": "Navarro",
+		"shortName": "Na",
+		"subjects": ["Sn"]
+	},
+	{
+		"fullName": "Niemeyer",
+		"shortName": "Nm",
+		"subjects": ["De",
+		"Pl"]
+	},
+	{
+		"fullName": "Ohling",
+		"shortName": "Og",
+		"subjects": ["Ma",
+		"Ph"]
+	},
+	{
+		"fullName": "Peede",
+		"shortName": "Pd",
+		"subjects": ["De",
+		"En",
+		"Po"]
+	},
+	{
+		"fullName": "Penon",
+		"shortName": "Pen",
+		"subjects": ["Ma",
+		"Bi"]
+	},
+	{
+		"fullName": "Peters",
+		"shortName": "Pe",
+		"subjects": ["Ek",
+		"Bi"]
+	},
+	{
+		"fullName": "Peters",
+		"shortName": "Pet",
+		"subjects": ["Ek",
+		"Ch"]
+	},
+	{
+		"fullName": "Ploeger-Lobeck",
+		"shortName": "Pg",
+		"subjects": ["En",
+		"Ma"]
+	},
+	{
+		"fullName": "Poppen",
+		"shortName": "Pn",
+		"subjects": ["De",
+		"Ku"]
+	},
+	{
+		"fullName": "Radicke",
+		"shortName": "Rd",
+		"subjects": ["Sn",
+		"Bi"]
+	},
+	{
+		"fullName": "Radke",
+		"shortName": "Ra",
+		"subjects": ["Bi",
+		"Ku"]
+	},
+	{
+		"fullName": "Raveling",
+		"shortName": "Rg",
+		"subjects": ["En",
+		"Sp"]
+	},
+	{
+		"fullName": "Reinken",
+		"shortName": "Rn",
+		"subjects": ["En",
+		"AW"]
+	},
+	{
+		"fullName": "Reiß",
+		"shortName": "Re",
+		"subjects": ["En",
+		"Mu"]
+	},
+	{
+		"fullName": "Robben",
+		"shortName": "Ro",
+		"subjects": ["Bi",
+		"Ch"]
+	},
+	{
+		"fullName": "Roskam",
+		"shortName": "Rs",
+		"subjects": ["Ma",
+		"Ph",
+		"Ch"]
+	},
+	{
+		"fullName": "Scheepker",
+		"shortName": "Sk",
+		"subjects": ["Re"]
+	},
+	{
+		"fullName": "Schoon",
+		"shortName": "So",
+		"subjects": ["Ma",
+		"Bi"]
+	},
+	{
+		"fullName": "Schröder",
+		"shortName": "Sc",
+		"subjects": ["Ma",
+		"Ph"]
+	},
+	{
+		"fullName": "Schülke",
+		"shortName": "Sl",
+		"subjects": ["Fr",
+		"En"]
+	},
+	{
+		"fullName": "Schunicht",
+		"shortName": "Scu",
+		"subjects": ["Bi",
+		"Ch"]
+	},
+	{
+		"fullName": "Schunicht",
+		"shortName": "Snt",
+		"subjects": ["En",
+		"Mu"]
+	},
+	{
+		"fullName": "Schwäbe",
+		"shortName": "Swb",
+		"subjects": ["Mu",
+		"Pl"]
+	},
+	{
+		"fullName": "Seeberg",
+		"shortName": "Se",
+		"subjects": ["En",
+		"Sp"]
+	},
+	{
+		"fullName": "Siebels",
+		"shortName": "Si",
+		"subjects": ["Ph",
+		"Sp"]
+	},
+	{
+		"fullName": "Sieben",
+		"shortName": "Sn",
+		"subjects": ["Do",
+		"Po"]
+	},
+	{
+		"fullName": "Staubach",
+		"shortName": "Sb",
+		"subjects": ["De",
+		"Ge"]
+	},
+	{
+		"fullName": "Steevens-Schnell",
+		"shortName": "Sch",
+		"subjects": ["De",
+		"Fr"]
+	},
+	{
+		"fullName": "Steinmeyer",
+		"shortName": "Sm",
+		"subjects": ["En",
+		"Fr"]
+	},
+	{
+		"fullName": "Stiehl",
+		"shortName": "St",
+		"subjects": ["Ma",
+		"Ph"]
+	},
+	{
+		"fullName": "Struckmeyer",
+		"shortName": "Sy",
+		"subjects": ["Sp",
+		"Ek"]
+	},
+	{
+		"fullName": "Stuber",
+		"shortName": "Stu",
+		"subjects": ["En",
+		"Fr",
+		"DfA"]
+	},
+	{
+		"fullName": "Thomas",
+		"shortName": "Th",
+		"subjects": ["Bi",
+		"Sp"]
+	},
+	{
+		"fullName": "Toepel",
+		"shortName": "Tp",
+		"subjects": ["Sp",
+		"Ge"]
+	},
+	{
+		"fullName": "Tokarski",
+		"shortName": "Tk",
+		"subjects": ["De",
+		"La"]
+	},
+	{
+		"fullName": "Tonn",
+		"shortName": "To",
+		"subjects": ["Ph",
+		"Ch"]
+	},
+	{
+		"fullName": "Ubben",
+		"shortName": "Un",
+		"subjects": ["De",
+		"Mu"]
+	},
+	{
+		"fullName": "Ubben",
+		"shortName": "Ub",
+		"subjects": ["Ma",
+		"Mu"]
+	},
+	{
+		"fullName": "Ubben",
+		"shortName": "Ubb",
+		"subjects": ["De",
+		"Re"]
+	},
+	{
+		"fullName": "van",
+		"shortName": "Mark",
+		"subjects": ["Mk",
+		"La",
+		"Sn"]
+	},
+	{
+		"fullName": "Wasjack",
+		"shortName": "Wa",
+		"subjects": ["Bi",
+		"Ch"]
+	},
+	{
+		"fullName": "Wemmer",
+		"shortName": "Wm",
+		"subjects": ["De",
+		"Ku"]
+	},
+	{
+		"fullName": "Weferling",
+		"shortName": "Wf",
+		"subjects": ["Fr",
+		"Ge"]
+	},
+	{
+		"fullName": "Wilkens",
+		"shortName": "Wi",
+		"subjects": ["Po",
+		"Sn"]
+	}]
+}
