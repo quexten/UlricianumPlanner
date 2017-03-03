@@ -54,6 +54,7 @@ public class SubstitutionFirebaseMessagingService extends FirebaseMessagingServi
         substitutions.readSubstitutions();
         substitutions.insertSubstitution(entry, Day.fromString(day));
         substitutions.saveSubstitutions();
-        new NotificationPoster(this.getApplicationContext()).postSubstitutionNotification(entry);
+        TeacherManager teacherManager = new TeacherManager(getApplicationContext());
+        new NotificationPoster(this.getApplicationContext(), teacherManager).postSubstitutionNotification(entry);
     }
 }

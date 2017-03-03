@@ -21,6 +21,7 @@ class SyncTask extends AsyncTask<String, Boolean, Boolean> {
     NetworkManager networkManager;
     NotificationPoster notificationPoster;
     Substitutions substitutions;
+    TeacherManager teacherManager;
 
     SynchronizationListener onCompletionListener;
 
@@ -30,7 +31,8 @@ class SyncTask extends AsyncTask<String, Boolean, Boolean> {
         accountManager = new AccountManager(context);
         coursePlan = new CoursePlan(context, null);
         networkManager = new NetworkManager(context);
-        notificationPoster = new NotificationPoster(context);
+        teacherManager = new TeacherManager(context);
+        notificationPoster = new NotificationPoster(context, teacherManager);
         substitutions = new Substitutions(context);
     }
 

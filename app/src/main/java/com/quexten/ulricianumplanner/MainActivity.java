@@ -53,10 +53,10 @@ public class MainActivity extends AppCompatActivity {
         coursePlan = new CoursePlan(this.getApplicationContext(), subscriptionManager);
         feedbackManager = new FeedbackManager(this, coursePlan);
         networkManager = new NetworkManager(this.getApplicationContext());
-        notificationPoster = new NotificationPoster(this.getApplicationContext());
+        teacherManager = new TeacherManager(this.getApplicationContext());
+        notificationPoster = new NotificationPoster(this.getApplicationContext(), teacherManager);
         substitutions = new Substitutions(this.getApplicationContext());
         timetableManager = new TimetableManager(MainActivity.this, coursePlan, substitutions);
-        teacherManager = new TeacherManager(this.getApplicationContext());
 
         //Class Selection Screen when no class is chosen yet
         coursePlan.readClassName();

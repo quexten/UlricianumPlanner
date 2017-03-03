@@ -20,11 +20,13 @@ import android.support.v4.app.TaskStackBuilder;
 public class NotificationPoster {
 
     Context context;
+    TeacherManager teacherManager;
 
     static int notificationId = 0;
 
-    public NotificationPoster(Context context) {
+    public NotificationPoster(Context context, TeacherManager teacherManager) {
         this.context = context;
+        this.teacherManager = teacherManager;
     }
 
     public void postSubstitutionNotification(TableEntry entry) {
@@ -41,7 +43,7 @@ public class NotificationPoster {
         String header = "";
         switch(entry.type) {
             case "Entfall":
-                message = entry.time + " entfällt " + Course.getLongSubjectName(context, entry.subject) + " bei " + entry.teacher;
+                message = entry.time + " entfällt " + Course.getLongSubjectName(context, entry.subject) + " bei " + teacherManager.getFullTeacherName(entry.teacher);
                 header = entry.time + " Entfall";
                 break;
             case "Verleg.":
@@ -57,11 +59,11 @@ public class NotificationPoster {
                 header = Course.getLongSubjectName(context, entry.subject) + " Raumänderung";
                 break;
             case "Vertret.":
-                message = "Durch " + entry.substituteTeacher;
+                message = "Durch " + teacherManager.getFullTeacherName(entry.substituteTeacher);
                 header = Course.getLongSubjectName(context, entry.subject) + " Vertretung";
                 break;
             case "Tausch":
-                message = "Mit " + Course.getLongSubjectName(context, entry.substituteSubject) + " bei " + entry.substituteTeacher;
+                message = "Mit " + Course.getLongSubjectName(context, entry.substituteSubject) + " bei " + teacherManager.getFullTeacherName(entry.substituteTeacher);
                 header = Course.getLongSubjectName(context, entry.subject) + " Tausch";
                 break;
             case "trotz A.":
@@ -69,7 +71,7 @@ public class NotificationPoster {
                 header = Course.getLongSubjectName(context, entry.subject) + " findet statt.";
                 break;
             case "Betreu.":
-                message = "Bei " + entry.substituteTeacher + " in " + entry.room;
+                message = "Bei " + teacherManager.getFullTeacherName(entry.substituteTeacher) + " in " + entry.room;
                 header = entry.subject + " Betreuung";
                 break;
         }
@@ -110,7 +112,7 @@ public class NotificationPoster {
 
         //Notification
         String header = "Gleich " + Course.getLongSubjectName(context, course.subject) + " in " + course.room;
-        String message = "bei " + (course.getTeachers().length > 0 ? course.getTeachers()[0] : "");
+        String message = "bei " + teacherManager.getFullTeacherName((course.getTeachers().length > 0 ? course.getTeachers()[0] : ""));
 
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context)

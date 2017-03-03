@@ -18,6 +18,8 @@ import java.io.Writer;
 
 public class TeacherManager {
 
+    TeacherList teacherList;
+
     public TeacherManager(Context context) {
         InputStream is = context.getResources().openRawResource(R.raw.teachers);
         Writer writer = new StringWriter();
@@ -34,15 +36,24 @@ public class TeacherManager {
         }
 
         String jsonString = writer.toString();
-        TeacherList teacherList = new Gson().fromJson(jsonString, TeacherList.class);
+        teacherList = new Gson().fromJson(jsonString, TeacherList.class);
     }
 
-    public void getFullTeacherName(String shorthand) {
-
+    public String getFullTeacherName(String shorthand) {
+        shorthand = shorthand.toUpperCase();
+        for(TeacherEntry entry : teacherList.list) {
+            if(entry.shortName.toUpperCase().equals(shorthand))
+                return entry.fullName;
+        }
+        return null;
     }
 
-    public void getTeacherShorthand(String name) {
-
+    public String getTeacherShorthand(String name) {
+        for(TeacherEntry entry : teacherList.list) {
+            if(entry.fullName.equals(name))
+                return entry.shortName;
+        }
+        return null;
     }
 
 }
