@@ -30,6 +30,7 @@
     <style name="CustomTitle2" parent="TextAppearance.ShowcaseView.Title.Light">
         <item name="android:textColor">#deffffff</item>
     </style>
+
     <style name="CustomText2" parent="TextAppearance.ShowcaseView.Detail.Light">
         <item name="android:textColor">#8affffff</item>
     </style>

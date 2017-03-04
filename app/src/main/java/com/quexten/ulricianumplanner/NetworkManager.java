@@ -35,6 +35,8 @@ public class NetworkManager {
 
     Context context;
 
+    NewsListener newsListener;
+
     public NetworkManager(Context context) {
         this.context = context;
         this.parser = new IServPlanParser();
@@ -168,11 +170,20 @@ public class NetworkManager {
                     .replace("\u00FC",  "ü")
                     .replace("�", "ö")
                     .replace("�", "ä");
-            return parser.parseResponse(resultText, today);
+            IServPlanParser.PlanPage planPage = parser.parseResponse(resultText, today);
+            if(today && planPage.news != null) {
+                newsListener.newsReceived(planPage.news);
+            }
+            return planPage;
         } catch (Exception exception) {
             exception.printStackTrace();
         }
 
         return null;
 	}
+
+    public void setNewsListener(NewsListener newsListener) {
+        this.newsListener = newsListener;
+    }
+
 }

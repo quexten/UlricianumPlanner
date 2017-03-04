@@ -824,10 +824,9 @@
 		"Re"]
 	},
 	{
-		"fullName": "van",
-		"shortName": "Mark",
-		"subjects": ["Mk",
-		"La",
+		"fullName": "van Mark",
+		"shortName": "Mk",
+		"subjects": ["La",
 		"Sn"]
 	},
 	{

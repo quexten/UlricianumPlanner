@@ -34,7 +34,7 @@ public class TimetableManager {
     public CoursePlan coursePlan;
     public Substitutions substitutions;
 
-    public TimetableManager(final Activity activity, CoursePlan coursePlan, Substitutions substitutions) {
+    public TimetableManager(final Activity activity, CoursePlan coursePlan, Substitutions substitutions, final NewsListener newsListener) {
         this.activity = activity;
         this.coursePlan = coursePlan;
         this.substitutions = substitutions;
@@ -49,7 +49,7 @@ public class TimetableManager {
                         swipeRefreshLayout.setRefreshing(true);
                     }
                 });
-                new SyncTask(activity, new SynchronizationListener() {
+                new SyncTask(activity, newsListener, new SynchronizationListener() {
                     @Override
                     public void onSync(boolean successful) {
                         final boolean wasSuccessful = successful;

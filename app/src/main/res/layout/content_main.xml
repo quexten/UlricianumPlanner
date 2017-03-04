@@ -9,8 +9,7 @@
         <android.support.v4.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/swiperefreshlayout"
-            android:layout_marginTop="?android:attr/actionBarSize">
+            android:id="@+id/swiperefreshlayout">
 
             <ScrollView
                 android:layout_width="match_parent"

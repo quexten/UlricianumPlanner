@@ -1,10 +1,7 @@
 package com.quexten.ulricianumplanner;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -25,19 +22,20 @@ class SyncTask extends AsyncTask<String, Boolean, Boolean> {
 
     SynchronizationListener onCompletionListener;
 
-    public SyncTask(Context context) {
+    public SyncTask(Context context, NewsListener newsListener) {
         this.context = context;
 
         accountManager = new AccountManager(context);
         coursePlan = new CoursePlan(context, null);
         networkManager = new NetworkManager(context);
+        networkManager.setNewsListener(newsListener);
         teacherManager = new TeacherManager(context);
         notificationPoster = new NotificationPoster(context, teacherManager);
         substitutions = new Substitutions(context);
     }
 
-    public SyncTask(Context context, SynchronizationListener onCompletionListener) {
-        this(context);
+    public SyncTask(Context context, NewsListener newsListener, SynchronizationListener onCompletionListener) {
+        this(context, newsListener);
         this.onCompletionListener = onCompletionListener;
     }
 

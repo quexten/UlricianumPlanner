@@ -8,12 +8,16 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Switch;
@@ -45,8 +49,35 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout.addTab(tabLayout.newTab().setText("Stundenplan"));
+        tabLayout.addTab(tabLayout.newTab().setText("Neuigkeiten"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        final PagerAdapter adapter = new PagerAdapter
+                (getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+
 
         accountManager = new AccountManager(this.getApplicationContext());
         subscriptionManager = new SubscriptionManager(this.getApplicationContext());
@@ -56,7 +87,36 @@ public class MainActivity extends AppCompatActivity {
         teacherManager = new TeacherManager(this.getApplicationContext());
         notificationPoster = new NotificationPoster(this.getApplicationContext(), teacherManager);
         substitutions = new Substitutions(this.getApplicationContext());
-        timetableManager = new TimetableManager(MainActivity.this, coursePlan, substitutions);
+
+        View myView = findViewById(R.id.pager);
+        myView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                if(MainActivity.this.timetableManager == null) {
+                    MainActivity.this.timetableManager = new TimetableManager(MainActivity.this, coursePlan, substitutions, new NewsListener() {
+                        @Override
+                        public void newsReceived(String news) {
+                            final String newsContent = news;
+
+                            MainActivity.this.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    LinearLayout newsView = ((LinearLayout) MainActivity.this.findViewById(R.id.news_layout));
+                                    newsView.removeAllViews();
+
+                                    String newsString = newsContent.replace("Frähaufsicht", "Frühaufsicht");
+                                    View child = getLayoutInflater().inflate(R.layout.news_entry, null);
+                                    ((TextView) child.findViewById(R.id.info_text)).setText(newsString);
+                                    newsView.addView(child);
+                                }
+                            });
+                        }
+                    });
+                    MainActivity.this.timetableManager.generateVisuals();
+                }
+            }
+        });
+
 
         //Class Selection Screen when no class is chosen yet
         coursePlan.readClassName();
@@ -112,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
 
         substitutions.readSubstitutions();
 
-        timetableManager.generateVisuals();
+//        timetableManager.generateVisuals();
 
         //Room Tasks
         setDailyTask(7, 30, 3, new Intent(MainActivity.this, RoomReceiver.class));

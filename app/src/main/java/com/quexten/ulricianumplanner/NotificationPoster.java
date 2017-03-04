@@ -41,38 +41,48 @@ public class NotificationPoster {
         //Notification
         String message = "";
         String header = "";
+
+        String substitutionTeacher = teacherManager.getFullTeacherName(entry.substituteTeacher);
+        substitutionTeacher = (substitutionTeacher != null) ? substitutionTeacher : entry.substituteTeacher;
+        String teacher = teacherManager.getFullTeacherName(entry.teacher);
+        teacher = (teacher != null) ? teacher : entry.teacher;
+        String substituteSubject = Course.getLongSubjectName(context, entry.substituteSubject);
+        String subject = Course.getLongSubjectName(context, entry.subject);
+        String time = entry.time;
+        String room = entry.room;
+
         switch(entry.type) {
             case "Entfall":
-                message = entry.time + " entfällt " + Course.getLongSubjectName(context, entry.subject) + " bei " + teacherManager.getFullTeacherName(entry.teacher);
-                header = entry.time + " Entfall";
+                message = time + " entfällt " + subject + " bei " + teacher;
+                header = time + " Entfall";
                 break;
             case "Verleg.":
-                message = Course.getLongSubjectName(context, entry.subject) + " wird verlegt.";
-                header = Course.getLongSubjectName(context, entry.subject) + " Verlegung";
+                message = subject + " wird verlegt.";
+                header = subject + " Verlegung";
                 break;
             case "Raum�.":
-                message = "Nach " + entry.room;
-                header = Course.getLongSubjectName(context, entry.subject) + " Raumänderung";
+                message = "Nach " + room;
+                header = subject + " Raumänderung";
                 break;
             case "Raumä.":
-                message = "Nach " + entry.room;
-                header = Course.getLongSubjectName(context, entry.subject) + " Raumänderung";
+                message = "Nach " + room;
+                header = subject + " Raumänderung";
                 break;
             case "Vertret.":
-                message = "Durch " + teacherManager.getFullTeacherName(entry.substituteTeacher);
-                header = Course.getLongSubjectName(context, entry.subject) + " Vertretung";
+                message = "Durch " + substitutionTeacher;
+                header = subject + " Vertretung";
                 break;
             case "Tausch":
-                message = "Mit " + Course.getLongSubjectName(context, entry.substituteSubject) + " bei " + teacherManager.getFullTeacherName(entry.substituteTeacher);
-                header = Course.getLongSubjectName(context, entry.subject) + " Tausch";
+                message = "Mit " + substituteSubject + " bei " + substitutionTeacher;
+                header = subject + " Tausch";
                 break;
             case "trotz A.":
-                message = "in " + entry.room + " statt";
-                header = Course.getLongSubjectName(context, entry.subject) + " findet statt.";
+                message = "in " + room;
+                header = subject + " findet statt.";
                 break;
             case "Betreu.":
-                message = "Bei " + teacherManager.getFullTeacherName(entry.substituteTeacher) + " in " + entry.room;
-                header = entry.subject + " Betreuung";
+                message = "Bei " + substitutionTeacher + " in " + entry.room;
+                header = subject + " Betreuung";
                 break;
         }
 
@@ -112,7 +122,9 @@ public class NotificationPoster {
 
         //Notification
         String header = "Gleich " + Course.getLongSubjectName(context, course.subject) + " in " + course.room;
-        String message = "bei " + teacherManager.getFullTeacherName((course.getTeachers().length > 0 ? course.getTeachers()[0] : ""));
+        String teacher = teacherManager.getFullTeacherName((course.getTeachers().length > 0 ? course.getTeachers()[0] : ""));
+        teacher = (teacher != null) ? teacher : course.teacher;
+        String message = "bei " + teacher;
 
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context)

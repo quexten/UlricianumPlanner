@@ -1,5 +1,7 @@
 package com.quexten.ulricianumplanner;
 
+import android.util.Log;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -20,6 +22,16 @@ public class IServPlanParser {
         Element body = doc.select("body").first();
         Element center = body.select("center").first();
         Elements titleElements = center.getElementsByClass("mon_title");
+
+        if(center.getElementsByClass("info") != null) {
+            Elements info = center.getElementsByClass("info");
+            if(info.size() > 0) {
+                Element first = info.first();
+                Elements subInfo = first.getElementsByClass("info");
+                Element element = subInfo.get(3);
+                planPage.news = element.text();
+            }
+        }
 
         String titleElement = titleElements.text();
 
@@ -62,6 +74,7 @@ public class IServPlanParser {
         TableEntry[] entries;
         Day day;
         int pageNum;
+        String news;
 
         public PlanPage() {
         }
@@ -89,6 +102,15 @@ public class IServPlanParser {
         public int getPageNum() {
             return pageNum;
         }
+
+        public void setNews(String news) {
+            this.news = news;
+        }
+
+        public String getNews() {
+            return this.news;
+        }
+
     }
 
 }

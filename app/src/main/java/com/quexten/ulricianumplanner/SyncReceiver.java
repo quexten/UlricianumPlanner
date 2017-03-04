@@ -12,7 +12,7 @@ public class SyncReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        new SyncTask(context).execute();
+        new SyncTask(context, null).execute();
     }
 
 }

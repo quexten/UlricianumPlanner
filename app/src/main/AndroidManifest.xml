@@ -8,8 +8,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
-
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -33,12 +32,13 @@
 
         <receiver android:name=".SyncReceiver" />
         <receiver android:name=".RoomReceiver" />
-
-        <receiver android:name=".TimetableWidgetProvider" >
+        <receiver android:name=".TimetableWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider"
+
+            <meta-data
+                android:name="android.appwidget.provider"
                 android:resource="@xml/widget_layout" />
         </receiver>
 
@@ -48,28 +48,30 @@
         <activity
             android:name=".TutorialActivity"
             android:label="@string/title_activity_tutorial"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
-        <service android:name=".AccountAuthenticatorService" android:process=":auth" android:exported="true">
-            <intent-filter>
-                <action android:name="android.accounts.AccountAuthenticator"/>
-            </intent-filter>
-            <meta-data android:name="android.accounts.AccountAuthenticator" android:resource="@xml/authenticator"/>
-        </service>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <service
-            android:name=".SubstitutionFirebaseMessagingService">
+            android:name=".AccountAuthenticatorService"
+            android:exported="true"
+            android:process=":auth">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="android.accounts.AccountAuthenticator" />
             </intent-filter>
-        </service>
-        <service
-            android:name=".SubstitutionFirebaseInstanceIdService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-            </intent-filter>
-        </service>
 
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+        </service>
+        <service android:name=".SubstitutionFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".SubstitutionFirebaseInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
