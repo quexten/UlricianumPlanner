@@ -105,9 +105,12 @@ public class MainActivity extends AppCompatActivity {
                                     newsView.removeAllViews();
 
                                     String newsString = newsContent.replace("Frähaufsicht", "Frühaufsicht");
-                                    View child = getLayoutInflater().inflate(R.layout.news_entry, null);
-                                    ((TextView) child.findViewById(R.id.info_text)).setText(newsString);
-                                    newsView.addView(child);
+                                    String[] news = newsString.split("\n");
+                                    for(String entry : news) {
+                                        View child = getLayoutInflater().inflate(R.layout.news_entry, null);
+                                        ((TextView) child.findViewById(R.id.info_text)).setText(newsString);
+                                        newsView.addView(child);
+                                    }
                                 }
                             });
                         }
