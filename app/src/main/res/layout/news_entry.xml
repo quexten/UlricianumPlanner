@@ -7,7 +7,7 @@
         android:id="@+id/card_view"
         android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_margin="8dp"
         card_view:cardCornerRadius="8dp"
         card_view:cardElevation="8dp">
@@ -15,7 +15,7 @@
         <TextView
             android:id="@+id/info_text"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_ height="wrap_content"
             android:textSize="24sp"
             android:text=""
             android:textColor="@color/cardview_dark_background"
