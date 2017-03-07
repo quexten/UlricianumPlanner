@@ -58,7 +58,10 @@ public class Substitutions {
     }
 
     public TableEntry[] getTodaySubstitutions() {
-        return this.todaySubstitutions;
+        if(this.todaySubstitutions != null)
+            return this.todaySubstitutions;
+        else
+            return new TableEntry[0];
     }
 
     public void insertSubstitution(TableEntry entry, Day day) {
@@ -92,7 +95,10 @@ public class Substitutions {
     }
 
     public TableEntry[] getTomorrowSubstitutions() {
-        return this.tomorrowSubstitutions;
+        if(this.tomorrowSubstitutions != null)
+            return this.tomorrowSubstitutions;
+        else
+            return new TableEntry[0];
     }
 
     private void saveSubstitutions(TableEntry[] todayOverrides, TableEntry[] tomorrowOverrides, Day todayDay, Day tomorrowDay) {
