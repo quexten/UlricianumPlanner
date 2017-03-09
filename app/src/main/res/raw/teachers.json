@@ -109,18 +109,16 @@
 		"Ch"]
 	},
 	{
-		"fullName": "deBuhr",
-		"shortName": "H.",
-		"subjects": ["De",
-		"Ch",
+		"fullName": "Herr deBuhr",
+		"shortName": "De",
+		"subjects": ["Ch",
 		"Bi",
 		"Ph"]
 	},
 	{
-		"fullName": "deBuhr",
-		"shortName": "M.",
-		"subjects": ["Db",
-		"Bi",
+		"fullName": "Frau deBuhr",
+		"shortName": "Db",
+		"subjects": ["Bi",
 		"Ch",
 		"Ku"]
 	},
@@ -271,6 +269,12 @@
 		"Ge"]
 	},
 	{
+		"fullName": "Götz",
+		"shortName": "Gö",
+		"subjects": ["En",
+		"Ge"]
+	},
+	{
 		"fullName": "Hagen",
 		"shortName": "Hg",
 		"subjects": ["De",
@@ -373,7 +377,7 @@
 		"En"]
 	},
 	{
-		"fullName": "Dr.Homann",
+		"fullName": "Dr. Homann",
 		"shortName": "Hm",
 		"subjects": ["La",
 		"Pl",
@@ -404,12 +408,13 @@
 		"Wl"]
 	},
 	{
-		"fullName": "Dr.Janssen",
+		"fullName": "Dr. Janssen",
 		"shortName": "Jan",
-		"subjects": ["Ma"]
+		"subjects": ["Ma",
+		"Ch"]
 	},
 	{
-		"fullName": "Dr.Janssen",
+		"fullName": "Dr. Janssen",
 		"shortName": "Jn",
 		"subjects": ["Ma",
 		"Sp"]
