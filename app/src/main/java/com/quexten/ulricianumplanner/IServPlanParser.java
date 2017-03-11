@@ -5,6 +5,8 @@ import android.util.Log;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
+import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
 
 import java.util.Calendar;
@@ -29,7 +31,11 @@ public class IServPlanParser {
                 Element first = info.first();
                 Elements subInfo = first.getElementsByClass("info");
                 Element element = subInfo.get(3);
-                planPage.news = element.text();
+                planPage.news = "";
+                for(Node node : element.childNodes().get(0).childNodes()) {
+                    if(node instanceof TextNode)
+                        planPage.news += ((TextNode) node).text() + "\n";
+                }
             }
         }
 

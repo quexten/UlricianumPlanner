@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                                     String[] news = newsString.split("\n");
                                     for(String entry : news) {
                                         View child = getLayoutInflater().inflate(R.layout.news_entry, null);
-                                        ((TextView) child.findViewById(R.id.info_text)).setText(newsString);
+                                        ((TextView) child.findViewById(R.id.info_text)).setText(entry);
                                         newsView.addView(child);
                                     }
                                 }
