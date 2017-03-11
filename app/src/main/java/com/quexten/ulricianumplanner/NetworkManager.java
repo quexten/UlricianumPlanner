@@ -9,6 +9,7 @@ import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,7 @@ import cz.msebera.android.httpclient.client.methods.HttpGet;
 import cz.msebera.android.httpclient.client.methods.HttpPost;
 import cz.msebera.android.httpclient.impl.client.HttpClientBuilder;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
+import cz.msebera.android.httpclient.util.EntityUtils;
 
 public class NetworkManager {
 
@@ -154,22 +156,15 @@ public class NetworkManager {
             get.setHeader("Cookie", "PHPSESSID=" + phpSessionId + "; PHPSESSPW=" + phpSessionPassword);
             get.setHeader("User-Agent", "APP");
             HttpResponse response = client.execute(get);
-
-            BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-
+            BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), Charset.forName("ISO-8859-15")));
+            String test = response.getEntity().toString();
             StringBuffer result = new StringBuffer();
             String line = "";
             while ((line = rd.readLine()) != null) {
                 result.append(line);
             }
 
-            String resultText = result.toString()
-                    .replace("�", "ä")
-                    .replace("\u00E4", "ä")
-                    .replace("\u00F6", "ö")
-                    .replace("\u00FC",  "ü")
-                    .replace("�", "ö")
-                    .replace("�", "ä");
+            String resultText = result.toString();
             IServPlanParser.PlanPage planPage = parser.parseResponse(resultText, today);
             if(today && planPage.news != null) {
                 newsListener.newsReceived(planPage.news);
