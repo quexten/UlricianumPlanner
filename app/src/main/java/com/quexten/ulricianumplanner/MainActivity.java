@@ -103,7 +103,10 @@ public class MainActivity extends AppCompatActivity {
                                 public void run() {
                                     LinearLayout newsView = ((LinearLayout) MainActivity.this.findViewById(R.id.news_layout));
                                     newsView.removeAllViews();
-                                    
+
+                                    if(newsContent.isEmpty())
+                                        return;
+
                                     String[] news = newsContent.split("\n");
                                     for(String entry : news) {
                                         View child = getLayoutInflater().inflate(R.layout.news_entry, null);
