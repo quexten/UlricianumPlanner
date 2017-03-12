@@ -270,7 +270,6 @@ public class TimetableManager {
 
         return substitution.equals("Entfall") ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_cancelled", -1074534)))
                 : substitution.equals("Verleg.") ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_delayed", -5005861)))
-                : substitution.equals("Raum�.") ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_roomchange", -8336444)))
                 : substitution.equals("Raumä.") ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_roomchange", -8336444)))
                 : (substitution.equals("Vertret.") || substitution.equals("Betreu.") || substitution.equals("trotz A.")) ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_substitution", -8062)))
                 : substitution.equals("Tausch") ? Color.parseColor(ColorPickerPreference.convertToARGB(sharedPref.getInt("color_swap", -7288071)))
