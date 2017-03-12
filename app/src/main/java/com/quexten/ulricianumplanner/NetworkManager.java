@@ -103,7 +103,7 @@ public class NetworkManager {
         while(todayScans < pageNum && todayScans < 10) { // todayScans < 10 is a safeguard against spamming the scan
             IServPlanParser.PlanPage planPage = getPlan(true, todayScans + 1);
             if(planPage == null) {
-                return null;
+                return substitutions;
             }
             for(TableEntry entry : planPage.getEntries())
                 tableEntries.add(entry);
