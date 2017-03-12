@@ -12,7 +12,13 @@ public class SyncReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        new SyncTask(context, null).execute();
+        NewsListener newsListener = new NewsListener(context) {
+            @Override
+            public void newsReceived(String news) {
+                this.saveNews(news);
+            }
+        };
+        new SyncTask(context, newsListener).execute();
     }
 
 }

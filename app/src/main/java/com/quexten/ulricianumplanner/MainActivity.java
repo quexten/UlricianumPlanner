@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onGlobalLayout() {
                 if(MainActivity.this.timetableManager == null) {
-                    MainActivity.this.timetableManager = new TimetableManager(MainActivity.this, coursePlan, substitutions, new NewsListener() {
+                    NewsListener newsListener = new NewsListener(MainActivity.this.getApplicationContext()) {
                         @Override
                         public void newsReceived(String news) {
                             final String newsContent = news;
@@ -103,9 +103,8 @@ public class MainActivity extends AppCompatActivity {
                                 public void run() {
                                     LinearLayout newsView = ((LinearLayout) MainActivity.this.findViewById(R.id.news_layout));
                                     newsView.removeAllViews();
-
-                                    String newsString = newsContent.replace("Frähaufsicht", "Frühaufsicht");
-                                    String[] news = newsString.split("\n");
+                                    
+                                    String[] news = newsContent.split("\n");
                                     for(String entry : news) {
                                         View child = getLayoutInflater().inflate(R.layout.news_entry, null);
                                         ((TextView) child.findViewById(R.id.info_text)).setText(entry);
@@ -113,8 +112,11 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                 }
                             });
+                            this.saveNews(news);
                         }
-                    });
+                    };
+                    MainActivity.this.timetableManager = new TimetableManager(MainActivity.this, coursePlan, substitutions, newsListener);
+                    newsListener.newsReceived(newsListener.loadNews());
                     MainActivity.this.timetableManager.generateVisuals();
                 }
             }
@@ -174,8 +176,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         substitutions.readSubstitutions();
-
-//        timetableManager.generateVisuals();
 
         //Room Tasks
         setDailyTask(7, 30, 3, new Intent(MainActivity.this, RoomReceiver.class));
