@@ -1,10 +1,6 @@
 package com.quexten.ulricianumplanner;
 
-import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.UiThread;
-import android.support.design.widget.Snackbar;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
