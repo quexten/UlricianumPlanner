@@ -36,7 +36,8 @@ public class SubscriptionManager {
 
     private void unsubscribe(Course course, Day day, Hour hour) {
         if(course != null)
-            FirebaseMessaging.getInstance().unsubscribeFromTopic(getTopicName(getShortDayName(day), getShortTimeName(hour), course.teacher, course.subject));
+            for(String teacher : course.getTeachers())
+                FirebaseMessaging.getInstance().unsubscribeFromTopic(getTopicName(getShortDayName(day), getShortTimeName(hour), teacher, course.subject));
     }
 
     private String getTopicName(String day, String time, String teacher, String subject) {
