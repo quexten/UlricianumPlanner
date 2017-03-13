@@ -77,11 +77,18 @@ public class Substitutions {
         for(TableEntry temp : (today ? getTodaySubstitutions() : getTomorrowSubstitutions())) {
             entries.add(temp);
         }
+        ArrayList<TableEntry> toRemoveEntries = new ArrayList<TableEntry>();
+
         for(TableEntry temp : entries) {
             if(temp.time.equals(entry.time)) {
-                entries.remove(temp);
+                toRemoveEntries.add(temp);
             }
         }
+
+        for(TableEntry toRemoveEntry : toRemoveEntries)
+            entries.remove(toRemoveEntry);
+        toRemoveEntries.clear();
+
         entries.add(entry);
 
         if(today)
