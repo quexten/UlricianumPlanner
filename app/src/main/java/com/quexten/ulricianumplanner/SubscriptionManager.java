@@ -2,10 +2,8 @@ package com.quexten.ulricianumplanner;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.gson.Gson;
 
 /**
  * Created by Quexten on 23-Dec-16.
