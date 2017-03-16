@@ -124,6 +124,9 @@ public class NetworkManager {
         int tomorrowScans = 0;
         while(tomorrowScans < pageNum && todayScans < 10) {
             IServPlanParser.PlanPage planPage = getPlan(false, tomorrowScans + 1);
+            if(planPage == null)
+                continue;
+
             for(TableEntry entry : planPage.getEntries())
                 tableEntries.add(entry);
 
