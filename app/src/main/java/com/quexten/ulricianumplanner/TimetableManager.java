@@ -21,6 +21,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.crash.FirebaseCrash;
+
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 /**
@@ -88,6 +90,14 @@ public class TimetableManager {
                 Day day = Day.fromInt(x);
                 Hour hour = Hour.fromInt(y);
                 LinearLayout layout = getTableEntryLayout(day, hour);
+                if(layout == null) {
+                    FirebaseCrash.log("Linear Timetable Layout is null."
+                            + " Day:"  + day
+                            + " Hour:" + hour);
+                    break;
+                }
+
+
                 TextView subjectView = ((TextView) layout.findViewById(R.id.subjectView));
                 TextView roomView = ((TextView) layout.findViewById(R.id.roomView));
 
