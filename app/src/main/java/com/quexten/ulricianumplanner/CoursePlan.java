@@ -110,7 +110,8 @@ public class CoursePlan {
         for(TableEntry entry : entries) {
             if(entry.className.contains(className)) {
                 Hour hour = Hour.fromString(entry.time);
-                for(String teacher : getCourse(day.ordinal(), hour.ordinal()).getTeachers())
+                Course course = getCourse(day.ordinal(), hour.ordinal());
+                for(String teacher : new String[] {course.getTeacher(), course.getTeacherB()})
                     if(teacher.equals(entry.teacher))
                         filteredEntries.add(entry);
             }

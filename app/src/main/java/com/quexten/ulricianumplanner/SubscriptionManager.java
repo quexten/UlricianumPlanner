@@ -26,16 +26,21 @@ public class SubscriptionManager {
     }
 
     private void subscribe(Course course, Day day, Hour hour) {
-        if((course != null) && !course.teacher.isEmpty()) {
-            for(String teacher : course.getTeachers())
-                FirebaseMessaging.getInstance().subscribeToTopic(getTopicName(getShortDayName(day), getShortTimeName(hour), teacher, course.subject));
+        if((course != null) && !course.getTeacher().isEmpty()) {
+            FirebaseMessaging.getInstance().subscribeToTopic(getTopicName(getShortDayName(day), getShortTimeName(hour), course.getTeacher(), course.getSubject()));
+
+            if(course.hasDoubleWeekSchedule())
+                FirebaseMessaging.getInstance().subscribeToTopic(getTopicName(getShortDayName(day), getShortTimeName(hour), course.getTeacherB(), course.getSubjectB()));
         }
     }
 
     private void unsubscribe(Course course, Day day, Hour hour) {
-        if(course != null)
-            for(String teacher : course.getTeachers())
-                FirebaseMessaging.getInstance().unsubscribeFromTopic(getTopicName(getShortDayName(day), getShortTimeName(hour), teacher, course.subject));
+        if(course != null) {
+            FirebaseMessaging.getInstance().unsubscribeFromTopic(getTopicName(getShortDayName(day), getShortTimeName(hour), course.getTeacher(), course.getSubject()));
+
+            if (course.hasDoubleWeekSchedule())
+                FirebaseMessaging.getInstance().unsubscribeFromTopic(getTopicName(getShortDayName(day), getShortTimeName(hour), course.getTeacherB(), course.getSubjectB()));
+        }
     }
 
     private String getTopicName(String day, String time, String teacher, String subject) {

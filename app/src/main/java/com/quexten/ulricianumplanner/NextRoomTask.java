@@ -68,11 +68,14 @@ class NextRoomTask extends AsyncTask<String, Boolean, Boolean> {
         Course nextCourse = coursePlan.getCourse(Day.fromInt(currentDayIndex), getNextHour());
 
         Course notificationCourse = new Course("Subject", "Room", "Teacher");
-        notificationCourse.subject = nextCourse.subject;
-        notificationCourse.teacher = nextCourse.teacher;
-        notificationCourse.room = nextCourse.room;
+        notificationCourse.setSubject(nextCourse.getSubject());
+        notificationCourse.setTeacher(nextCourse.getTeacher());
+        notificationCourse.setRoom(nextCourse.getRoom());
+        notificationCourse.setSubjectB(nextCourse.getSubjectB());
+        notificationCourse.setTeacherB(nextCourse.getTeacherB());
+        notificationCourse.setRoomB(nextCourse.getRoomB());
 
-        if(notificationCourse.teacher.isEmpty())
+        if(notificationCourse.getTeacher().isEmpty())
             return true;
 
         TableEntry[] currentSubstitutions = new TableEntry[0];
@@ -85,9 +88,12 @@ class NextRoomTask extends AsyncTask<String, Boolean, Boolean> {
             if(Hour.fromString(entry.time).equals(getNextHour())) {
                 if(entry.type.equals("Entfall"))
                     return true;
-                notificationCourse.subject = entry.substituteSubject;
-                notificationCourse.teacher = entry.substituteTeacher;
-                notificationCourse.room = entry.room;
+                notificationCourse.setSubject(entry.substituteSubject);
+                notificationCourse.setTeacher(entry.substituteTeacher);
+                notificationCourse.setRoom(entry.room);
+                notificationCourse.setSubjectB(entry.substituteSubject);
+                notificationCourse.setTeacherB(entry.substituteTeacher);
+                notificationCourse.setRoomB(entry.room);
             }
         }
 

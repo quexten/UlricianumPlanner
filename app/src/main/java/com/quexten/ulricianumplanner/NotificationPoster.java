@@ -120,10 +120,14 @@ public class NotificationPoster {
         if(!sharedPref.getBoolean("notifications_room_enabled", true))
             return;
 
+        String currentTeacher = course.getTeacher();
+        String currentSubject = course.getSubject();
+        String currentRoom = course.getRoom();
+
         //Notification
-        String header = "Gleich " + Course.getLongSubjectName(context, course.subject) + " in " + course.room;
-        String teacher = teacherManager.getFullTeacherName((course.getTeachers().length > 0 ? course.getTeachers()[0] : ""));
-        teacher = (teacher != null) ? teacher : course.teacher;
+        String header = "Gleich " + Course.getLongSubjectName(context, currentSubject) + " in " + currentRoom;
+        String teacher = teacherManager.getFullTeacherName(currentTeacher);
+        teacher = (teacher != null) ? teacher : currentTeacher;
         String message = "bei " + teacher;
 
         NotificationCompat.Builder builder =

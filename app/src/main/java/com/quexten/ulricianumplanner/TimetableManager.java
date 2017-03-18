@@ -11,19 +11,24 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;;
 import android.widget.AutoCompleteTextView;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.crash.FirebaseCrash;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
+
+import java.util.Arrays;
 
 /**
  * Created by Quexten on 01-Sep-16.
@@ -101,10 +106,10 @@ public class TimetableManager {
                 TextView subjectView = ((TextView) layout.findViewById(R.id.subjectView));
                 TextView roomView = ((TextView) layout.findViewById(R.id.roomView));
 
-                subjectView.setText(Course.getLongSubjectName(activity.getApplicationContext(), course.subject));
-                roomView.setText(course.room);
+                subjectView.setText(Course.getLongSubjectName(activity.getApplicationContext(), course.getSubject()));
+                roomView.setText(course.getRoom());
 
-                subjectView.setBackgroundColor(course.subject.isEmpty() ? Color.parseColor("#eeeeee") : Color.parseColor("#e0e0e0"));
+                subjectView.setBackgroundColor(course.getSubject().isEmpty() ? Color.parseColor("#eeeeee") : Color.parseColor("#e0e0e0"));
             }
         }
 
@@ -141,11 +146,10 @@ public class TimetableManager {
                 final int hourNumber = hour.ordinal();
 
                 LinearLayout layout = getTableEntryLayout(day, hour);
-                layout.setOnLongClickListener(new View.OnLongClickListener() {
+                layout.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public boolean onLongClick(View v) {
+                    public void onClick(View v) {
                         TimetableManager.showEditingDialog(activity, TimetableManager.this, coursePlan, dayNumber, hourNumber);
-                        return false;
                     }
                 });
             }
@@ -289,6 +293,11 @@ public class TimetableManager {
     public static View showEditingDialog(final Activity activity, final TimetableManager timetableManager, final CoursePlan coursePlan, final int dayNumber, final int hourNumber) {
         final Course selectedCourse = coursePlan.getCourse(dayNumber, hourNumber);
 
+        final Course tempCourse = new Course(selectedCourse.getSubject(), selectedCourse.getRoom(), selectedCourse.getTeacher(),
+                selectedCourse.getSubjectB(), selectedCourse.getRoomB(), selectedCourse.getTeacherB());
+
+
+
         AlertDialog.Builder builderSingle = new AlertDialog.Builder(activity);
         builderSingle.setTitle(R.string.dialog_title);
 
@@ -296,17 +305,6 @@ public class TimetableManager {
         final LinearLayout childLayout = ((LinearLayout) child);
 
         //View for Second Teacher Option, is initially hidden
-        final LinearLayout teacherLayout = ((LinearLayout) childLayout.findViewById(R.id.teacher_text_layout));
-        final EditText secondTeacherView = new EditText(activity);
-        secondTeacherView.setHint("Lehrer");
-        secondTeacherView.setAllCaps(true);
-        secondTeacherView.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
-        secondTeacherView.setEms(10);
-        secondTeacherView.setLayoutParams(new DrawerLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        secondTeacherView.setEnabled(true);
-        secondTeacherView.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
-
-
         builderSingle.setNeutralButton(R.string.dialog_delete, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -320,41 +318,48 @@ public class TimetableManager {
             }
         });
 
-        final ImageButton addButton = ((ImageButton) childLayout.findViewById(R.id.add_teacher_button));
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(secondTeacherView.getParent() == null) {
-                    addButton.setBackgroundResource(R.drawable.ic_action_delete);
-                    secondTeacherView.setText("");
-                    teacherLayout.addView(secondTeacherView, 1);
-                } else {
-                    addButton.setBackgroundResource(R.drawable.ic_action_add);
-                    teacherLayout.removeView(secondTeacherView);
-                }
-            }
-        });
-
-        if(selectedCourse.getTeachers().length > 1) {
-            teacherLayout.addView(secondTeacherView, 1);
-            secondTeacherView.setText(selectedCourse.getTeachers()[1]);
-            addButton.setBackgroundResource(R.drawable.ic_action_delete);
-        }
-
         final TextView teacherView = ((TextView ) childLayout.findViewById(R.id.TeacherText));
-        teacherView.setText(selectedCourse.getTeachers()[0]);
+        teacherView.setText(selectedCourse.getTeacher());
         teacherView.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
 
         final AutoCompleteTextView roomView = ((AutoCompleteTextView) childLayout.findViewById(R.id.RoomText));
-        roomView.setText(selectedCourse.room);
+        roomView.setText(selectedCourse.getRoom());
 
         final Spinner subjectSpinner = ((Spinner) childLayout.findViewById(R.id.SubjectSpinner));
-        String[] subjects = activity.getResources().getStringArray(R.array.subjects_long);
+        final String[] subjects = activity.getResources().getStringArray(R.array.subjects_long);
         for(int i = 0; i < subjects.length; i++)
-            if(subjects[i].equals(Course.getLongSubjectName(activity.getApplicationContext(), selectedCourse.subject))) {
+            if(subjects[i].equals(Course.getLongSubjectName(activity.getApplicationContext(), selectedCourse.getSubject()))) {
                 subjectSpinner.setSelection(i);
                 break;
             }
+
+        final Switch abCycleSwitch = ((Switch) childLayout.findViewById(R.id.ab_weekcycle_switch));
+        abCycleSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+                if(checked) {
+                    tempCourse.setTeacher(teacherView.getText().toString());
+                    tempCourse.setSubject(subjectSpinner.getSelectedItem().toString());
+                    tempCourse.setRoom(roomView.getText().toString());
+                } else {
+                    tempCourse.setTeacherB(teacherView.getText().toString());
+                    tempCourse.setSubjectB(subjectSpinner.getSelectedItem().toString());
+                    tempCourse.setRoomB(roomView.getText().toString());
+                }
+
+                String teacherText = checked ? tempCourse.getTeacherB() : tempCourse.getTeacher();
+                String subjectText = checked ? tempCourse.getSubjectB() : tempCourse.getSubject();
+                String roomText = checked ? tempCourse.getRoomB() : tempCourse.getRoom();
+                teacherView.setText(teacherText);
+                for(int i = 0; i < subjects.length; i++) {
+                    if (subjects[i].equals(Course.getLongSubjectName(activity.getApplicationContext(), subjectText))) {
+                        subjectSpinner.setSelection(i);
+                        break;
+                    }
+                }
+                roomView.setText(roomText);
+            }
+        });
 
         builderSingle.setView(child);
 
@@ -364,8 +369,18 @@ public class TimetableManager {
                 if(timetableManager != null) {
                     Day day = Day.fromInt(dayNumber);
                     Hour hour = Hour.fromInt(hourNumber);
-                    String teacherString = teacherView.getText().toString() + (secondTeacherView.getParent() != null ? (" " + secondTeacherView.getText()) : "");
-                    coursePlan.setCourse(day, hour, new Course(Course.getShortSubjectName(activity.getApplicationContext(), subjectSpinner.getSelectedItem().toString()), roomView.getText().toString(), teacherString));
+
+                    if(!abCycleSwitch.isChecked()) {
+                        tempCourse.setTeacher(teacherView.getText().toString());
+                        tempCourse.setSubject(Course.getShortSubjectName(activity, subjectSpinner.getSelectedItem().toString()));
+                        tempCourse.setRoom(roomView.getText().toString());
+                    } else {
+                        tempCourse.setTeacherB(teacherView.getText().toString());
+                        tempCourse.setSubjectB(Course.getShortSubjectName(activity, subjectSpinner.getSelectedItem().toString()));
+                        tempCourse.setRoomB(roomView.getText().toString());
+                    }
+
+                    coursePlan.setCourse(day, hour, tempCourse);
                     coursePlan.save();
                     timetableManager.generateVisuals();
                 }

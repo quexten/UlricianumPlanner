@@ -7,32 +7,27 @@
     android:weightSum="1">
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:id="@+id/teacher_text_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/teacher_text_layout">
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="34sp"
+            android:layout_height="34sp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_teacher" />
 
         <EditText
+            android:id="@+id/TeacherText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAllCaps="true"
-            android:inputType="textPersonName"
+            android:layout_weight="9999"
             android:ems="10"
-            android:id="@+id/TeacherText"
             android:hint="Lehrer"
-            android:layout_weight="9999" />
-
-        <ImageButton
-            android:layout_height="wrap_content"
-            android:id="@+id/add_teacher_button"
-            android:layout_weight="1"
-            app:backgroundTint="#FFFFFF"
-            android:background="@drawable/ic_action_add"
-            android:cropToPadding="false"
-            android:adjustViewBounds="false"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="8dp"
-            android:layout_width="24dp" />
+            android:inputType="textPersonName"
+            android:textAllCaps="true" />
 
     </LinearLayout>
 
@@ -41,23 +36,63 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.04" />
 
-    <Spinner
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:id="@+id/SubjectSpinner"
-        android:entries="@array/subjects_long" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_subject" />
+
+        <Spinner
+            android:id="@+id/SubjectSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:entries="@array/subjects_long" />
+    </LinearLayout>
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.04" />
 
-    <AutoCompleteTextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/RoomText"
-        android:hint="Raum" />
+        android:orientation="horizontal">
 
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="34sp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_location" />
+
+        <AutoCompleteTextView
+            android:id="@+id/RoomText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Raum"
+            android:inputType="textPersonName" />
+
+    </LinearLayout>
+
+    <Switch
+        android:id="@+id/ab_weekcycle_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Woche (A-B)"
+        android:textSize="18sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.04" />
 </LinearLayout>

@@ -78,10 +78,10 @@ public class TimetableWidgetProvider extends AppWidgetProvider {
             views.setInt(SUBJECTVIEW_IDS_RIGHT[i], "setBackgroundColor",
                     Color.parseColor("#e0e0e0"));
 
-            String todayRoom = coursePlan.getCourse(substitutions.getTodayDay(), Hour.fromInt(i)).room;
-            String todaySubject = coursePlan.getCourse(substitutions.getTodayDay(), Hour.fromInt(i)).subject;
-            String tomorrowRoom = coursePlan.getCourse(substitutions.getTomorrowDay(), Hour.fromInt(i)).room;
-            String tomorrowSubject = coursePlan.getCourse(substitutions.getTomorrowDay(), Hour.fromInt(i)).subject;
+            String todayRoom = coursePlan.getCourse(substitutions.getTodayDay(), Hour.fromInt(i)).getCurrentRoom();
+            String todaySubject = coursePlan.getCourse(substitutions.getTodayDay(), Hour.fromInt(i)).getCurrentSubject();
+            String tomorrowRoom = coursePlan.getCourse(substitutions.getTomorrowDay(), Hour.fromInt(i)).getCurrentRoom();
+            String tomorrowSubject = coursePlan.getCourse(substitutions.getTomorrowDay(), Hour.fromInt(i)).getCurrentSubject();
 
             todayRoom = todayRoom.isEmpty() ? " " : todayRoom;
             todaySubject = Course.getLongSubjectName(context, todaySubject.isEmpty() ? " " : todaySubject);
