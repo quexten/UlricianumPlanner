@@ -36,7 +36,6 @@ public class Course {
 		return subject+"|"+room+"|"+teacher;
 	}
 
-
     public String getSubject() {
         return (subject != null) ? subject : "";
     }
