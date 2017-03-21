@@ -119,7 +119,8 @@ public class TimetableWidgetProvider extends AppWidgetProvider {
         while (60 * n - 30 < size) {
             ++n;
         }
-        return n - 1;
+        int num = n - 1;
+        return num <= 4 ? num : 4;
     }
 
 }
