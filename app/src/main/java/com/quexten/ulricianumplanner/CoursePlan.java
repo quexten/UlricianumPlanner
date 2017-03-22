@@ -98,6 +98,18 @@ public class CoursePlan {
 		SharedPreferences sharedPref = context.getSharedPreferences(ACTIVITY_IDENTIFIER, Context.MODE_PRIVATE);
 		Gson gson = new Gson();
 		courseArray = gson.fromJson(sharedPref.getString(COURSE_IDENTIFIER, gson.toJson(new Course[5][5])), Course[][].class);
+
+        //Sanitize improper coursefile
+        for(int x = 0; x < 5; x++) {
+            for(int y = 0; y < 5; y++) {
+                Course course = courseArray[x][y];
+                if(course.getTeacher().contains(" ")) {
+                    course.setTeacher(course.getTeacher().substring(0, course.getTeacher().indexOf(" ")));
+                }
+            }
+        }
+
+
 	}
 
     /**
