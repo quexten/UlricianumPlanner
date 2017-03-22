@@ -103,7 +103,7 @@ public class CoursePlan {
         for(int x = 0; x < 5; x++) {
             for(int y = 0; y < 5; y++) {
                 Course course = courseArray[x][y];
-                if(course.getTeacher().contains(" ")) {
+                if(course != null && course.getTeacher() != null && course.getTeacher().contains(" ")) {
                     course.setTeacher(course.getTeacher().substring(0, course.getTeacher().indexOf(" ")));
                 }
             }
