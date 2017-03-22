@@ -97,7 +97,7 @@ public class Course {
     }
 
     public boolean hasDoubleWeekSchedule() {
-        return !this.getTeacherB().isEmpty();
+        return (this.getTeacherB() != null) && !this.getTeacherB().isEmpty();
     }
 
 	public static String getLongSubjectName(Context context, String shortSubject) {
