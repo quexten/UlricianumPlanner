@@ -157,7 +157,7 @@ public class TimetableManager {
 
         for(TableEntry entry : (today ? substitutions.getTodaySubstitutions() : substitutions.getTomorrowSubstitutions())) {
             Day day = today ? substitutions.getTodayDay() : substitutions.getTomorrowDay();
-            Hour hour = Hour.fromString(entry.time);
+            Hour hour = Hour.fromString(entry.time == null ? "" : entry.time);
 
             LinearLayout layout = getTableEntryLayout(day, hour);
 
