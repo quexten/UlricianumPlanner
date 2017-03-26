@@ -43,14 +43,11 @@ public class TimetableWidgetProvider extends AppWidgetProvider {
     @Override
     public void onAppWidgetOptionsChanged(Context context,
                                           AppWidgetManager appWidgetManager, int appWidgetId, Bundle newOptions) {
-        // See the dimensions and
         Bundle options = appWidgetManager.getAppWidgetOptions(appWidgetId);
 
-        // Get min width and height.
         int minHeight = options
                 .getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT);
 
-        // Obtain appropriate widget and update it.
         appWidgetManager.updateAppWidget(appWidgetId,
                 getRemoteViews(context, minHeight));
 
