@@ -73,7 +73,6 @@ public class CoursePlan {
 
     /**
      * Checks whether a class name is saved
-     * @return
      */
 	public boolean hasClassName() {
 		return context.getSharedPreferences(ACTIVITY_IDENTIFIER, Context.MODE_PRIVATE).contains("className");
