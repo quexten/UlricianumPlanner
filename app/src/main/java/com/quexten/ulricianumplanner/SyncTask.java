@@ -106,9 +106,6 @@ class SyncTask extends AsyncTask<String, Boolean, Boolean> {
         return true;
     }
 
-    protected void onPostExecute(Void post) {
-    }
-
     static int getEndTimeForHour(Hour hour) {
         switch(hour) {
             case ONETWO:
