@@ -149,7 +149,6 @@ public class MainActivity extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    FirebaseMessaging.getInstance().subscribeToTopic("substitutionplan-updates-"+arrayAdapter.getItem(which));
                     coursePlan.className = arrayAdapter.getItem(which);
                     coursePlan.saveClassName();
                 }
@@ -159,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which)
                 {
-                    FirebaseMessaging.getInstance().subscribeToTopic("substitutionplan-updates-"+arrayAdapter.getItem(which));
                     coursePlan.className = arrayAdapter.getItem(which);
                     coursePlan.saveClassName();
                 }
