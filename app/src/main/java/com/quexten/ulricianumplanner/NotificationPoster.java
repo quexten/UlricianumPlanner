@@ -60,10 +60,6 @@ public class NotificationPoster {
                 message = subject + " wird verlegt.";
                 header = subject + " Verlegung";
                 break;
-            case "Raum�.":
-                message = "Nach " + room;
-                header = subject + " Raumänderung";
-                break;
             case "Raumä.":
                 message = "Nach " + room;
                 header = subject + " Raumänderung";
