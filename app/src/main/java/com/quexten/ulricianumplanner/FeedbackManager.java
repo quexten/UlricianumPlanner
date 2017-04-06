@@ -3,7 +3,6 @@ package com.quexten.ulricianumplanner;
 import android.app.Activity;
 
 import android.os.Build;
-import static com.quexten.ulricianumplanner.BuildConfig.VERSION_CODE;
 
 /**
  * Created by Quexten on 09-Dec-16.
