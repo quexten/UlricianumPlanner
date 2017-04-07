@@ -61,6 +61,7 @@
         <item>PB</item>
         <item>GR</item>
         <item>EB</item>
+        <item>GE</item>
     </string-array>
     <string-array name="subjects_long">
         <item>Biologie</item>
@@ -88,6 +89,7 @@
         <item>Politik-Bilingual</item>
         <item>Griechisch</item>
         <item>Erdkunde-Bilingual</item>
+        <item>Geschichte-Bilingual</item>
     </string-array>
 
     <string name="dialog_title">Bearbeiten</string>
