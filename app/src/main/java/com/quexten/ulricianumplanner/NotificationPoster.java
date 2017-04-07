@@ -22,6 +22,7 @@ public class NotificationPoster {
     Context context;
     TeacherManager teacherManager;
 
+    //Counter to ensure unique notifications
     static int notificationId = 0;
 
     public NotificationPoster(Context context, TeacherManager teacherManager) {
