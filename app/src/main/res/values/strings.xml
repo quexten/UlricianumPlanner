@@ -57,6 +57,10 @@
         <item>SN</item>
         <item>SP</item>
         <item>ÖK</item>
+        <item>WI</item>
+        <item>PB</item>
+        <item>GR</item>
+        <item>EB</item>
     </string-array>
     <string-array name="subjects_long">
         <item>Biologie</item>
@@ -80,6 +84,10 @@
         <item>Spanisch</item>
         <item>Sport</item>
         <item>Ökokurs</item>
+        <item>Wirtschaftslehre</item>
+        <item>Politik-Bilingual</item>
+        <item>Griechisch</item>
+        <item>Erdkunde-Bilingual</item>
     </string-array>
 
     <string name="dialog_title">Bearbeiten</string>
