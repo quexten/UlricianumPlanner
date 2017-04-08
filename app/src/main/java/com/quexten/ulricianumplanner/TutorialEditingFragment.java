@@ -25,8 +25,6 @@ public class TutorialEditingFragment extends android.support.v4.app.DialogFragme
                                  Bundle savedInstanceState) {
             View v = inflater.inflate(R.layout.tutorial_edit_dialog, container, false);
             v.setBackgroundColor(Color.WHITE);
-
-
             return v;
         }
 
