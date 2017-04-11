@@ -56,4 +56,17 @@ public class TeacherManager {
         return null;
     }
 
+    /**Gets the subjects for a given teacher
+     * @param teacherShorthand - the teachers shorthand
+     * @return a String array of the subjects, an empty String
+     * array if no matching teacher is found
+     */
+    public String[] getTeacherSubjects(String teacherShorthand) {
+        for(TeacherEntry entry : teacherList.list) {
+            if(entry.shortName.toUpperCase().equals(teacherShorthand.toUpperCase()))
+                return entry.subjects;
+        }
+        return new String[0];
+    }
+
 }
