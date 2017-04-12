@@ -5,21 +5,28 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.database.DataSetObserver;
 import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +35,7 @@ import com.google.firebase.crash.FirebaseCrash;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -40,11 +48,13 @@ public class TimetableManager {
 
     public CoursePlan coursePlan;
     public Substitutions substitutions;
+    private TeacherManager teacherManager;
 
-    public TimetableManager(final Activity activity, CoursePlan coursePlan, Substitutions substitutions, final NewsListener newsListener) {
+    public TimetableManager(final Activity activity, CoursePlan coursePlan, Substitutions substitutions, final NewsListener newsListener, TeacherManager teacherManager) {
         this.activity = activity;
         this.coursePlan = coursePlan;
         this.substitutions = substitutions;
+        this.teacherManager = teacherManager;
 
         final SwipeRefreshLayout swipeRefreshLayout = ((SwipeRefreshLayout) activity.findViewById(R.id.swiperefreshlayout));
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -149,7 +159,7 @@ public class TimetableManager {
                 layout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        TimetableManager.showEditingDialog(activity, TimetableManager.this, coursePlan, dayNumber, hourNumber);
+                        showEditingDialog(activity, TimetableManager.this, coursePlan, dayNumber, hourNumber);
                     }
                 });
             }
@@ -290,7 +300,7 @@ public class TimetableManager {
                 : Color.parseColor("#BCAAA4");
     }
 
-    public static View showEditingDialog(final Activity activity, final TimetableManager timetableManager, final CoursePlan coursePlan, final int dayNumber, final int hourNumber) {
+    public View showEditingDialog(final Activity activity, final TimetableManager timetableManager, final CoursePlan coursePlan, final int dayNumber, final int hourNumber) {
         final Course selectedCourse = coursePlan.getCourse(dayNumber, hourNumber);
 
         final Course tempCourse = new Course(selectedCourse.getSubject(), selectedCourse.getRoom(), selectedCourse.getTeacher(),
@@ -327,6 +337,41 @@ public class TimetableManager {
 
         final Spinner subjectSpinner = ((Spinner) childLayout.findViewById(R.id.SubjectSpinner));
         final String[] subjects = activity.getResources().getStringArray(R.array.subjects_long);
+
+        //List of currently selected teachers subjects
+        final ArrayList<String> teacherSubjects = new ArrayList<String>();
+        if(!teacherView.getText().toString().isEmpty())
+            for(String subject : teacherManager.getTeacherSubjects(selectedCourse.getCurrentTeacher()))
+                teacherSubjects.add(subject);
+
+        teacherView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i0, int i1, int i2) {
+                teacherSubjects.clear();
+                if(!teacherView.getText().toString().isEmpty())
+                    for(String subject : teacherManager.getTeacherSubjects(charSequence.toString()))
+                        teacherSubjects.add(subject);
+
+                String[] combinedArray = new String[subjects.length + teacherSubjects.size()];
+                for(int i = 0; i < teacherSubjects.size(); i++)
+                    combinedArray[i] = teacherSubjects.get(i);
+                for(int i = teacherSubjects.size(); i < combinedArray.length; i++)
+                    combinedArray[i] = subjects[i - teacherSubjects.size()];
+                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(activity, android.R.layout.simple_spinner_item, combinedArray);
+                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                subjectSpinner.setAdapter(dataAdapter);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
+
+
         for(int i = 0; i < subjects.length; i++)
             if(subjects[i].equals(Course.getLongSubjectName(activity.getApplicationContext(), selectedCourse.getSubject()))) {
                 subjectSpinner.setSelection(i);

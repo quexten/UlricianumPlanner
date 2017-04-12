@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                             this.saveNews(news);
                         }
                     };
-                    MainActivity.this.timetableManager = new TimetableManager(MainActivity.this, coursePlan, substitutions, newsListener);
+                    MainActivity.this.timetableManager = new TimetableManager(MainActivity.this, coursePlan, substitutions, newsListener, teacherManager);
                     newsListener.newsReceived(newsListener.loadNews());
                     MainActivity.this.timetableManager.generateVisuals();
                 }
