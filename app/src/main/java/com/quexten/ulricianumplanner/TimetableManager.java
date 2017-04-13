@@ -342,7 +342,7 @@ public class TimetableManager {
         final ArrayList<String> teacherSubjects = new ArrayList<String>();
         if(!teacherView.getText().toString().isEmpty())
             for(String subject : teacherManager.getTeacherSubjects(selectedCourse.getCurrentTeacher()))
-                teacherSubjects.add(subject);
+                teacherSubjects.add(Course.getLongSubjectName(activity, subject));
 
         teacherView.addTextChangedListener(new TextWatcher() {
             @Override
