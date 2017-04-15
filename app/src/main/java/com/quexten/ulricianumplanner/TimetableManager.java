@@ -27,7 +27,6 @@ import com.google.firebase.crash.FirebaseCrash;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by Quexten on 01-Sep-16.
