@@ -297,7 +297,6 @@ public class TimetableManager {
                 selectedCourse.getSubjectB(), selectedCourse.getRoomB(), selectedCourse.getTeacherB());
 
 
-
         AlertDialog.Builder builderSingle = new AlertDialog.Builder(activity);
         builderSingle.setTitle(R.string.dialog_title);
 
