@@ -41,7 +41,7 @@ public class TeacherManager {
 
     /**Gets the full teacher name for a given shorthand
      * @param shorthand - the shorthand
-     * @return - the full name or null if none was found
+     * @return - the full name or the shorthand if none was found
      */
     public String getFullTeacherName(String shorthand) {
         shorthand = shorthand.toUpperCase();
@@ -54,7 +54,7 @@ public class TeacherManager {
 
     /**Gets the shorthand for a full teacher name
      * @param name - the full name
-     * @return - the shorthand or null if none was found
+     * @return - the shorthand or the full name if none was found
      */
     public String getTeacherShorthand(String name) {
         for(TeacherEntry entry : teacherList.list) {
