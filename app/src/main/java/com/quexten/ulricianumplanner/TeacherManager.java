@@ -46,10 +46,10 @@ public class TeacherManager {
     public String getFullTeacherName(String shorthand) {
         shorthand = shorthand.toUpperCase();
         for(TeacherEntry entry : teacherList.list) {
-            if(entry.shortName.toUpperCase().equals(shorthand))
+            if(entry.shortName.toUpperCase().equals(shorthand.toUpperCase()))
                 return entry.fullName;
         }
-        return null;
+        return shorthand;
     }
 
     /**Gets the shorthand for a full teacher name
@@ -58,10 +58,10 @@ public class TeacherManager {
      */
     public String getTeacherShorthand(String name) {
         for(TeacherEntry entry : teacherList.list) {
-            if(entry.fullName.equals(name))
+            if(entry.fullName.toUpperCase().equals(name.toUpperCase()))
                 return entry.shortName;
         }
-        return null;
+        return name;
     }
 
     /**Gets the subjects for a given teacher
