@@ -11,6 +11,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;;
 import android.widget.ArrayAdapter;
@@ -318,8 +320,18 @@ public class TimetableManager {
         });
 
         final TextView teacherView = ((TextView ) childLayout.findViewById(R.id.TeacherText));
-        teacherView.setText(selectedCourse.getTeacher());
+        teacherView.setText(teacherManager.getFullTeacherName(selectedCourse.getTeacher()));
         teacherView.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+        teacherView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean focused) {
+                if(focused) {
+                    teacherView.setText(teacherManager.getTeacherShorthand(teacherView.getText().toString()));
+                } else {
+                    teacherView.setText(teacherManager.getFullTeacherName(teacherView.getText().toString()));
+                }
+            }
+        });
 
         final AutoCompleteTextView roomView = ((AutoCompleteTextView) childLayout.findViewById(R.id.RoomText));
         roomView.setText(selectedCourse.getRoom());
@@ -341,9 +353,12 @@ public class TimetableManager {
             @Override
             public void onTextChanged(CharSequence charSequence, int i0, int i1, int i2) {
                 teacherSubjects.clear();
-                if(!teacherView.getText().toString().isEmpty())
-                    for(String subject : teacherManager.getTeacherSubjects(charSequence.toString()))
+
+                if(!teacherView.getText().toString().isEmpty()) {
+                    String shorthand = teacherManager.getTeacherShorthand(charSequence.toString());
+                    for (String subject : teacherManager.getTeacherSubjects(shorthand))
                         teacherSubjects.add(subject);
+                }
 
                 String[] combinedArray = new String[subjects.length + teacherSubjects.size()];
                 for(int i = 0; i < teacherSubjects.size(); i++)
