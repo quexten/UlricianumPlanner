@@ -319,7 +319,6 @@ public class TimetableManager {
 
         final TextView teacherView = ((TextView ) childLayout.findViewById(R.id.TeacherText));
         teacherView.setText(teacherManager.getFullTeacherName(selectedCourse.getTeacher()));
-        teacherView.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
         teacherView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean focused) {
