@@ -373,7 +373,6 @@ public class TimetableManager {
             }
         });
 
-
         for(int i = 0; i < subjects.length; i++)
             if(subjects[i].equals(Course.getLongSubjectName(activity.getApplicationContext(), selectedCourse.getSubject()))) {
                 subjectSpinner.setSelection(i);
