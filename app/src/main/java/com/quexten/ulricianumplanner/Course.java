@@ -104,7 +104,7 @@ public class Course {
 		String[] longStringArray = context.getResources().getStringArray(R.array.subjects_long);
 		String[] shortStringArray = context.getResources().getStringArray(R.array.subjects);
 		for(int i = 0; i < longStringArray.length; i++) {
-			if(shortStringArray[i].equals(shortSubject))
+			if(shortStringArray[i].toUpperCase().equals(shortSubject.toUpperCase()))
 				return longStringArray[i];
 		}
 		return shortSubject;
@@ -114,7 +114,7 @@ public class Course {
 		String[] longStringArray = context.getResources().getStringArray(R.array.subjects_long);
 		String[] shortStringArray = context.getResources().getStringArray(R.array.subjects);
 		for(int i = 0; i < longStringArray.length; i++) {
-			if(longStringArray[i].equals(longSubject))
+			if(longStringArray[i].toUpperCase().equals(longSubject.toUpperCase()))
 				return shortStringArray[i];
 		}
 		return longSubject;
