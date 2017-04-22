@@ -355,7 +355,7 @@ public class TimetableManager {
                 if(!teacherView.getText().toString().isEmpty()) {
                     String shorthand = teacherManager.getTeacherShorthand(charSequence.toString());
                     for (String subject : teacherManager.getTeacherSubjects(shorthand))
-                        teacherSubjects.add(subject);
+                        teacherSubjects.add(Course.getLongSubjectName(activity, subject.toString()));
                 }
 
                 String[] combinedArray = new String[subjects.length + teacherSubjects.size()];
