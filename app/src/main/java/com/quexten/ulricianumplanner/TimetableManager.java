@@ -297,7 +297,6 @@ public class TimetableManager {
         final Course tempCourse = new Course(selectedCourse.getSubject(), selectedCourse.getRoom(), selectedCourse.getTeacher(),
                 selectedCourse.getSubjectB(), selectedCourse.getRoomB(), selectedCourse.getTeacherB());
 
-
         AlertDialog.Builder builderSingle = new AlertDialog.Builder(activity);
         builderSingle.setTitle(R.string.dialog_title);
 
