@@ -77,4 +77,20 @@ public class TeacherManager {
         return new String[0];
     }
 
+    public String[] getShorthandTeacherList() {
+        int size = teacherList.list.length;
+        String[] list = new String[size];
+        for(int i = 0; i < size; i++)
+            list[i] =  teacherList.list[i].shortName;
+        return list;
+    }
+
+    public String[] getFullTeacherList() {
+        int size = teacherList.list.length;
+        String[] list = new String[size];
+        for(int i = 0; i < size; i++)
+            list[i] =  teacherList.list[i].fullName;
+        return list;
+    }
+
 }

@@ -7,12 +7,13 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.preference.PreferenceManager;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
-import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.CompoundButton;
@@ -317,7 +318,7 @@ public class TimetableManager {
             }
         });
 
-        final TextView teacherView = ((TextView ) childLayout.findViewById(R.id.TeacherText));
+        final AutoCompleteTextView teacherView = ((AutoCompleteTextView ) childLayout.findViewById(R.id.TeacherText));
         teacherView.setText(teacherManager.getFullTeacherName(selectedCourse.getTeacher()));
         teacherView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -327,6 +328,22 @@ public class TimetableManager {
                 } else {
                     teacherView.setText(teacherManager.getFullTeacherName(teacherView.getText().toString()));
                 }
+            }
+        });
+
+        String[] shortTeacherList = teacherManager.getShorthandTeacherList();
+        String[] fullTeacherList = teacherManager.getFullTeacherList();
+        String[] autocompleteArray = new String[shortTeacherList.length];
+        for(int i = 0; i < autocompleteArray.length; i++)
+            autocompleteArray[i] = shortTeacherList[i] + " (" + fullTeacherList[i] + ")";
+        teacherView.setAdapter(new ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, autocompleteArray));
+        teacherView.setThreshold(1);
+        teacherView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long rowId) {
+                String selection = (String)parent.getItemAtPosition(position);
+                if(selection.contains(" "))
+                    selection = selection.substring(0, selection.indexOf(" "));
+                teacherView.setText(selection);
             }
         });
 
