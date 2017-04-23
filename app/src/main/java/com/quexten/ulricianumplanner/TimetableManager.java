@@ -379,9 +379,13 @@ public class TimetableManager {
                     combinedArray[i] = teacherSubjects.get(i);
                 for(int i = teacherSubjects.size(); i < combinedArray.length; i++)
                     combinedArray[i] = subjects[i - teacherSubjects.size()];
-                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(activity, android.R.layout.simple_spinner_item, combinedArray);
+                ColoredArrayAdapter dataAdapter = new ColoredArrayAdapter(activity, android.R.layout.simple_spinner_item, combinedArray);
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 subjectSpinner.setAdapter(dataAdapter);
+
+                for(int i = teacherSubjects.size(); i < combinedArray.length; i++) {
+                    dataAdapter.setColor(i, ResourcesCompat.getColor(activity.getResources(), R.color.colorTextSecondary, null));
+                }
             }
 
             @Override
