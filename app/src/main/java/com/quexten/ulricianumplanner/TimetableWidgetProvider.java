@@ -86,19 +86,19 @@ public class TimetableWidgetProvider extends AppWidgetProvider {
             tomorrowSubject = Course.getLongSubjectName(context, tomorrowSubject.isEmpty() ? " " : tomorrowSubject);
 
             for(TableEntry entry : substitutions.getTodaySubstitutions()) {
-                if(Hour.fromString(entry.time).equals(Hour.fromInt(i))) {
-                    todaySubject = Course.getLongSubjectName(context, entry.substituteSubject);
-                    todayRoom = entry.room;
+                if(Hour.fromString(entry.getTime()).equals(Hour.fromInt(i))) {
+                    todaySubject = Course.getLongSubjectName(context, entry.getSubstituteSubject());
+                    todayRoom = entry.getRoom();
                     views.setInt(SUBJECTVIEW_IDS_LEFT[i], "setBackgroundColor",
-                            TimetableManager.getColorForSubstitution(context, entry.type));
+                            TimetableManager.getColorForSubstitution(context, entry.getType()));
                 }
             }
             for(TableEntry entry : substitutions.getTomorrowSubstitutions()) {
-                if(Hour.fromString(entry.time).equals(Hour.fromInt(i))) {
-                    tomorrowSubject = Course.getLongSubjectName(context, entry.substituteSubject);
-                    tomorrowRoom = entry.room;
+                if(Hour.fromString(entry.getTime()).equals(Hour.fromInt(i))) {
+                    tomorrowSubject = Course.getLongSubjectName(context, entry.getSubstituteSubject());
+                    tomorrowRoom = entry.getRoom();
                     views.setInt(SUBJECTVIEW_IDS_RIGHT[i], "setBackgroundColor",
-                            TimetableManager.getColorForSubstitution(context, entry.type));
+                            TimetableManager.getColorForSubstitution(context, entry.getType()));
                 }
             }
 

@@ -129,11 +129,11 @@ public class CoursePlan {
     public TableEntry[] getMatching(TableEntry[] entries, Day day) {
         ArrayList<TableEntry> filteredEntries = new ArrayList<TableEntry>();
         for(TableEntry entry : entries) {
-            if(entry.className.contains(className)) {
-                Hour hour = Hour.fromString(entry.time);
+            if(entry.getClassName().contains(className)) {
+                Hour hour = Hour.fromString(entry.getTime());
                 Course course = getCourse(day.ordinal(), hour.ordinal());
                 for(String teacher : new String[] {course.getTeacher(), course.getTeacherB()})
-                    if(teacher.equals(entry.teacher))
+                    if(teacher.equals(entry.getTeacher()))
                         filteredEntries.add(entry);
             }
         }

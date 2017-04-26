@@ -21,19 +21,17 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
 class PostFeedbackTask extends AsyncTask<String, Boolean, Boolean> {
 
-    static final String FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd7xQld2bPmxe3UTkN6S5XWEz_IRgnWeA96zOy7R88f1tlYPg/formResponse";
-    static final String ENTRY_DESCRIPTION = "entry.1171372604";
-    static final String ENTRY_BUILDVERSION = "entry.996186014";
-    static final String ENTRY_DEVICEINFO = "entry.1210007803";
-    static final String ENTRY_TIMETABLE = "entry.1799750604";
+    private static final String FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd7xQld2bPmxe3UTkN6S5XWEz_IRgnWeA96zOy7R88f1tlYPg/formResponse";
+    private static final String ENTRY_DESCRIPTION = "entry.1171372604";
+    private static final String ENTRY_BUILDVERSION = "entry.996186014";
+    private static final String ENTRY_DEVICEINFO = "entry.1210007803";
+    private static final String ENTRY_TIMETABLE = "entry.1799750604";
 
-    Activity activity;
-    Context context;
-    FeedbackManager.FeedbackOptions feedbackOptions;
+    private Activity activity;
+    private FeedbackManager.FeedbackOptions feedbackOptions;
 
     public PostFeedbackTask(Activity activity, FeedbackManager.FeedbackOptions feedbackOptions) {
         this.activity = activity;
-        this.context = activity.getApplicationContext();
         this.feedbackOptions = feedbackOptions;
     }
 
@@ -68,7 +66,7 @@ class PostFeedbackTask extends AsyncTask<String, Boolean, Boolean> {
                     CharSequence text = toastMessage;
                     int duration = Toast.LENGTH_SHORT;
 
-                    Toast toast = Toast.makeText(context, text, duration);
+                    Toast toast = Toast.makeText(activity, text, duration);
                     toast.show();
                 } catch (Exception ex) {
                     ex.printStackTrace();

@@ -43,16 +43,16 @@ public class NotificationPoster {
         String message = "";
         String header = "";
 
-        String substitutionTeacher = teacherManager.getFullTeacherName(entry.substituteTeacher);
-        substitutionTeacher = (substitutionTeacher != null) ? substitutionTeacher : entry.substituteTeacher;
-        String teacher = teacherManager.getFullTeacherName(entry.teacher);
-        teacher = (teacher != null) ? teacher : entry.teacher;
-        String substituteSubject = Course.getLongSubjectName(context, entry.substituteSubject);
-        String subject = Course.getLongSubjectName(context, entry.subject);
-        String time = entry.time;
-        String room = entry.room;
+        String substitutionTeacher = teacherManager.getFullTeacherName(entry.getSubstituteTeacher());
+        substitutionTeacher = (substitutionTeacher != null) ? substitutionTeacher : entry.getSubstituteTeacher();
+        String teacher = teacherManager.getFullTeacherName(entry.getTeacher());
+        teacher = (teacher != null) ? teacher : entry.getTeacher();
+        String substituteSubject = Course.getLongSubjectName(context, entry.getSubstituteSubject());
+        String subject = Course.getLongSubjectName(context, entry.getSubject());
+        String time = entry.getTime();
+        String room = entry.getRoom();
 
-        switch(entry.type) {
+        switch(entry.getType()) {
             case "Entfall":
                 message = time + " entfällt " + subject + " bei " + teacher;
                 header = time + " Entfall";
@@ -78,7 +78,7 @@ public class NotificationPoster {
                 header = subject + " findet statt.";
                 break;
             case "Betreu.":
-                message = "Bei " + substitutionTeacher + " in " + entry.room;
+                message = "Bei " + substitutionTeacher + " in " + entry.getRoom();
                 header = subject + " Betreuung";
                 break;
         }

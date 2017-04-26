@@ -158,22 +158,22 @@ public class TimetableManager {
 
         for(TableEntry entry : (today ? substitutions.getTodaySubstitutions() : substitutions.getTomorrowSubstitutions())) {
             Day day = today ? substitutions.getTodayDay() : substitutions.getTomorrowDay();
-            Hour hour = Hour.fromString(entry.time == null ? "" : entry.time);
+            Hour hour = Hour.fromString(entry.getTime() == null ? "" : entry.getTime());
 
             LinearLayout layout = getTableEntryLayout(day, hour);
 
             TextView subjectView = ((TextView) layout.findViewById(R.id.subjectView));
             TextView roomView = ((TextView) layout.findViewById(R.id.roomView));
 
-            if(!entry.type.equals("Entfall"))
-                subjectView.setText(Course.getLongSubjectName(activity.getApplicationContext(), entry.substituteSubject));
+            if(!entry.getType().equals("Entfall"))
+                subjectView.setText(Course.getLongSubjectName(activity.getApplicationContext(), entry.getSubstituteSubject()));
 
-            if(entry.type.equals("Vertret."))
-                roomView.setText(entry.substituteTeacher + "-" + entry.room);
+            if(entry.getType().equals("Vertret."))
+                roomView.setText(entry.getSubstituteTeacher() + "-" + entry.getRoom());
             else
-                roomView.setText(entry.room);
+                roomView.setText(entry.getRoom());
 
-            subjectView.setBackgroundColor(getColorForSubstitution(activity, entry.type));
+            subjectView.setBackgroundColor(getColorForSubstitution(activity, entry.getType()));
         }
     }
 

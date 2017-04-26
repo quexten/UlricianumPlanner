@@ -11,24 +11,16 @@ import java.util.Calendar;
 
 class NextRoomTask extends AsyncTask<String, Boolean, Boolean> {
 
-    private Context context;
-
-    private AccountManager accountManager;
     private CoursePlan coursePlan;
     private NetworkManager networkManager;
     private NotificationPoster notificationPoster;
-    private Substitutions substitutions;
     private TeacherManager teacherManager;
 
     public NextRoomTask(Context context) {
-        this.context = context;
-
-        accountManager = new AccountManager(context);
         coursePlan = new CoursePlan(context, null);
         networkManager = new NetworkManager(context);
         teacherManager = new TeacherManager(context);
         notificationPoster = new NotificationPoster(context, teacherManager);
-        substitutions = new Substitutions(context);
     }
 
     @Override
@@ -77,15 +69,15 @@ class NextRoomTask extends AsyncTask<String, Boolean, Boolean> {
             currentSubstitutions = tomorrowSubstitutions;
 
         for(TableEntry entry : currentSubstitutions) {
-            if(Hour.fromString(entry.time).equals(getNextHour())) {
-                if(entry.type.equals("Entfall"))
+            if(Hour.fromString(entry.getTime()).equals(getNextHour())) {
+                if(entry.getType().equals("Entfall"))
                     return true;
-                notificationCourse.setSubject(entry.substituteSubject);
-                notificationCourse.setTeacher(entry.substituteTeacher);
-                notificationCourse.setRoom(entry.room);
-                notificationCourse.setSubjectB(entry.substituteSubject);
-                notificationCourse.setTeacherB(entry.substituteTeacher);
-                notificationCourse.setRoomB(entry.room);
+                notificationCourse.setSubject(entry.getSubstituteSubject());
+                notificationCourse.setTeacher(entry.getSubstituteTeacher());
+                notificationCourse.setRoom(entry.getRoom());
+                notificationCourse.setSubjectB(entry.getSubstituteSubject());
+                notificationCourse.setTeacherB(entry.getSubstituteTeacher());
+                notificationCourse.setRoomB(entry.getRoom());
             }
         }
 

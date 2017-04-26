@@ -88,7 +88,7 @@ class SyncTask extends AsyncTask<String, Boolean, Boolean> {
             for(int i = 0; i < todaySubstitutions.length; i++) {
                 TableEntry entry = todaySubstitutions[i];
 
-                Hour hour = Hour.fromString(entry.time);
+                Hour hour = Hour.fromString(entry.getTime());
                 int notificationHour = getEndTimeForHour(hour);
 
                 int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);

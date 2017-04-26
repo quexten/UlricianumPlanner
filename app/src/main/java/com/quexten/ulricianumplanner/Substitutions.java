@@ -80,7 +80,7 @@ public class Substitutions {
         ArrayList<TableEntry> toRemoveEntries = new ArrayList<TableEntry>();
 
         for(TableEntry temp : entries) {
-            if(temp.time.equals(entry.time)) {
+            if(temp.getTime().equals(entry.getTime())) {
                 toRemoveEntries.add(temp);
             }
         }

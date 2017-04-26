@@ -40,9 +40,9 @@ public class SubstitutionFirebaseMessagingService extends FirebaseMessagingServi
         String substituteTeacher = message.getData().get("teacher");
 
         TableEntry entry = new TableEntry("", time, teacher, subject, type);
-        entry.room = room;
-        entry.substituteSubject = substituteSubject.toUpperCase();
-        entry.substituteTeacher = substituteTeacher.toUpperCase();
+        entry.setRoom(room);
+        entry.setSubstituteSubject(substituteSubject.toUpperCase());
+        entry.setSubstituteTeacher(substituteTeacher.toUpperCase());
 
         Substitutions substitutions = new Substitutions(this.getApplicationContext());
         substitutions.readSubstitutions();

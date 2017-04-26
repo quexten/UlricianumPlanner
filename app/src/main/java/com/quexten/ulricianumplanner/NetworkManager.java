@@ -22,17 +22,17 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 public class NetworkManager {
 
     //Constants
-    static final String LOGIN_URL = "https://ulricianum-aurich.de/idesk/";
+    private static final String LOGIN_URL = "https://ulricianum-aurich.de/idesk/";
 
     //Session related info
     static String phpSessionId;
 	static String phpSessionPassword;
 
-    IServPlanParser parser;
+    private IServPlanParser parser;
 
     private Context context;
 
-    NewsListener newsListener;
+    private NewsListener newsListener;
 
     public NetworkManager(Context context) {
         this.context = context;
