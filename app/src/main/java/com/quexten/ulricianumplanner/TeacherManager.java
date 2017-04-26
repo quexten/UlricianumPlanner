@@ -1,7 +1,6 @@
 package com.quexten.ulricianumplanner;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.google.gson.Gson;
 
