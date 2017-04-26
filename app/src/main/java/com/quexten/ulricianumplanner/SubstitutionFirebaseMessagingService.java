@@ -10,7 +10,6 @@ import com.google.firebase.messaging.RemoteMessage;
 public class SubstitutionFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage message) {
-        final String text = message.getData().get("message");
         String from = message.getFrom();
         from = from.replaceAll("/topics/substitution-updates-", "");
         from = from.replace("O_", "Ö")

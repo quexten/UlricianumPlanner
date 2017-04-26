@@ -57,13 +57,6 @@ class NextRoomTask extends AsyncTask<String, Boolean, Boolean> {
                 : day == Calendar.SUNDAY ? 6
                 : 7;
 
-        int todayDayIndex = todayDay.equals(Day.MON) ? 0
-                : todayDay.equals(Day.TUE) ? 1
-                : todayDay.equals(Day.WED) ? 2
-                : todayDay.equals(Day.THU) ? 3
-                : todayDay.equals(Day.FRI) ? 4
-                : 7;
-
         Course nextCourse = coursePlan.getCourse(Day.fromInt(currentDayIndex), getNextHour());
 
         Course notificationCourse = new Course("Subject", "Room", "Teacher");

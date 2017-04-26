@@ -155,7 +155,7 @@ public class NetworkManager {
             get.setHeader("User-Agent", "APP");
             HttpResponse response = client.execute(get);
             BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), Charset.forName("ISO-8859-15")));
-            String test = response.getEntity().toString();
+
             StringBuffer result = new StringBuffer();
             String line = "";
             while ((line = rd.readLine()) != null) {
