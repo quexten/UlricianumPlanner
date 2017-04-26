@@ -10,7 +10,6 @@ import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.SimpleShowcaseEventListener;
 import com.github.amlcurran.showcaseview.targets.Target;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
-import com.google.gson.Gson;
 
 /**
  * Created by Quexten on 27-Jan-17.

@@ -1,7 +1,6 @@
 package com.quexten.ulricianumplanner;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v4.content.res.ResourcesCompat;
 import android.view.View;
 import android.view.ViewGroup;

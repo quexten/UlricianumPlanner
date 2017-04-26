@@ -1,7 +1,5 @@
 package com.quexten.ulricianumplanner;
 
-
-import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,7 +9,6 @@ import android.preference.Preference;
 import android.support.v7.app.ActionBar;
 import android.preference.PreferenceFragment;
 import android.widget.ArrayAdapter;
-
 
 public class SettingsActivity extends AppCompatPreferenceActivity {
 

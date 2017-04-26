@@ -3,8 +3,6 @@ package com.quexten.ulricianumplanner;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.google.gson.Gson;
-
 /**
  * Created by Quexten on 04-Mar-17.
  */
