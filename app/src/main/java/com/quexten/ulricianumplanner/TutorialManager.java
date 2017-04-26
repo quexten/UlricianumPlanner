@@ -86,7 +86,7 @@ public class TutorialManager {
     }
 
     void showShowcaseView(Target target, int title, int text, OnShowcaseEventListener listener) {
-        ShowcaseView showcaseView1 = new ShowcaseView.Builder(activity)
+        new ShowcaseView.Builder(activity)
                 .withMaterialShowcase()
                 .setStyle(R.style.AppTheme)
                 .setTarget(target)
