@@ -12,7 +12,7 @@ public class Course {
     private String room  = "";
     private String teacher  = "";
 
-    //WeekB
+    //Week B
     private String subjectB = "";
     private String roomB  = "";
     private String teacherB  = "";
