@@ -30,14 +30,14 @@ public class RemoteTimetableFetcher {
     private static final String PREFERENCE_DATE_KEY = "remote_timetable_modification_date";
     private static final String DEFAULT_DATE = "19700101000000";
 
-    Activity activity;
-    Context context;
-    AccountManager accountManager;
-    CoursePlan coursePlan;
-    TimetableManager timetableManager;
+    private Activity activity;
+    private Context context;
+    private AccountManager accountManager;
+    private CoursePlan coursePlan;
+    private TimetableManager timetableManager;
 
-    FTPClient ftpClient;
-    Date remoteFileModificationDate;
+    private FTPClient ftpClient;
+    private Date remoteFileModificationDate;
 
     public RemoteTimetableFetcher(final Activity activity, AccountManager accountManager, CoursePlan coursePlan, TimetableManager timetableManager) {
         this.activity = activity;
@@ -85,8 +85,9 @@ public class RemoteTimetableFetcher {
                                                 .putString(PREFERENCE_DATE_KEY, getStringFromDate(remoteFileModificationDate))
                                                 .commit();
                                         break;
-
                                     case DialogInterface.BUTTON_NEGATIVE:
+                                        break;
+                                    default:
                                         break;
                                 }
                             }
@@ -186,8 +187,8 @@ public class RemoteTimetableFetcher {
     }
 
     private class RemoteTimetable {
-        String className;
-        Course[][] timetable;
+        protected String className;
+        protected Course[][] timetable;
     }
 
 }

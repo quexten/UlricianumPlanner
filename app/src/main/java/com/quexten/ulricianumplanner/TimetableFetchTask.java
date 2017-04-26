@@ -9,10 +9,10 @@ import android.os.AsyncTask;
 
 class TimetableFetchTask extends AsyncTask<String, Boolean, Boolean> {
 
-    Activity activity;
-    AccountManager accountManager;
-    CoursePlan coursePlan;
-    TimetableManager timetableManager;
+    private Activity activity;
+    private AccountManager accountManager;
+    private CoursePlan coursePlan;
+    private TimetableManager timetableManager;
 
     public TimetableFetchTask(Activity activity, CoursePlan coursePlan, TimetableManager timetableManager) {
         this.activity = activity;

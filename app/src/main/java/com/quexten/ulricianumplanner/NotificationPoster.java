@@ -19,11 +19,11 @@ import android.support.v4.app.TaskStackBuilder;
 
 public class NotificationPoster {
 
-    Context context;
-    TeacherManager teacherManager;
+    private Context context;
+    private TeacherManager teacherManager;
 
     //Counter to ensure unique notifications
-    static int notificationId = 0;
+    private static int notificationId = 0;
 
     public NotificationPoster(Context context, TeacherManager teacherManager) {
         this.context = context;
@@ -80,6 +80,8 @@ public class NotificationPoster {
             case "Betreu.":
                 message = "Bei " + substitutionTeacher + " in " + entry.getRoom();
                 header = subject + " Betreuung";
+                break;
+            default:
                 break;
         }
 
@@ -153,7 +155,7 @@ public class NotificationPoster {
         notificationManager.notify(-1, builder.build());
     }
 
-    PendingIntent getSharingIntent(Context context, String message) {
+    private PendingIntent getSharingIntent(Context context, String message) {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_TEXT, message);

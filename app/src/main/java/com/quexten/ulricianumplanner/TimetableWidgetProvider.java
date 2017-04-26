@@ -15,11 +15,11 @@ import android.widget.RemoteViews;
 
 public class TimetableWidgetProvider extends AppWidgetProvider {
 
-    int[] LAYOUT_IDS = {R.layout.timetable_widget_1, R.layout.timetable_widget_2, R.layout.timetable_widget_3, R.layout.timetable_widget_4, R.layout.timetable_widget_5};
-    int[] ROOMVIEW_IDS_LEFT = {R.id.roomView_widget_1_left, R.id.roomView_widget_2_left, R.id.roomView_widget_3_left, R.id.roomView_widget_4_left, R.id.roomView_widget_5_left};
-    int[] ROOMVIEW_IDS_RIGHT = {R.id.roomView_widget_1_right, R.id.roomView_widget_2_right, R.id.roomView_widget_3_right, R.id.roomView_widget_4_right, R.id.roomView_widget_5_right};
-    int[] SUBJECTVIEW_IDS_LEFT = {R.id.subjectView_widget_1_left, R.id.subjectView_widget_2_left, R.id.subjectView_widget_3_left, R.id.subjectView_widget_4_left, R.id.subjectView_widget_5_left};
-    int[] SUBJECTVIEW_IDS_RIGHT = {R.id.subjectView_widget_1_right, R.id.subjectView_widget_2_right, R.id.subjectView_widget_3_right, R.id.subjectView_widget_4_right, R.id.subjectView_widget_5_right};
+    private int[] LAYOUT_IDS = {R.layout.timetable_widget_1, R.layout.timetable_widget_2, R.layout.timetable_widget_3, R.layout.timetable_widget_4, R.layout.timetable_widget_5};
+    private int[] ROOMVIEW_IDS_LEFT = {R.id.roomView_widget_1_left, R.id.roomView_widget_2_left, R.id.roomView_widget_3_left, R.id.roomView_widget_4_left, R.id.roomView_widget_5_left};
+    private int[] ROOMVIEW_IDS_RIGHT = {R.id.roomView_widget_1_right, R.id.roomView_widget_2_right, R.id.roomView_widget_3_right, R.id.roomView_widget_4_right, R.id.roomView_widget_5_right};
+    private int[] SUBJECTVIEW_IDS_LEFT = {R.id.subjectView_widget_1_left, R.id.subjectView_widget_2_left, R.id.subjectView_widget_3_left, R.id.subjectView_widget_4_left, R.id.subjectView_widget_5_left};
+    private int[] SUBJECTVIEW_IDS_RIGHT = {R.id.subjectView_widget_1_right, R.id.subjectView_widget_2_right, R.id.subjectView_widget_3_right, R.id.subjectView_widget_4_right, R.id.subjectView_widget_5_right};
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override

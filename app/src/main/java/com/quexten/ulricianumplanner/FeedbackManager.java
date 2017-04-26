@@ -16,8 +16,8 @@ public class FeedbackManager {
             + " " + Build.VERSION_CODES.class.getFields()[android.os.Build.VERSION.SDK_INT].getName();
     private String BUILD_VERSION = String.valueOf(BuildConfig.VERSION_CODE);
 
-    Activity activity;
-    CoursePlan coursePlan;
+    private Activity activity;
+    private CoursePlan coursePlan;
 
     public FeedbackManager(Activity activity, CoursePlan coursePlan) {
         this.activity = activity;
@@ -44,8 +44,6 @@ public class FeedbackManager {
         private String deviceInfo;
         private String timetable;
 
-        public FeedbackOptions() {
-        }
 
         public FeedbackOptions buildVersion(String buildVersion) {
             this.buildVersion = buildVersion;

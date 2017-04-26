@@ -11,27 +11,21 @@ import java.util.Calendar;
 
 class SyncTask extends AsyncTask<String, Boolean, Boolean> {
 
-    Context context;
+    private AccountManager accountManager;
+    private CoursePlan coursePlan;
+    private NetworkManager networkManager;
+    private NotificationPoster notificationPoster;
+    private TeacherManager teacherManager;
 
-    AccountManager accountManager;
-    CoursePlan coursePlan;
-    NetworkManager networkManager;
-    NotificationPoster notificationPoster;
-    Substitutions substitutions;
-    TeacherManager teacherManager;
-
-    SynchronizationListener onCompletionListener;
+    private SynchronizationListener onCompletionListener;
 
     public SyncTask(Context context, NewsListener newsListener) {
-        this.context = context;
-
         accountManager = new AccountManager(context);
         coursePlan = new CoursePlan(context, null);
         networkManager = new NetworkManager(context);
         networkManager.setNewsListener(newsListener);
         teacherManager = new TeacherManager(context);
         notificationPoster = new NotificationPoster(context, teacherManager);
-        substitutions = new Substitutions(context);
     }
 
     public SyncTask(Context context, NewsListener newsListener, SynchronizationListener onCompletionListener) {

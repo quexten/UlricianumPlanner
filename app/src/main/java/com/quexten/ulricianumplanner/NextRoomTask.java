@@ -14,12 +14,11 @@ class NextRoomTask extends AsyncTask<String, Boolean, Boolean> {
     private CoursePlan coursePlan;
     private NetworkManager networkManager;
     private NotificationPoster notificationPoster;
-    private TeacherManager teacherManager;
 
     public NextRoomTask(Context context) {
         coursePlan = new CoursePlan(context, null);
         networkManager = new NetworkManager(context);
-        teacherManager = new TeacherManager(context);
+        TeacherManager teacherManager = new TeacherManager(context);
         notificationPoster = new NotificationPoster(context, teacherManager);
     }
 
@@ -85,7 +84,7 @@ class NextRoomTask extends AsyncTask<String, Boolean, Boolean> {
         return true;
     }
 
-    static Hour getNextHour() {
+    private static Hour getNextHour() {
         Calendar cal = Calendar.getInstance();
         int hour = cal.get(Calendar.HOUR_OF_DAY);
 
