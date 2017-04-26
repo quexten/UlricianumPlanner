@@ -46,7 +46,7 @@ public class ColoredArrayAdapter extends ArrayAdapter {
     }
 
     @Override
-    public View getDropDownView(int position, android.view.View convertView, android.view.ViewGroup parent) {
+    public View getDropDownView(int position, View convertView, android.view.ViewGroup parent) {
         View view = super.getDropDownView(position, convertView, parent);
         TextView textView = ((TextView) view);
         textView.setTextColor(colors[position]);
