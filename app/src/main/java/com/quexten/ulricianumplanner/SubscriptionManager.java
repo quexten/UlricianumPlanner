@@ -14,7 +14,7 @@ public class SubscriptionManager {
     private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.MainActivity";
     private static final String INITIALLY_SUBSCRIBED_IDENTIFIER = "initiallySubscribed";
 
-    Context context;
+    private Context context;
 
     public SubscriptionManager(Context context) {
         this.context = context;
@@ -51,7 +51,7 @@ public class SubscriptionManager {
                 .replace("ü", "u_");
     }
 
-    String getShortDayName(Day day) {
+    private String getShortDayName(Day day) {
         switch(day) {
             case MON:
                 return "mon";
@@ -63,11 +63,12 @@ public class SubscriptionManager {
                 return "thu";
             case FRI:
                 return "fri";
+            default:
+                return "mon";
         }
-        return "mon";
     }
 
-    String getShortTimeName(Hour hour) {
+    private String getShortTimeName(Hour hour) {
         switch(hour) {
             case ONETWO:
                 return "12";
@@ -79,8 +80,9 @@ public class SubscriptionManager {
                 return "89";
             case TENELEVEN:
                 return "1011";
+            default:
+                return "12";
         }
-        return "12";
     }
 
     public void subscribeToPlan(CoursePlan plan) {

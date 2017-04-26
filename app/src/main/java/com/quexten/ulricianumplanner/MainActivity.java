@@ -26,8 +26,6 @@ import hotchemi.android.rate.AppRate;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AccountManager accountManager;
-    private SubscriptionManager subscriptionManager;
     private CoursePlan coursePlan;
     private FeedbackManager feedbackManager;
     private Substitutions substitutions;
@@ -70,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        accountManager = new AccountManager(this.getApplicationContext());
-        subscriptionManager = new SubscriptionManager(this.getApplicationContext());
+        AccountManager accountManager = new AccountManager(this.getApplicationContext());
+        SubscriptionManager subscriptionManager = new SubscriptionManager(this.getApplicationContext());
         coursePlan = new CoursePlan(this.getApplicationContext(), subscriptionManager);
         feedbackManager = new FeedbackManager(this, coursePlan);
         teacherManager = new TeacherManager(this.getApplicationContext());

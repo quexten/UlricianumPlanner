@@ -31,7 +31,6 @@ public class RemoteTimetableFetcher {
     private static final String DEFAULT_DATE = "19700101000000";
 
     private Activity activity;
-    private Context context;
     private AccountManager accountManager;
     private CoursePlan coursePlan;
     private TimetableManager timetableManager;
@@ -41,7 +40,6 @@ public class RemoteTimetableFetcher {
 
     public RemoteTimetableFetcher(final Activity activity, AccountManager accountManager, CoursePlan coursePlan, TimetableManager timetableManager) {
         this.activity = activity;
-        this.context = activity.getApplicationContext();
         this.accountManager = accountManager;
         this.coursePlan = coursePlan;
         this.timetableManager = timetableManager;
@@ -54,7 +52,7 @@ public class RemoteTimetableFetcher {
         if(hasFile(TIMETABLE_FILE_PATH)) {
             remoteFileModificationDate = getModificationTime(TIMETABLE_FILE_PATH);
 
-            final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+            final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(activity);
             Date localTimetableDate = getDateFromString(sharedPref.getString(PREFERENCE_DATE_KEY, DEFAULT_DATE));
             final String remoteTimetableContent = getFileContents(TIMETABLE_FILE_PATH);
 
@@ -93,10 +91,10 @@ public class RemoteTimetableFetcher {
                             }
                         };
 
-                        String title = context.getResources().getString(R.string.fetch_timetable_dialog_title);
-                        String description = context.getResources().getString(R.string.fetch_timetable_dialog_description);
-                        String negativeOption = context.getResources().getString(R.string.dialog_negative);
-                        String positiveOption = context.getResources().getString(R.string.dialog_positive);
+                        String title = activity.getResources().getString(R.string.fetch_timetable_dialog_title);
+                        String description = activity.getResources().getString(R.string.fetch_timetable_dialog_description);
+                        String negativeOption = activity.getResources().getString(R.string.dialog_negative);
+                        String positiveOption = activity.getResources().getString(R.string.dialog_positive);
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
                         builder.setTitle(title)

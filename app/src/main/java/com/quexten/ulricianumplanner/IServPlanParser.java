@@ -42,7 +42,7 @@ public class IServPlanParser {
         String dayString = titleElement.substring(titleElement.indexOf(' ') + 1);
 
         dayString = dayString.substring(0, dayString.indexOf(','));
-        Day thisDay = dayString.equals("Montag") ? Day.MON : dayString.equals("Dienstag") ? Day.TUE : dayString.equals("Mittwoch") ? Day.WED : dayString.equals("Donnerstag") ? Day.THU : dayString.equals("Freitag") ? Day.FRI : Day.MON;
+        Day thisDay = "Montag".equals(dayString) ? Day.MON : "Dienstag".equals(dayString) ? Day.TUE : "Mittwoch".equals(dayString) ? Day.WED : "Donnerstag".equals(dayString) ? Day.THU : "Freitag".equals(dayString) ? Day.FRI : Day.MON;
 
         planPage.day = thisDay;
 
@@ -80,8 +80,6 @@ public class IServPlanParser {
         private int pageNum;
         private String news;
 
-        public PlanPage() {
-        }
 
         public void setEntries(TableEntry[] entries) {
             this.entries = entries;

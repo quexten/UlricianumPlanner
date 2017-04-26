@@ -20,7 +20,7 @@ public class TutorialManager {
     private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.MainActivity";
     private static final String TUTORIAL_IDENTIFIER = "com.quexten.ulricianumplanner.Tutorial.completed";
 
-    MainActivity activity;
+    private MainActivity activity;
 
     public TutorialManager(MainActivity activity) {
         this.activity = activity;
@@ -85,7 +85,7 @@ public class TutorialManager {
                 });
     }
 
-    void showShowcaseView(Target target, int title, int text, OnShowcaseEventListener listener) {
+    private void showShowcaseView(Target target, int title, int text, OnShowcaseEventListener listener) {
         new ShowcaseView.Builder(activity)
                 .withMaterialShowcase()
                 .setStyle(R.style.AppTheme)
@@ -97,7 +97,7 @@ public class TutorialManager {
                 .build();
     }
 
-    Target getTarget(final int viewId) {
+    private Target getTarget(final int viewId) {
         return new Target() {
             @Override
             public Point getPoint() {
@@ -106,7 +106,7 @@ public class TutorialManager {
         };
     }
 
-    Target getTarget(final View parent, final int viewId) {
+    private Target getTarget(final View parent, final int viewId) {
         return new Target() {
             @Override
             public Point getPoint() {

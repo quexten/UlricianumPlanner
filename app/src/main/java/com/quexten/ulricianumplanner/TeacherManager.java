@@ -17,7 +17,7 @@ import java.io.Writer;
 
 public class TeacherManager {
 
-    TeacherList teacherList;
+    private TeacherList teacherList;
 
     public TeacherManager(Context context) {
         InputStream is = context.getResources().openRawResource(R.raw.teachers);
@@ -43,7 +43,6 @@ public class TeacherManager {
      * @return - the full name or the shorthand if none was found
      */
     public String getFullTeacherName(String shorthand) {
-        shorthand = shorthand.toUpperCase();
         for(TeacherEntry entry : teacherList.list) {
             if(entry.shortName.equalsIgnoreCase(shorthand))
                 return entry.fullName;

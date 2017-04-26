@@ -6,8 +6,8 @@ package com.quexten.ulricianumplanner;
 
 public class TeacherEntry {
 
-    String fullName;
-    String shortName;
-    String[] subjects;
+    protected String fullName;
+    protected String shortName;
+    protected String[] subjects;
 
 }

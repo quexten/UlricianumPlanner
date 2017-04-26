@@ -25,8 +25,8 @@ public class NetworkManager {
     private static final String LOGIN_URL = "https://ulricianum-aurich.de/idesk/";
 
     //Session related info
-    static String phpSessionId;
-	static String phpSessionPassword;
+    private static String phpSessionId;
+    private static String phpSessionPassword;
 
     private IServPlanParser parser;
 

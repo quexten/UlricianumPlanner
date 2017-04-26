@@ -6,6 +6,6 @@ package com.quexten.ulricianumplanner;
 
 public class TeacherList {
 
-    TeacherEntry[] list;
+    protected TeacherEntry[] list;
 
 }

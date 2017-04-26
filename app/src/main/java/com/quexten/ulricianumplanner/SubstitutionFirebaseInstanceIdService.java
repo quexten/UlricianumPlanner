@@ -9,5 +9,6 @@ import com.google.firebase.iid.FirebaseInstanceIdService;
 public class SubstitutionFirebaseInstanceIdService extends FirebaseInstanceIdService {
     @Override
     public void onTokenRefresh() {
+        //Do nothing, tokens aren't used
     }
 }

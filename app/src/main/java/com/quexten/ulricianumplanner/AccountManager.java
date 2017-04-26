@@ -12,7 +12,7 @@ public class AccountManager {
 
     public static final String ACCOUNT_TYPE = "com.quexten.ulricianumplanner.account";
 
-    Context context;
+    private Context context;
 
     public AccountManager(Context context) {
         this.context = context;

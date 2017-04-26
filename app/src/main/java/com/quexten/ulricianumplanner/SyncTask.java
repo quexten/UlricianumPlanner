@@ -15,7 +15,6 @@ class SyncTask extends AsyncTask<String, Boolean, Boolean> {
     private CoursePlan coursePlan;
     private NetworkManager networkManager;
     private NotificationPoster notificationPoster;
-    private TeacherManager teacherManager;
 
     private SynchronizationListener onCompletionListener;
 
@@ -24,7 +23,7 @@ class SyncTask extends AsyncTask<String, Boolean, Boolean> {
         coursePlan = new CoursePlan(context, null);
         networkManager = new NetworkManager(context);
         networkManager.setNewsListener(newsListener);
-        teacherManager = new TeacherManager(context);
+        TeacherManager teacherManager = new TeacherManager(context);
         notificationPoster = new NotificationPoster(context, teacherManager);
     }
 
@@ -100,7 +99,7 @@ class SyncTask extends AsyncTask<String, Boolean, Boolean> {
         return true;
     }
 
-    static int getEndTimeForHour(Hour hour) {
+    private static int getEndTimeForHour(Hour hour) {
         switch(hour) {
             case ONETWO:
                 return 9;
@@ -112,8 +111,9 @@ class SyncTask extends AsyncTask<String, Boolean, Boolean> {
                 return 15;
             case TENELEVEN:
                 return 17;
+            default:
+                return 9;
         }
-        return 0;
     }
 
 }

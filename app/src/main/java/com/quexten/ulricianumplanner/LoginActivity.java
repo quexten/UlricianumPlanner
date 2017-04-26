@@ -32,8 +32,8 @@ public class LoginActivity extends AppCompatActivity {
     private View mProgressView;
     private View mLoginFormView;
 
-    AccountManager accountManager;
-    NetworkManager networkManager;
+    private AccountManager accountManager;
+    private NetworkManager networkManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,15 +176,13 @@ public class LoginActivity extends AppCompatActivity {
                 boolean accountCreated = accountManager.addAccount(username, password);
 
                 Bundle extras = getIntent().getExtras();
-                if (extras != null) {
-                    if (accountCreated) {
-                        //Pass the new account back to the account manager
-                        AccountAuthenticatorResponse response = extras.getParcelable(android.accounts.AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE);
-                        Bundle result = new Bundle();
-                        result.putString(android.accounts.AccountManager.KEY_ACCOUNT_NAME, username);
-                        result.putString(android.accounts.AccountManager.KEY_ACCOUNT_TYPE, accountManager.ACCOUNT_TYPE);
-                        response.onResult(result);
-                    }
+                if (extras != null && accountCreated) {
+                    //Pass the new account back to the account manager
+                    AccountAuthenticatorResponse response = extras.getParcelable(android.accounts.AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE);
+                    Bundle result = new Bundle();
+                    result.putString(android.accounts.AccountManager.KEY_ACCOUNT_NAME, username);
+                    result.putString(android.accounts.AccountManager.KEY_ACCOUNT_TYPE, accountManager.ACCOUNT_TYPE);
+                    response.onResult(result);
                 }
                 finish();
             } else {
