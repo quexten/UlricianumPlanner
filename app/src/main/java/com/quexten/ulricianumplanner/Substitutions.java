@@ -14,20 +14,20 @@ import java.util.ArrayList;
 public class Substitutions {
 
     //Constants
-    static final String TODAY_OVERRIDE_IDENTIFIER = "com.quexten.ulricianumplanner.todayoverrides";
-    static final String TOMORROW_OVERRIDE_IDENTIFIER = "com.quexten.ulricianumplanner.tomorrowoverrides";
-    static final String TODAY_DAY_IDENTIFIER = "com.quexten.ulricianumplanner.todayday";
-    static final String TOMORROW_DAY_IDENTIFIER = "com.quexten.ulricianumplanner.tomorrowday";
+    private static final String TODAY_OVERRIDE_IDENTIFIER = "com.quexten.ulricianumplanner.todayoverrides";
+    private static final String TOMORROW_OVERRIDE_IDENTIFIER = "com.quexten.ulricianumplanner.tomorrowoverrides";
+    private static final String TODAY_DAY_IDENTIFIER = "com.quexten.ulricianumplanner.todayday";
+    private static final String TOMORROW_DAY_IDENTIFIER = "com.quexten.ulricianumplanner.tomorrowday";
 
-    static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.MainActivity";
+    private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.MainActivity";
 
     //Content
-    Context context;
+    private Context context;
 
-    TableEntry[] todaySubstitutions;
-    TableEntry[] tomorrowSubstitutions;
-    Day todayDay;
-    Day tomorrowDay;
+    private TableEntry[] todaySubstitutions;
+    private TableEntry[] tomorrowSubstitutions;
+    private Day todayDay;
+    private Day tomorrowDay;
 
     public Substitutions(Context context) {
         this.context = context;
@@ -131,10 +131,9 @@ public class Substitutions {
             return;
 
         String todayDayString = sharedPref.getString(TODAY_DAY_IDENTIFIER, "mon");
-        todayDay = todayDayString.equals("mon") ? Day.MON : todayDayString.equals("tue") ? Day.TUE : todayDayString.equals("wed") ? Day.WED : todayDayString.equals("thu") ? Day.THU : todayDayString.equals("fri") ? Day.FRI : Day.MON;
-
+        todayDay = Day.fromString(todayDayString);
         String tomorrowDayString = sharedPref.getString(TOMORROW_DAY_IDENTIFIER, "mon");
-        tomorrowDay = tomorrowDayString.equals("mon") ? Day.MON : tomorrowDayString.equals("tue") ? Day.TUE : tomorrowDayString.equals("wed") ? Day.WED : tomorrowDayString.equals("thu") ? Day.THU : tomorrowDayString.equals("fri") ? Day.FRI : Day.MON;
+        tomorrowDay = Day.fromString(tomorrowDayString);
 
         todaySubstitutions = gson.fromJson(sharedPref.getString(TODAY_OVERRIDE_IDENTIFIER, "{}"), TableEntry[].class);
         tomorrowSubstitutions = gson.fromJson(sharedPref.getString(TOMORROW_OVERRIDE_IDENTIFIER, "{}"), TableEntry[].class);

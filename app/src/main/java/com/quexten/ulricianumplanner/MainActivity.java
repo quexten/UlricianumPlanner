@@ -26,15 +26,13 @@ import hotchemi.android.rate.AppRate;
 
 public class MainActivity extends AppCompatActivity {
 
-    AccountManager accountManager;
-    SubscriptionManager subscriptionManager;
-    CoursePlan coursePlan;
-    FeedbackManager feedbackManager;
-    NetworkManager networkManager;
-    NotificationPoster notificationPoster;
-    Substitutions substitutions;
-    TimetableManager timetableManager;
-    TeacherManager teacherManager;
+    private AccountManager accountManager;
+    private SubscriptionManager subscriptionManager;
+    private CoursePlan coursePlan;
+    private FeedbackManager feedbackManager;
+    private Substitutions substitutions;
+    private TimetableManager timetableManager;
+    private TeacherManager teacherManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +60,12 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
+                //Do nothing
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
+                //Do nothing
             }
         });
 
@@ -74,9 +74,7 @@ public class MainActivity extends AppCompatActivity {
         subscriptionManager = new SubscriptionManager(this.getApplicationContext());
         coursePlan = new CoursePlan(this.getApplicationContext(), subscriptionManager);
         feedbackManager = new FeedbackManager(this, coursePlan);
-        networkManager = new NetworkManager(this.getApplicationContext());
         teacherManager = new TeacherManager(this.getApplicationContext());
-        notificationPoster = new NotificationPoster(this.getApplicationContext(), teacherManager);
         substitutions = new Substitutions(this.getApplicationContext());
 
         View myView = findViewById(R.id.pager);
