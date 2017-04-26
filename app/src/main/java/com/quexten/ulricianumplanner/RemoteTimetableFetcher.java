@@ -1,7 +1,6 @@
 package com.quexten.ulricianumplanner;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -30,7 +29,6 @@ public class RemoteTimetableFetcher {
     private static final String PREFERENCE_DATE_KEY = "remote_timetable_modification_date";
     private static final String DEFAULT_DATE = "19700101000000";
 
-    private Activity activity;
     private AccountManager accountManager;
     private CoursePlan coursePlan;
     private TimetableManager timetableManager;
@@ -39,14 +37,13 @@ public class RemoteTimetableFetcher {
     private Date remoteFileModificationDate;
 
     public RemoteTimetableFetcher(final Activity activity, AccountManager accountManager, CoursePlan coursePlan, TimetableManager timetableManager) {
-        this.activity = activity;
         this.accountManager = accountManager;
         this.coursePlan = coursePlan;
         this.timetableManager = timetableManager;
 
         if(!login()) {
             int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(RemoteTimetableFetcher.this.activity.getApplicationContext(), activity.getResources().getString(R.string.login_unsuccessful), duration);
+            Toast toast = Toast.makeText(activity.getApplicationContext(), activity.getResources().getString(R.string.login_unsuccessful), duration);
             toast.show();
         }
         if(hasFile(TIMETABLE_FILE_PATH)) {

@@ -19,10 +19,6 @@ public class AccountAuthenticatorService extends Service {
 
     private static AccountAuthenticatorImpl sAccountAuthenticator = null;
 
-    public AccountAuthenticatorService() {
-        super();
-    }
-
     public IBinder onBind(Intent intent) {
         IBinder ret = null;
         if (intent.getAction().equals(AccountManager.ACTION_AUTHENTICATOR_INTENT))

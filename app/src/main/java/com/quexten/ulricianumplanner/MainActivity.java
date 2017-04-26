@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText(getResources().getString(R.string.tab_timetable)));
         tabLayout.addTab(tabLayout.newTab().setText(getResources().getString(R.string.tab_news)));
@@ -66,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
                 //Do nothing
             }
         });
-
 
         AccountManager accountManager = new AccountManager(this.getApplicationContext());
         SubscriptionManager subscriptionManager = new SubscriptionManager(this.getApplicationContext());
@@ -112,51 +110,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        //Class Selection Screen when no class is chosen yet
-        coursePlan.readClassName();
-        if(!coursePlan.hasClassName()) {
-            AlertDialog.Builder builderSingle = new AlertDialog.Builder(this);
-            builderSingle.setTitle(R.string.builder_title);
-
-            final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                    this,
-                    android.R.layout.select_dialog_singlechoice);
-            arrayAdapter.add("5");
-            arrayAdapter.add("6");
-            arrayAdapter.add("7");
-            arrayAdapter.add("8");
-            arrayAdapter.add("9");
-            arrayAdapter.add("10");
-            arrayAdapter.add("11");
-            arrayAdapter.add("12");
-
-            builderSingle.setAdapter(
-                arrayAdapter,
-                new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    coursePlan.setClassName(arrayAdapter.getItem(which));
-                    coursePlan.saveClassName();
-                }
-                });
-
-            builderSingle.setPositiveButton(R.string.dialog_positive, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which)
-                {
-                    coursePlan.setClassName(arrayAdapter.getItem(which));
-                    coursePlan.saveClassName();
-                }
-            });
-            builderSingle.setNegativeButton(R.string.dialog_negative, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            });
-            builderSingle.show();
-        }
+        if(hasClassName())
+            showClassSelection();
 
         if(!accountManager.hasAccount()) {
             Intent myIntent = new Intent(MainActivity.this, LoginActivity.class);
@@ -165,28 +120,12 @@ public class MainActivity extends AppCompatActivity {
 
         substitutions.readSubstitutions();
 
-        //Room Tasks
-        setDailyTask(7, 30, 3, new Intent(MainActivity.this, RoomReceiver.class));
-        setDailyTask(9, 20, 4, new Intent(MainActivity.this, RoomReceiver.class));
-        setDailyTask(11, 15, 5, new Intent(MainActivity.this, RoomReceiver.class));
-        setDailyTask(13, 45, 6, new Intent(MainActivity.this, RoomReceiver.class));
-        setDailyTask(15, 35, 7, new Intent(MainActivity.this, RoomReceiver.class));
-
-        setDailyTask(6, 00, 0, new Intent(MainActivity.this, SyncReceiver.class));
-        setDailyTask(9, 30, 1, new Intent(MainActivity.this, SyncReceiver.class));
-        setDailyTask(15, 30, 2, new Intent(MainActivity.this, SyncReceiver.class));
-
+        setBackgroundTasks();
+        
         new TutorialManager(this);
 
-        AppRate.with(this)
-                .setInstallDays(5)
-                .setLaunchTimes(5)
-                .setRemindInterval(1)
-                .setShowLaterButton(true)
-                .setDebug(false)
-                .monitor();
+        showAppRateDialog();
 
-        AppRate.showRateDialogIfMeetsConditions(this);
         coursePlan.read();
         subscriptionManager.subscribeToPlan(coursePlan);
     }
@@ -234,6 +173,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void showAppRateDialog() {
+        AppRate.with(this)
+                .setInstallDays(5)
+                .setLaunchTimes(5)
+                .setRemindInterval(1)
+                .setShowLaterButton(true)
+                .setDebug(false)
+                .monitor();
+        AppRate.showRateDialogIfMeetsConditions(this);
+    }
+
     private void setDailyTask(int hour, int minute, int id, Intent intent) {
         AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
 
@@ -249,6 +199,69 @@ public class MainActivity extends AppCompatActivity {
         PendingIntent pendingIntent =  PendingIntent.getBroadcast(this, id, intent, 0);
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, startMillis, millisDay, pendingIntent);
+    }
+
+    private void setBackgroundTasks() {
+        //Room Tasks
+        setDailyTask(7, 30, 3, new Intent(MainActivity.this, RoomReceiver.class));
+        setDailyTask(9, 20, 4, new Intent(MainActivity.this, RoomReceiver.class));
+        setDailyTask(11, 15, 5, new Intent(MainActivity.this, RoomReceiver.class));
+        setDailyTask(13, 45, 6, new Intent(MainActivity.this, RoomReceiver.class));
+        setDailyTask(15, 35, 7, new Intent(MainActivity.this, RoomReceiver.class));
+
+        setDailyTask(6, 00, 0, new Intent(MainActivity.this, SyncReceiver.class));
+        setDailyTask(9, 30, 1, new Intent(MainActivity.this, SyncReceiver.class));
+        setDailyTask(15, 30, 2, new Intent(MainActivity.this, SyncReceiver.class));
+    }
+
+    private boolean hasClassName() {
+        coursePlan.readClassName();
+        return coursePlan.hasClassName();
+    }
+
+    private void showClassSelection() {
+        //Class Selection Screen when no class is chosen yet
+        AlertDialog.Builder builderSingle = new AlertDialog.Builder(this);
+        builderSingle.setTitle(R.string.builder_title);
+
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                 this,
+                 android.R.layout.select_dialog_singlechoice);
+        arrayAdapter.add("5");
+        arrayAdapter.add("6");
+        arrayAdapter.add("7");
+        arrayAdapter.add("8");
+        arrayAdapter.add("9");
+        arrayAdapter.add("10");
+        arrayAdapter.add("11");
+        arrayAdapter.add("12");
+
+        builderSingle.setAdapter(
+            arrayAdapter,
+            new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    coursePlan.setClassName(arrayAdapter.getItem(which));
+                    coursePlan.saveClassName();
+                }
+            });
+
+            builderSingle.setPositiveButton(R.string.dialog_positive, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which)
+                {
+                coursePlan.setClassName(arrayAdapter.getItem(which));
+                coursePlan.saveClassName();
+                }
+            });
+            builderSingle.setNegativeButton(R.string.dialog_negative, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                }
+            });
+            builderSingle.show();
+        }
     }
 
 }
