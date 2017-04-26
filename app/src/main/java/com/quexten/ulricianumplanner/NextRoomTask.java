@@ -11,14 +11,14 @@ import java.util.Calendar;
 
 class NextRoomTask extends AsyncTask<String, Boolean, Boolean> {
 
-    Context context;
+    private Context context;
 
-    AccountManager accountManager;
-    CoursePlan coursePlan;
-    NetworkManager networkManager;
-    NotificationPoster notificationPoster;
-    Substitutions substitutions;
-    TeacherManager teacherManager;
+    private AccountManager accountManager;
+    private CoursePlan coursePlan;
+    private NetworkManager networkManager;
+    private NotificationPoster notificationPoster;
+    private Substitutions substitutions;
+    private TeacherManager teacherManager;
 
     public NextRoomTask(Context context) {
         this.context = context;

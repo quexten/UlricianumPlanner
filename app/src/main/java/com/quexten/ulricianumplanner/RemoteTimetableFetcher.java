@@ -70,7 +70,7 @@ public class RemoteTimetableFetcher {
                                     case DialogInterface.BUTTON_POSITIVE:
                                         Gson gson = new Gson();
                                         RemoteTimetable remoteTimetable = gson.fromJson(remoteTimetableContent, RemoteTimetable.class);
-                                        RemoteTimetableFetcher.this.coursePlan.className = remoteTimetable.className;
+                                        RemoteTimetableFetcher.this.coursePlan.setClassName(remoteTimetable.className);
                                         for(int day = 0; day < 5; day++) {
                                             for(int hour = 0; hour < 5; hour++) {
                                                 Course course = remoteTimetable.timetable[day][hour];

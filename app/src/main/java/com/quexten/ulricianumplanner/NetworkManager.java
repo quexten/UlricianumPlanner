@@ -30,7 +30,7 @@ public class NetworkManager {
 
     IServPlanParser parser;
 
-    Context context;
+    private Context context;
 
     NewsListener newsListener;
 
@@ -106,7 +106,7 @@ public class NetworkManager {
             //Set the number of pages found in the plan
             if(todayScans == 0) {
                 substitutions.setTodayDay(planPage.getDay());
-                pageNum = planPage.pageNum;
+                pageNum = planPage.getPageNum();
             }
 
             todayScans ++;
@@ -132,7 +132,7 @@ public class NetworkManager {
             //Set the number of pages found in the plan
             if(tomorrowScans == 0) {
                 substitutions.setTomorrowDay(planPage.getDay());
-                pageNum = planPage.pageNum;
+                pageNum = planPage.getPageNum();
             }
 
             tomorrowScans ++;
@@ -164,8 +164,8 @@ public class NetworkManager {
 
             String resultText = result.toString();
             IServPlanParser.PlanPage planPage = parser.parseResponse(resultText, today);
-            if(today && planPage.news != null) {
-                newsListener.newsReceived(planPage.news);
+            if(today && planPage.getNews() != null) {
+                newsListener.newsReceived(planPage.getNews());
             }
             return planPage;
         } catch (Exception exception) {

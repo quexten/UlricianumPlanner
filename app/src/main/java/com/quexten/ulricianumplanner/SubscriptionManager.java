@@ -85,7 +85,7 @@ public class SubscriptionManager {
 
     public void subscribeToPlan(CoursePlan plan) {
         if(!isInitiallySubscribed()) {
-            Course[][] courses = plan.courseArray;
+            Course[][] courses = plan.getCourses();
             for (int dayId = 0; dayId < courses.length; dayId++) {
                 for (int hourId = 0; hourId < courses[0].length; hourId++) {
                     subscribe(courses[dayId][hourId], Day.fromInt(dayId), Hour.fromInt(hourId));

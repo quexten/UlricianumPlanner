@@ -90,8 +90,8 @@ public class TimetableManager {
         coursePlan.read();
 
         //Clear Backgrounds
-        for(int x = 0; x < coursePlan.courseArray.length; x++) {
-            for(int y = 0; y < coursePlan.courseArray[0].length; y++) {
+        for(int x = 0; x < coursePlan.getCourses().length; x++) {
+            for(int y = 0; y < coursePlan.getCourses()[0].length; y++) {
                 Course course = coursePlan.getCourse(x, y);
                 Day day = Day.fromInt(x);
                 Hour hour = Hour.fromInt(y);

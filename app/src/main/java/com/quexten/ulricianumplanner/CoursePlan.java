@@ -16,10 +16,10 @@ public class CoursePlan {
     private static final String CLASS_IDENTIFIER = "className";
     private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.MainActivity";
 
-	Course[][] courseArray = new Course[5][5];
-	String className = "12";
-    Context context;
-    SubscriptionManager subscriptionManager;
+	private Course[][] courseArray = new Course[5][5];
+    private String className = "12";
+    private Context context;
+    private SubscriptionManager subscriptionManager;
 
     public CoursePlan(Context context, SubscriptionManager subscriptionManager) {
         this.context = context;
@@ -57,6 +57,18 @@ public class CoursePlan {
      */
     public Course getCourse(int day, int hour) {
         return courseArray[day][hour] != null ? courseArray[day][hour] : new Course("", "", "");
+    }
+
+    public Course[][] getCourses() {
+        return courseArray;
+    }
+
+    public void setClassName(String name) {
+        className = name;
+    }
+
+    public String getClassName() {
+        return className;
     }
 
 	public void saveClassName() {

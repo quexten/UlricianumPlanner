@@ -24,7 +24,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         final Preference classPreference = findPreference("className");
         coursePlan.readClassName();
 
-        classPreference.setSummary(coursePlan.className);
+        classPreference.setSummary(coursePlan.getClassName());
         classPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
@@ -48,9 +48,9 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                coursePlan.className = arrayAdapter.getItem(which);
+                                coursePlan.setClassName(arrayAdapter.getItem(which));
                                 coursePlan.saveClassName();
-                                classPreference.setSummary(coursePlan.className);
+                                classPreference.setSummary(coursePlan.getClassName());
                             }
                         });
 
@@ -58,9 +58,9 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which)
                     {
-                        coursePlan.className = arrayAdapter.getItem(which);
+                        coursePlan.setClassName(arrayAdapter.getItem(which));
                         coursePlan.saveClassName();
-                        classPreference.setSummary(coursePlan.className);
+                        classPreference.setSummary(coursePlan.getClassName());
                     }
                 });
                 builderSingle.setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {

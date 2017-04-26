@@ -75,10 +75,10 @@ public class IServPlanParser {
 
     class PlanPage {
 
-        TableEntry[] entries;
-        Day day;
-        int pageNum;
-        String news;
+        private TableEntry[] entries;
+        private Day day;
+        private int pageNum;
+        private String news;
 
         public PlanPage() {
         }
