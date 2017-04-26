@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         substitutions.readSubstitutions();
 
         setBackgroundTasks();
-        
+
         new TutorialManager(this);
 
         showAppRateDialog();
@@ -246,22 +246,20 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            builderSingle.setPositiveButton(R.string.dialog_positive, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which)
-                {
+        builderSingle.setPositiveButton(R.string.dialog_positive, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
                 coursePlan.setClassName(arrayAdapter.getItem(which));
                 coursePlan.saveClassName();
-                }
-            });
-            builderSingle.setNegativeButton(R.string.dialog_negative, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        builderSingle.setNegativeButton(R.string.dialog_negative, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                }
-            });
-            builderSingle.show();
-        }
+            }
+        });
+        builderSingle.show();
     }
 
 }
