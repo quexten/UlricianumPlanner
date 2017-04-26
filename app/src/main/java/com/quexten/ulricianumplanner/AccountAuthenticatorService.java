@@ -11,8 +11,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
 
-import static android.accounts.AccountManager.ACTION_AUTHENTICATOR_INTENT;
-
 /**
  * Created by Quexten on 01-Sep-16.
  */
@@ -27,7 +25,7 @@ public class AccountAuthenticatorService extends Service {
 
     public IBinder onBind(Intent intent) {
         IBinder ret = null;
-        if (intent.getAction().equals(ACTION_AUTHENTICATOR_INTENT))
+        if (intent.getAction().equals(AccountManager.ACTION_AUTHENTICATOR_INTENT))
             ret = getAuthenticator().getIBinder();
         return ret;
     }
