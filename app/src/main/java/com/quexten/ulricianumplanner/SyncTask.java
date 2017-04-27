@@ -57,21 +57,8 @@ class SyncTask extends AsyncTask<String, Boolean, Boolean> {
 
         Calendar calendar = Calendar.getInstance();
         int day = calendar.get(Calendar.DAY_OF_WEEK);
-        int currentDayIndex = day == Calendar.MONDAY ? 0
-                : day == Calendar.TUESDAY ? 1
-                : day == Calendar.WEDNESDAY ? 2
-                : day == Calendar.THURSDAY ? 3
-                : day == Calendar.FRIDAY ? 4
-                : day == Calendar.SATURDAY ? 5
-                : day == Calendar.SUNDAY ? 6
-                : 7;
-
-        int todayDayIndex = todayDay.equals(Day.MON) ? 0
-                : todayDay.equals(Day.TUE) ? 1
-                : todayDay.equals(Day.WED) ? 2
-                : todayDay.equals(Day.THU) ? 3
-                : todayDay.equals(Day.FRI) ? 4
-                : 7;
+        int currentDayIndex = Day.fromCalendarDay(day);
+        int todayDayIndex = Day.fromCalendarDay(todayDay.ordinal());
 
         if(currentDayIndex < todayDayIndex)
             for(int i = 0; i < todaySubstitutions.length; i++) {

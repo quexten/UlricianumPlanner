@@ -39,14 +39,7 @@ class NextRoomTask extends AsyncTask<String, Boolean, Boolean> {
 
         Calendar calendar = Calendar.getInstance();
         int day = calendar.get(Calendar.DAY_OF_WEEK);
-        int currentDayIndex = day == Calendar.MONDAY ? 0
-                : day == Calendar.TUESDAY ? 1
-                : day == Calendar.WEDNESDAY ? 2
-                : day == Calendar.THURSDAY ? 3
-                : day == Calendar.FRIDAY ? 4
-                : day == Calendar.SATURDAY ? 5
-                : day == Calendar.SUNDAY ? 6
-                : 7;
+        int currentDayIndex = Day.fromCalendarDay(day);
 
         Course nextCourse = coursePlan.getCourse(Day.fromInt(currentDayIndex), getNextHour());
 
