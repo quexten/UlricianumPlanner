@@ -20,22 +20,7 @@ public class TeacherManager {
     private TeacherList teacherList;
 
     public TeacherManager(Context context) {
-        InputStream is = context.getResources().openRawResource(R.raw.teachers);
-        Writer writer = new StringWriter();
-        char[] buffer = new char[1024];
-        try {
-            Reader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-            int n;
-            while ((n = reader.read(buffer)) != -1) {
-                writer.write(buffer, 0, n);
-            }
-            is.close();
-        } catch(Exception ex) {
-            ex.printStackTrace();
-        }
-
-        String jsonString = writer.toString();
-        teacherList = new Gson().fromJson(jsonString, TeacherList.class);
+        teacherList = getTeacherList(context, R.raw.teachers);
     }
 
     /**Gets the full teacher name for a given shorthand
@@ -89,6 +74,25 @@ public class TeacherManager {
         for(int i = 0; i < size; i++)
             list[i] =  teacherList.list[i].fullName;
         return list;
+    }
+
+    private TeacherList getTeacherList(Context context, int resourceId) {
+        InputStream is = context.getResources().openRawResource(resourceId);
+        Writer writer = new StringWriter();
+        char[] buffer = new char[1024];
+        try {
+            Reader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+            int n;
+            while ((n = reader.read(buffer)) != -1) {
+                writer.write(buffer, 0, n);
+            }
+            is.close();
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        }
+
+        String jsonString = writer.toString();
+        return new Gson().fromJson(jsonString, TeacherList.class);
     }
 
 }
