@@ -91,8 +91,7 @@ public class TeacherManager {
             ex.printStackTrace();
         }
 
-        String jsonString = writer.toString();
-        return new Gson().fromJson(jsonString, TeacherList.class);
+        return new Gson().fromJson(writer.toString(), TeacherList.class);
     }
 
 }
