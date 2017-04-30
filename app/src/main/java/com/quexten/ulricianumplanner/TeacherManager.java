@@ -23,7 +23,8 @@ public class TeacherManager {
         teacherList = getTeacherList(context, R.raw.teachers);
     }
 
-    /**Gets the full teacher name for a given shorthand
+    /**
+     * Gets the full teacher name for a given shorthand
      * @param shorthand - the shorthand
      * @return - the full name or the shorthand if none was found
      */
@@ -35,7 +36,8 @@ public class TeacherManager {
         return shorthand;
     }
 
-    /**Gets the shorthand for a full teacher name
+    /**
+     * Gets the shorthand for a full teacher name
      * @param name - the full name
      * @return - the shorthand or the full name if none was found
      */
@@ -47,7 +49,8 @@ public class TeacherManager {
         return name;
     }
 
-    /**Gets the subjects for a given teacher
+    /**
+     *  the subjects for a given teacher
      * @param teacherShorthand - the teachers shorthand
      * @return a String array of the subjects, an empty String
      * array if no matching teacher is found
