@@ -50,7 +50,7 @@ public class TeacherManager {
     }
 
     /**
-     *  the subjects for a given teacher
+     * Gets the subjects for a given teacher
      * @param teacherShorthand - the teachers shorthand
      * @return a String array of the subjects, an empty String
      * array if no matching teacher is found
