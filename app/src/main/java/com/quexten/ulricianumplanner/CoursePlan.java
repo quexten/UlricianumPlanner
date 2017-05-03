@@ -12,11 +12,11 @@ import java.util.ArrayList;
 
 public class CoursePlan {
 
-	private static final String COURSE_IDENTIFIER = "CoursePlan";
+    private static final String COURSE_IDENTIFIER = "CoursePlan";
     private static final String CLASS_IDENTIFIER = "className";
     private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.MainActivity";
 
-	private Course[][] courseArray = new Course[5][5];
+    private Course[][] courseArray = new Course[5][5];
     private String className = "12";
     private Context context;
     private SubscriptionManager subscriptionManager;
@@ -32,12 +32,12 @@ public class CoursePlan {
      * @param hour - the hour of the course
      * @param course - the course to be set
      */
-	public void setCourse(Day day, Hour hour, Course course) {
+    public void setCourse(Day day, Hour hour, Course course) {
         Course oldCourse = getCourse(day, hour);
-		courseArray[day.ordinal()][hour.ordinal()] = course;
+        courseArray[day.ordinal()][hour.ordinal()] = course;
 
         subscriptionManager.setCourse(oldCourse, course, day, hour);
-	}
+    }
 
     /**
      * Gets the course at a given time
@@ -45,9 +45,9 @@ public class CoursePlan {
      * @param hour - the hour of the course
      * @return - the Course at the specified time and date
      */
-	public Course getCourse(Day day, Hour hour) {
-		return getCourse(day.ordinal(), hour.ordinal());
-	}
+    public Course getCourse(Day day, Hour hour) {
+        return getCourse(day.ordinal(), hour.ordinal());
+    }
 
     /**
      * Gets the course at a given time
@@ -71,44 +71,44 @@ public class CoursePlan {
         return className;
     }
 
-	public void saveClassName() {
-		SharedPreferences sharedPref = context.getSharedPreferences(ACTIVITY_IDENTIFIER, Context.MODE_PRIVATE);
-		SharedPreferences.Editor editor = sharedPref.edit();
-		editor.putString(CLASS_IDENTIFIER, className);
-		editor.commit();
-	}
+    public void saveClassName() {
+        SharedPreferences sharedPref = context.getSharedPreferences(ACTIVITY_IDENTIFIER, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(CLASS_IDENTIFIER, className);
+        editor.commit();
+    }
 
-	public void readClassName() {
-		SharedPreferences sharedPref = context.getSharedPreferences(ACTIVITY_IDENTIFIER, Context.MODE_PRIVATE);
-		className = sharedPref.getString(CLASS_IDENTIFIER, "");
-	}
+    public void readClassName() {
+        SharedPreferences sharedPref = context.getSharedPreferences(ACTIVITY_IDENTIFIER, Context.MODE_PRIVATE);
+        className = sharedPref.getString(CLASS_IDENTIFIER, "");
+    }
 
     /**
      * Checks whether a class name is saved
      */
-	public boolean hasClassName() {
-		return context.getSharedPreferences(ACTIVITY_IDENTIFIER, Context.MODE_PRIVATE).contains("className");
-	}
+    public boolean hasClassName() {
+        return context.getSharedPreferences(ACTIVITY_IDENTIFIER, Context.MODE_PRIVATE).contains("className");
+    }
 
     /**
      * Saves the course plan
      */
     public void save() {
-		SharedPreferences sharedPref = context.getSharedPreferences(ACTIVITY_IDENTIFIER, Context.MODE_PRIVATE);
-		SharedPreferences.Editor editor = sharedPref.edit();
-		Gson gson = new Gson();
-		String jsonString = gson.toJson(courseArray);
-		editor.putString(COURSE_IDENTIFIER, jsonString);
-		editor.commit();
-	}
+        SharedPreferences sharedPref = context.getSharedPreferences(ACTIVITY_IDENTIFIER, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        Gson gson = new Gson();
+        String jsonString = gson.toJson(courseArray);
+        editor.putString(COURSE_IDENTIFIER, jsonString);
+        editor.commit();
+    }
 
     /**
      * Loads the course plan
      */
     public void read() {
-		SharedPreferences sharedPref = context.getSharedPreferences(ACTIVITY_IDENTIFIER, Context.MODE_PRIVATE);
-		Gson gson = new Gson();
-		courseArray = gson.fromJson(sharedPref.getString(COURSE_IDENTIFIER, gson.toJson(new Course[5][5])), Course[][].class);
+        SharedPreferences sharedPref = context.getSharedPreferences(ACTIVITY_IDENTIFIER, Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        courseArray = gson.fromJson(sharedPref.getString(COURSE_IDENTIFIER, gson.toJson(new Course[5][5])), Course[][].class);
 
         //Sanitize improper coursefile
         for(int x = 0; x < 5; x++) {
@@ -119,7 +119,7 @@ public class CoursePlan {
                 }
             }
         }
-	}
+    }
 
     /**
      * Filters a given list of substitutions for matching ones and returns only those

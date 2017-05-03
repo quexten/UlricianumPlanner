@@ -18,23 +18,23 @@ public class Course {
     private String teacherB  = "";
 
 
-	public Course(String subject, String room, String teacher, String subjectB, String roomB, String teacherB) {
-		this.subject = subject;
-		this.room = room;
-		this.teacher = teacher;
+    public Course(String subject, String room, String teacher, String subjectB, String roomB, String teacherB) {
+        this.subject = subject;
+        this.room = room;
+        this.teacher = teacher;
         this.subjectB = subjectB;
         this.roomB = roomB;
         this.teacherB = teacherB;
-	}
+    }
 
     public Course(String subject, String room, String teacher) {
         this(subject, room, teacher, "", "", "");
     }
-	
-	@Override
-	public String toString() {
-		return subject+"|"+room+"|"+teacher;
-	}
+    
+    @Override
+    public String toString() {
+        return subject+"|"+room+"|"+teacher;
+    }
 
     public String getSubject() {
         return (subject != null) ? subject : "";
@@ -100,27 +100,27 @@ public class Course {
         return (this.getTeacherB() != null) && !this.getTeacherB().isEmpty();
     }
 
-	public static String getLongSubjectName(Context context, String shortSubject) {
-		String[] longStringArray = context.getResources().getStringArray(R.array.subjects_long);
-		String[] shortStringArray = context.getResources().getStringArray(R.array.subjects);
-		for(int i = 0; i < longStringArray.length; i++) {
-			if(shortStringArray[i].equalsIgnoreCase(shortSubject))
-				return longStringArray[i];
-		}
-		return shortSubject;
-	}
+    public static String getLongSubjectName(Context context, String shortSubject) {
+        String[] longStringArray = context.getResources().getStringArray(R.array.subjects_long);
+        String[] shortStringArray = context.getResources().getStringArray(R.array.subjects);
+        for(int i = 0; i < longStringArray.length; i++) {
+            if(shortStringArray[i].equalsIgnoreCase(shortSubject))
+                return longStringArray[i];
+        }
+        return shortSubject;
+    }
 
-	public static String getShortSubjectName(Context context, String longSubject) {
-		String[] longStringArray = context.getResources().getStringArray(R.array.subjects_long);
-		String[] shortStringArray = context.getResources().getStringArray(R.array.subjects);
-		for(int i = 0; i < longStringArray.length; i++) {
-			if(longStringArray[i].equalsIgnoreCase(longSubject))
-				return shortStringArray[i];
-		}
-		return longSubject;
-	}
+    public static String getShortSubjectName(Context context, String longSubject) {
+        String[] longStringArray = context.getResources().getStringArray(R.array.subjects_long);
+        String[] shortStringArray = context.getResources().getStringArray(R.array.subjects);
+        for(int i = 0; i < longStringArray.length; i++) {
+            if(longStringArray[i].equalsIgnoreCase(longSubject))
+                return shortStringArray[i];
+        }
+        return longSubject;
+    }
 
-	private static boolean isWeekB() {
+    private static boolean isWeekB() {
         return false;
     }
 
