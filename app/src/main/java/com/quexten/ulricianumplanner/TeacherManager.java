@@ -79,6 +79,12 @@ public class TeacherManager {
         return list;
     }
 
+    /**
+     * Loads the teacher list from a specified resource
+     * @param context - the context of the application
+     * @param resourceId - the resource to load
+     * @return - the populated TeacherList object
+     */
     private TeacherList getTeacherList(Context context, int resourceId) {
         InputStream is = context.getResources().openRawResource(resourceId);
         Writer writer = new StringWriter();
