@@ -20,7 +20,9 @@ public class AccountManager {
 
     public boolean addAccount(String username, String password) {
         Account account = new Account(username, ACCOUNT_TYPE);
-        return android.accounts.AccountManager.get(context).addAccountExplicitly(account, password, new Bundle());
+        return android.accounts.AccountManager
+                .get(context)
+                .addAccountExplicitly(account, password, new Bundle());
     }
 
     public boolean hasAccount() {
