@@ -12,16 +12,15 @@ public class AccountManager {
 
     public static final String ACCOUNT_TYPE = "com.quexten.ulricianumplanner.account";
 
-    private Context context;
+    private android.accounts.AccountManager accountManager;
 
     public AccountManager(Context context) {
-        this.context = context;
+        accountManager = android.accounts.AccountManager.get(context);
     }
 
     public boolean addAccount(String username, String password) {
         Account account = new Account(username, ACCOUNT_TYPE);
-        return android.accounts.AccountManager
-                .get(context)
+        return accountManager
                 .addAccountExplicitly(account, password, new Bundle());
     }
 
@@ -30,7 +29,7 @@ public class AccountManager {
     }
 
     public String getUsername() {
-        Account[] accounts = android.accounts.AccountManager.get(context).getAccounts();
+        Account[] accounts = accountManager.getAccounts();
         for (Account account : accounts) {
             if (account.type.equals(ACCOUNT_TYPE))
                 return account.name;
@@ -39,10 +38,10 @@ public class AccountManager {
     }
 
     public String getPassword() {
-        Account[] accounts = android.accounts.AccountManager.get(context).getAccounts();
+        Account[] accounts = accountManager.getAccounts();
         for (Account account : accounts)
             if(account.type.equals(ACCOUNT_TYPE))
-                return android.accounts.AccountManager.get(context).getPassword(account);
+                return accountManager.getPassword(account);
         return null;
     }
 
