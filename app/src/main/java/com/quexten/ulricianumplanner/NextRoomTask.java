@@ -3,6 +3,12 @@ package com.quexten.ulricianumplanner;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import com.quexten.ulricianumplanner.courseplan.Course;
+import com.quexten.ulricianumplanner.courseplan.CoursePlan;
+import com.quexten.ulricianumplanner.courseplan.Day;
+import com.quexten.ulricianumplanner.courseplan.Hour;
+import com.quexten.ulricianumplanner.sync.NetworkManager;
+
 import java.util.Calendar;
 
 /**

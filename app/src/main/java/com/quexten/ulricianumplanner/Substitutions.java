@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
+import com.quexten.ulricianumplanner.courseplan.Day;
 
 import java.util.ArrayList;
 
@@ -19,7 +20,7 @@ public class Substitutions {
     private static final String TODAY_DAY_IDENTIFIER = "com.quexten.ulricianumplanner.todayday";
     private static final String TOMORROW_DAY_IDENTIFIER = "com.quexten.ulricianumplanner.tomorrowday";
 
-    private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.MainActivity";
+    private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.ui.MainActivity";
 
     //Content
     private Context context;

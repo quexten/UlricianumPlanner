@@ -1,4 +1,4 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.ui;
 
 /**
  * Created by Quexten on 04-Mar-17.
@@ -7,6 +7,9 @@ package com.quexten.ulricianumplanner;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.quexten.ulricianumplanner.ui.TabFragmentNews;
+import com.quexten.ulricianumplanner.ui.TabFragmentTimetable;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
 

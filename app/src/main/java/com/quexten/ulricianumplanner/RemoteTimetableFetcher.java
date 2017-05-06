@@ -8,6 +8,12 @@ import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.quexten.ulricianumplanner.account.AccountManager;
+import com.quexten.ulricianumplanner.courseplan.Course;
+import com.quexten.ulricianumplanner.courseplan.CoursePlan;
+import com.quexten.ulricianumplanner.courseplan.Day;
+import com.quexten.ulricianumplanner.courseplan.Hour;
+import com.quexten.ulricianumplanner.ui.TimetableManager;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;

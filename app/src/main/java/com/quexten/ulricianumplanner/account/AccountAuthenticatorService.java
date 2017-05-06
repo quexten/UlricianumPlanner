@@ -1,4 +1,4 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.account;
 
 import android.accounts.AbstractAccountAuthenticator;
 import android.accounts.Account;
@@ -10,6 +10,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
+
+import com.quexten.ulricianumplanner.ui.LoginActivity;
 
 /**
  * Created by Quexten on 01-Sep-16.

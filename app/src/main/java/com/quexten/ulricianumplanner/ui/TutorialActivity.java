@@ -1,9 +1,11 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.ui;
 
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
+import com.quexten.ulricianumplanner.R;
 
 public class TutorialActivity extends AppCompatActivity {
 

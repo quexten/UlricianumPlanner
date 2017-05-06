@@ -1,7 +1,17 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.sync;
 
 import android.content.Context;
 import android.os.AsyncTask;
+
+import com.quexten.ulricianumplanner.NewsListener;
+import com.quexten.ulricianumplanner.NotificationPoster;
+import com.quexten.ulricianumplanner.Substitutions;
+import com.quexten.ulricianumplanner.TableEntry;
+import com.quexten.ulricianumplanner.TeacherManager;
+import com.quexten.ulricianumplanner.account.AccountManager;
+import com.quexten.ulricianumplanner.courseplan.CoursePlan;
+import com.quexten.ulricianumplanner.courseplan.Day;
+import com.quexten.ulricianumplanner.courseplan.Hour;
 
 import java.util.Calendar;
 
@@ -9,7 +19,7 @@ import java.util.Calendar;
  * Created by Quexten on 01-Sep-16.
  */
 
-class SyncTask extends AsyncTask<String, Boolean, Boolean> {
+public class SyncTask extends AsyncTask<String, Boolean, Boolean> {
 
     private AccountManager accountManager;
     private CoursePlan coursePlan;

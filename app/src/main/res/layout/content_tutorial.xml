@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.quexten.ulricianumplanner.TutorialActivity"
+    tools:context="com.quexten.ulricianumplanner.ui.TutorialActivity"
     tools:showIn="@layout/activity_tutorial">
 
     <LinearLayout

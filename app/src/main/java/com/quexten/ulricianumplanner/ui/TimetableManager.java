@@ -1,4 +1,4 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.ui;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -24,6 +24,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.crash.FirebaseCrash;
+import com.quexten.ulricianumplanner.NewsListener;
+import com.quexten.ulricianumplanner.R;
+import com.quexten.ulricianumplanner.Substitutions;
+import com.quexten.ulricianumplanner.sync.SyncTask;
+import com.quexten.ulricianumplanner.sync.SynchronizationListener;
+import com.quexten.ulricianumplanner.TableEntry;
+import com.quexten.ulricianumplanner.TeacherManager;
+import com.quexten.ulricianumplanner.courseplan.Course;
+import com.quexten.ulricianumplanner.courseplan.CoursePlan;
+import com.quexten.ulricianumplanner.courseplan.Day;
+import com.quexten.ulricianumplanner.courseplan.Hour;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 

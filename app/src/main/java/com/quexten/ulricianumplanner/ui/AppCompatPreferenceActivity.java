@@ -1,4 +1,4 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.ui;
 
 import android.content.res.Configuration;
 import android.os.Bundle;

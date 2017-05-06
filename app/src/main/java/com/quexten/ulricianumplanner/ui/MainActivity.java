@@ -1,4 +1,4 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.ui;
 
 import android.app.AlarmManager;
 import android.app.AlertDialog;
@@ -19,6 +19,17 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import com.quexten.ulricianumplanner.FeedbackManager;
+import com.quexten.ulricianumplanner.NewsListener;
+import com.quexten.ulricianumplanner.R;
+import com.quexten.ulricianumplanner.RoomReceiver;
+import com.quexten.ulricianumplanner.sync.SubscriptionManager;
+import com.quexten.ulricianumplanner.Substitutions;
+import com.quexten.ulricianumplanner.sync.SyncReceiver;
+import com.quexten.ulricianumplanner.TeacherManager;
+import com.quexten.ulricianumplanner.account.AccountManager;
+import com.quexten.ulricianumplanner.courseplan.CoursePlan;
 
 import java.util.Calendar;
 

@@ -4,6 +4,8 @@ import android.app.Activity;
 
 import android.os.Build;
 
+import com.quexten.ulricianumplanner.courseplan.CoursePlan;
+
 /**
  * Created by Quexten on 09-Dec-16.
  */

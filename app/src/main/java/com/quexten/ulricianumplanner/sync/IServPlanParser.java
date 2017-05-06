@@ -1,4 +1,7 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.sync;
+
+import com.quexten.ulricianumplanner.TableEntry;
+import com.quexten.ulricianumplanner.courseplan.Day;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

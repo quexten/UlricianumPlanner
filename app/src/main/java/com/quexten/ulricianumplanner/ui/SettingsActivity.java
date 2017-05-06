@@ -1,4 +1,4 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.ui;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -9,6 +9,11 @@ import android.preference.Preference;
 import android.support.v7.app.ActionBar;
 import android.preference.PreferenceFragment;
 import android.widget.ArrayAdapter;
+
+import com.quexten.ulricianumplanner.R;
+import com.quexten.ulricianumplanner.sync.SubscriptionManager;
+import com.quexten.ulricianumplanner.TimetableFetchTask;
+import com.quexten.ulricianumplanner.courseplan.CoursePlan;
 
 public class SettingsActivity extends AppCompatPreferenceActivity {
 

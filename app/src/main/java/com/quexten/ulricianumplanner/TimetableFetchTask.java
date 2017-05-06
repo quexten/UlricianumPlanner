@@ -3,11 +3,15 @@ package com.quexten.ulricianumplanner;
 import android.app.Activity;
 import android.os.AsyncTask;
 
+import com.quexten.ulricianumplanner.account.AccountManager;
+import com.quexten.ulricianumplanner.courseplan.CoursePlan;
+import com.quexten.ulricianumplanner.ui.TimetableManager;
+
 /**
  * Created by Quexten on 15-Dec-16.
  */
 
-class TimetableFetchTask extends AsyncTask<String, Boolean, Boolean> {
+public class TimetableFetchTask extends AsyncTask<String, Boolean, Boolean> {
 
     private Activity activity;
     private AccountManager accountManager;

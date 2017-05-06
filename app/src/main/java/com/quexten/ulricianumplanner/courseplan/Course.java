@@ -1,6 +1,8 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.courseplan;
 
 import android.content.Context;
+
+import com.quexten.ulricianumplanner.R;
 
 /**
  * Created by Quexten on 03-Sep-16.

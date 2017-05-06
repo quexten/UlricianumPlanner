@@ -1,4 +1,4 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.sync;
 
 import com.google.firebase.iid.FirebaseInstanceIdService;
 

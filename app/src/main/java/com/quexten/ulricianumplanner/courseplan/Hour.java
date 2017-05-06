@@ -1,4 +1,4 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.courseplan;
 
 /**
  * Created by Quexten on 03-Sep-16.

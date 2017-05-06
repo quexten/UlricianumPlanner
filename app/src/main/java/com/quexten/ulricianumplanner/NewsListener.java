@@ -9,7 +9,7 @@ import android.content.SharedPreferences;
 
 public abstract class NewsListener {
 
-    public static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.MainActivity";
+    public static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.ui.MainActivity";
     public static final String NEWS_IDENTIFIER = "news";
 
     private Context context;

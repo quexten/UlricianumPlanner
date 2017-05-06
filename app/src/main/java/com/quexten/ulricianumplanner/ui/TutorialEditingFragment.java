@@ -1,10 +1,12 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.ui;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.quexten.ulricianumplanner.R;
 
 /**
  * Created by Quexten on 27-Jan-17.

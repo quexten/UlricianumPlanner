@@ -1,4 +1,4 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.ui;
 
 import android.annotation.TargetApi;
 import android.appwidget.AppWidgetManager;
@@ -8,6 +8,14 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.RemoteViews;
+
+import com.quexten.ulricianumplanner.R;
+import com.quexten.ulricianumplanner.Substitutions;
+import com.quexten.ulricianumplanner.TableEntry;
+import com.quexten.ulricianumplanner.courseplan.Course;
+import com.quexten.ulricianumplanner.courseplan.CoursePlan;
+import com.quexten.ulricianumplanner.courseplan.Hour;
+import com.quexten.ulricianumplanner.ui.TimetableManager;
 
 /**
  * Created by Quexten on 16-Dec-16.

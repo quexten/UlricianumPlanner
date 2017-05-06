@@ -1,4 +1,4 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.ui;
 
 import android.content.Context;
 import android.support.v4.content.res.ResourcesCompat;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.quexten.ulricianumplanner.R;
 
 /**
  * Created by Quexten on 23-Apr-17.

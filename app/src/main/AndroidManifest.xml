@@ -17,10 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.LoginActivity"
             android:label="@string/app_name" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:label="Ulricianum Planer"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -30,9 +30,9 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".SyncReceiver" />
+        <receiver android:name=".sync.SyncReceiver" />
         <receiver android:name=".RoomReceiver" />
-        <receiver android:name=".TimetableWidgetProvider">
+        <receiver android:name=".ui.TimetableWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -43,15 +43,15 @@
         </receiver>
 
         <activity
-            android:name=".SettingsActivity"
+            android:name=".ui.SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity
-            android:name=".TutorialActivity"
+            android:name=".ui.TutorialActivity"
             android:label="@string/title_activity_tutorial"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <service
-            android:name=".AccountAuthenticatorService"
+            android:name=".account.AccountAuthenticatorService"
             android:exported="true"
             android:process=":auth">
             <intent-filter>
@@ -62,12 +62,12 @@
                 android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/authenticator" />
         </service>
-        <service android:name=".SubstitutionFirebaseMessagingService">
+        <service android:name=".sync.SubstitutionFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".SubstitutionFirebaseInstanceIdService">
+        <service android:name=".sync.SubstitutionFirebaseInstanceIdService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>

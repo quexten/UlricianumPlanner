@@ -1,6 +1,11 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.sync;
 
 import android.content.Context;
+
+import com.quexten.ulricianumplanner.NewsListener;
+import com.quexten.ulricianumplanner.Substitutions;
+import com.quexten.ulricianumplanner.TableEntry;
+import com.quexten.ulricianumplanner.account.AccountManager;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -39,7 +44,7 @@ public class NetworkManager {
         this.parser = new IServPlanParser();
     }
 
-    protected boolean login(String username, String password) {
+    public boolean login(String username, String password) {
         HttpClient httpClient = HttpClientBuilder.create().build();
         HttpPost request = new HttpPost(LOGIN_URL);
 

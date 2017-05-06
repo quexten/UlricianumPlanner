@@ -1,9 +1,13 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.sync;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.quexten.ulricianumplanner.courseplan.Course;
+import com.quexten.ulricianumplanner.courseplan.CoursePlan;
+import com.quexten.ulricianumplanner.courseplan.Day;
+import com.quexten.ulricianumplanner.courseplan.Hour;
 
 /**
  * Created by Quexten on 23-Dec-16.
@@ -11,7 +15,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 public class SubscriptionManager {
 
-    private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.MainActivity";
+    private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.ui.MainActivity";
     private static final String INITIALLY_SUBSCRIBED_IDENTIFIER = "initiallySubscribed";
 
     private Context context;

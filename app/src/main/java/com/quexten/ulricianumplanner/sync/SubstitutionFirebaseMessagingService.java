@@ -1,7 +1,12 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.sync;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.quexten.ulricianumplanner.NotificationPoster;
+import com.quexten.ulricianumplanner.Substitutions;
+import com.quexten.ulricianumplanner.TableEntry;
+import com.quexten.ulricianumplanner.TeacherManager;
+import com.quexten.ulricianumplanner.courseplan.Day;
 
 /**
  * Created by Quexten on 21-Dec-16.

@@ -1,4 +1,4 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.account;
 
 import android.accounts.Account;
 import android.content.Context;

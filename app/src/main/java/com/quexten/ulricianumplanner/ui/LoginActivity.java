@@ -1,4 +1,4 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.ui;
 
 import android.accounts.AccountAuthenticatorResponse;
 import android.animation.Animator;
@@ -18,6 +18,10 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.quexten.ulricianumplanner.sync.NetworkManager;
+import com.quexten.ulricianumplanner.R;
+import com.quexten.ulricianumplanner.account.AccountManager;
 
 /**
  * A login screen that offers login via email/password.

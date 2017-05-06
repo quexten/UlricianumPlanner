@@ -1,8 +1,10 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.sync;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+
+import com.quexten.ulricianumplanner.NewsListener;
 
 /**
  * Created by Quexten on 15-Sep-16.

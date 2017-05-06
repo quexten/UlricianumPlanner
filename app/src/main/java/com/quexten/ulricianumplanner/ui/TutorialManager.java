@@ -1,4 +1,4 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.ui;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,6 +10,7 @@ import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.SimpleShowcaseEventListener;
 import com.github.amlcurran.showcaseview.targets.Target;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
+import com.quexten.ulricianumplanner.R;
 
 /**
  * Created by Quexten on 27-Jan-17.
@@ -17,7 +18,7 @@ import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
 public class TutorialManager {
 
-    private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.MainActivity";
+    private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.ui.MainActivity";
     private static final String TUTORIAL_IDENTIFIER = "com.quexten.ulricianumplanner.Tutorial.completed";
 
     private MainActivity activity;

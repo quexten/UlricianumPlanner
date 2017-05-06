@@ -1,9 +1,12 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.courseplan;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
+import com.quexten.ulricianumplanner.sync.SubscriptionManager;
+import com.quexten.ulricianumplanner.TableEntry;
+
 import java.util.ArrayList;
 
 /**
@@ -14,7 +17,7 @@ public class CoursePlan {
 
 	private static final String COURSE_IDENTIFIER = "CoursePlan";
     private static final String CLASS_IDENTIFIER = "className";
-    private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.MainActivity";
+    private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.ui.MainActivity";
 
 	private Course[][] courseArray = new Course[5][5];
     private String className = "12";
