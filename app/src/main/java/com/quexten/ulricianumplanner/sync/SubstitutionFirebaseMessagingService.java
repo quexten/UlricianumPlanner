@@ -13,6 +13,7 @@ import com.quexten.ulricianumplanner.courseplan.Day;
  */
 
 public class SubstitutionFirebaseMessagingService extends FirebaseMessagingService {
+
     @Override
     public void onMessageReceived(RemoteMessage message) {
         String from = message.getFrom();
@@ -56,4 +57,5 @@ public class SubstitutionFirebaseMessagingService extends FirebaseMessagingServi
         TeacherManager teacherManager = new TeacherManager(getApplicationContext());
         new NotificationPoster(this.getApplicationContext(), teacherManager).postSubstitutionNotification(entry);
     }
+    
 }
