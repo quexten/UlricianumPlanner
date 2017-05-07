@@ -1,4 +1,4 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.substitutions;
 
 import android.content.Context;
 import android.content.SharedPreferences;

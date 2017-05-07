@@ -3,8 +3,8 @@ package com.quexten.ulricianumplanner.sync;
 import android.content.Context;
 
 import com.quexten.ulricianumplanner.NewsListener;
-import com.quexten.ulricianumplanner.Substitutions;
-import com.quexten.ulricianumplanner.TableEntry;
+import com.quexten.ulricianumplanner.substitutions.Substitutions;
+import com.quexten.ulricianumplanner.substitutions.TableEntry;
 import com.quexten.ulricianumplanner.account.AccountManager;
 
 import java.io.BufferedReader;

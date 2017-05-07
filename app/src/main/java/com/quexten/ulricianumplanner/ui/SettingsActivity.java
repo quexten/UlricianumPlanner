@@ -12,7 +12,7 @@ import android.widget.ArrayAdapter;
 
 import com.quexten.ulricianumplanner.R;
 import com.quexten.ulricianumplanner.sync.SubscriptionManager;
-import com.quexten.ulricianumplanner.TimetableFetchTask;
+import com.quexten.ulricianumplanner.sync.TimetableFetchTask;
 import com.quexten.ulricianumplanner.courseplan.CoursePlan;
 
 public class SettingsActivity extends AppCompatPreferenceActivity {

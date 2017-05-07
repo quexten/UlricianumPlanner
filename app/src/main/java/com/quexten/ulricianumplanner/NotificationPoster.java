@@ -14,6 +14,8 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 
 import com.quexten.ulricianumplanner.courseplan.Course;
+import com.quexten.ulricianumplanner.courseplan.TeacherManager;
+import com.quexten.ulricianumplanner.substitutions.TableEntry;
 import com.quexten.ulricianumplanner.ui.MainActivity;
 
 /**

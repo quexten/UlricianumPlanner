@@ -7,6 +7,9 @@ import com.quexten.ulricianumplanner.courseplan.Course;
 import com.quexten.ulricianumplanner.courseplan.CoursePlan;
 import com.quexten.ulricianumplanner.courseplan.Day;
 import com.quexten.ulricianumplanner.courseplan.Hour;
+import com.quexten.ulricianumplanner.courseplan.TeacherManager;
+import com.quexten.ulricianumplanner.substitutions.Substitutions;
+import com.quexten.ulricianumplanner.substitutions.TableEntry;
 import com.quexten.ulricianumplanner.sync.NetworkManager;
 
 import java.util.Calendar;

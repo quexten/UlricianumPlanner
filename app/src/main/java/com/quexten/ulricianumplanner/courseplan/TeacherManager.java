@@ -1,8 +1,9 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.courseplan;
 
 import android.content.Context;
 
 import com.google.gson.Gson;
+import com.quexten.ulricianumplanner.R;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

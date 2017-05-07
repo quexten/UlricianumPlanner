@@ -5,9 +5,9 @@ import android.os.AsyncTask;
 
 import com.quexten.ulricianumplanner.NewsListener;
 import com.quexten.ulricianumplanner.NotificationPoster;
-import com.quexten.ulricianumplanner.Substitutions;
-import com.quexten.ulricianumplanner.TableEntry;
-import com.quexten.ulricianumplanner.TeacherManager;
+import com.quexten.ulricianumplanner.substitutions.Substitutions;
+import com.quexten.ulricianumplanner.substitutions.TableEntry;
+import com.quexten.ulricianumplanner.courseplan.TeacherManager;
 import com.quexten.ulricianumplanner.account.AccountManager;
 import com.quexten.ulricianumplanner.courseplan.CoursePlan;
 import com.quexten.ulricianumplanner.courseplan.Day;

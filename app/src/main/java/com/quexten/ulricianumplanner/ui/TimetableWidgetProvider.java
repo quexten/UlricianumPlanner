@@ -10,12 +10,11 @@ import android.os.Bundle;
 import android.widget.RemoteViews;
 
 import com.quexten.ulricianumplanner.R;
-import com.quexten.ulricianumplanner.Substitutions;
-import com.quexten.ulricianumplanner.TableEntry;
+import com.quexten.ulricianumplanner.substitutions.Substitutions;
+import com.quexten.ulricianumplanner.substitutions.TableEntry;
 import com.quexten.ulricianumplanner.courseplan.Course;
 import com.quexten.ulricianumplanner.courseplan.CoursePlan;
 import com.quexten.ulricianumplanner.courseplan.Hour;
-import com.quexten.ulricianumplanner.ui.TimetableManager;
 
 /**
  * Created by Quexten on 16-Dec-16.

@@ -1,6 +1,6 @@
 package com.quexten.ulricianumplanner.sync;
 
-import com.quexten.ulricianumplanner.TableEntry;
+import com.quexten.ulricianumplanner.substitutions.TableEntry;
 import com.quexten.ulricianumplanner.courseplan.Day;
 
 import org.jsoup.Jsoup;

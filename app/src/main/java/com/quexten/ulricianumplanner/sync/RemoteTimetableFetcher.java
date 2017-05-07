@@ -1,4 +1,4 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.sync;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.quexten.ulricianumplanner.R;
 import com.quexten.ulricianumplanner.account.AccountManager;
 import com.quexten.ulricianumplanner.courseplan.Course;
 import com.quexten.ulricianumplanner.courseplan.CoursePlan;

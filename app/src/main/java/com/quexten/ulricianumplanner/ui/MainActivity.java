@@ -25,9 +25,9 @@ import com.quexten.ulricianumplanner.NewsListener;
 import com.quexten.ulricianumplanner.R;
 import com.quexten.ulricianumplanner.RoomReceiver;
 import com.quexten.ulricianumplanner.sync.SubscriptionManager;
-import com.quexten.ulricianumplanner.Substitutions;
+import com.quexten.ulricianumplanner.substitutions.Substitutions;
 import com.quexten.ulricianumplanner.sync.SyncReceiver;
-import com.quexten.ulricianumplanner.TeacherManager;
+import com.quexten.ulricianumplanner.courseplan.TeacherManager;
 import com.quexten.ulricianumplanner.account.AccountManager;
 import com.quexten.ulricianumplanner.courseplan.CoursePlan;
 
