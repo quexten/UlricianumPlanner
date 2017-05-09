@@ -18,7 +18,7 @@ import com.quexten.ulricianumplanner.R;
 
 public class TutorialManager {
 
-    private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.ui.MainActivity";
+    private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.MainActivity";
     private static final String TUTORIAL_IDENTIFIER = "com.quexten.ulricianumplanner.Tutorial.completed";
 
     private MainActivity activity;

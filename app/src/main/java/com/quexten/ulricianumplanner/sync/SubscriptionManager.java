@@ -15,7 +15,7 @@ import com.quexten.ulricianumplanner.courseplan.Hour;
 
 public class SubscriptionManager {
 
-    private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.ui.MainActivity";
+    private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.MainActivity";
     private static final String INITIALLY_SUBSCRIBED_IDENTIFIER = "initiallySubscribed";
 
     private Context context;

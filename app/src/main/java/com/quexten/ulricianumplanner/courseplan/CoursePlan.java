@@ -17,7 +17,7 @@ public class CoursePlan {
 
 	private static final String COURSE_IDENTIFIER = "CoursePlan";
     private static final String CLASS_IDENTIFIER = "className";
-    private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.ui.MainActivity";
+    private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.MainActivity";
 
 	private Course[][] courseArray = new Course[5][5];
     private String className = "12";

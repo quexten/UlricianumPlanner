@@ -20,7 +20,7 @@ public class Substitutions {
     private static final String TODAY_DAY_IDENTIFIER = "com.quexten.ulricianumplanner.todayday";
     private static final String TOMORROW_DAY_IDENTIFIER = "com.quexten.ulricianumplanner.tomorrowday";
 
-    private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.ui.MainActivity";
+    private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.MainActivity";
 
     //Content
     private Context context;
