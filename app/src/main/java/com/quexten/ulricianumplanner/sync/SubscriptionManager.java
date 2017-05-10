@@ -15,9 +15,6 @@ import com.quexten.ulricianumplanner.courseplan.Hour;
 
 public class SubscriptionManager {
 
-    private static final String ACTIVITY_IDENTIFIER = "com.quexten.ulricianumplanner.MainActivity";
-    private static final String INITIALLY_SUBSCRIBED_IDENTIFIER = "initiallySubscribed";
-
     private Context context;
 
     public SubscriptionManager(Context context) {
@@ -90,27 +87,12 @@ public class SubscriptionManager {
     }
 
     public void subscribeToPlan(CoursePlan plan) {
-        if(!isInitiallySubscribed()) {
-            Course[][] courses = plan.getCourses();
-            for (int dayId = 0; dayId < courses.length; dayId++) {
-                for (int hourId = 0; hourId < courses[0].length; hourId++) {
-                    subscribe(courses[dayId][hourId], Day.fromInt(dayId), Hour.fromInt(hourId));
-                }
+        Course[][] courses = plan.getCourses();
+        for (int dayId = 0; dayId < courses.length; dayId++) {
+            for (int hourId = 0; hourId < courses[0].length; hourId++) {
+                subscribe(courses[dayId][hourId], Day.fromInt(dayId), Hour.fromInt(hourId));
             }
-            setInitiallySubscribed();
         }
-    }
-
-    public void setInitiallySubscribed() {
-        SharedPreferences sharedPref = context.getSharedPreferences(ACTIVITY_IDENTIFIER, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putBoolean(INITIALLY_SUBSCRIBED_IDENTIFIER, true);
-        editor.commit();
-    }
-
-    public boolean isInitiallySubscribed() {
-        SharedPreferences sharedPref = context.getSharedPreferences(ACTIVITY_IDENTIFIER, Context.MODE_PRIVATE);
-        return sharedPref.getBoolean(INITIALLY_SUBSCRIBED_IDENTIFIER, false);
     }
 
 }
