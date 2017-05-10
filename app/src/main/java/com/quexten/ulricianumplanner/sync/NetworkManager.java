@@ -149,8 +149,8 @@ public class NetworkManager {
         return substitutions;
     }
 
-	private IServPlanParser.PlanPage getPlan(boolean today, int page) {
-		String url = "https://ulricianum-aurich.de/idesk/plan/index.php/Vertretungsplan%20Sch%C3%BCler%20" + (today ? "heute" : "morgen") + "/subst_00" + page + ".htm";
+    private IServPlanParser.PlanPage getPlan(boolean today, int page) {
+        String url = "https://ulricianum-aurich.de/idesk/plan/index.php/Vertretungsplan%20Sch%C3%BCler%20" + (today ? "heute" : "morgen") + "/subst_00" + page + ".htm";
 
         try {
             HttpClient client = HttpClientBuilder.create().build();
@@ -178,7 +178,7 @@ public class NetworkManager {
         }
 
         return null;
-	}
+    }
 
     public void setNewsListener(NewsListener newsListener) {
         this.newsListener = newsListener;
