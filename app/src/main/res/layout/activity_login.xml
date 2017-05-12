@@ -73,7 +73,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:text="Bitte richte eine Emailweiterleitung ein oder rufe regelmäßig deine Emails ab um keine neuigkeiten zu verpassen."
+                android:text="@string/login_email_forward_notification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/email_forward_notification" />

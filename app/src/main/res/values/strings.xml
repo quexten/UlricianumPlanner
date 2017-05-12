@@ -139,4 +139,5 @@ ein Dialog erscheint.</string>
     <string name="tab_timetable">Stundenplan</string>
     <string name="tab_news">Neuigkeiten</string>
 
+    <string name="login_email_forward_notification">"Bitte richte eine Emailweiterleitung ein oder rufe regelmäßig deine Emails ab um keine Neuigkeiten zu verpassen."</string>
 </resources>
