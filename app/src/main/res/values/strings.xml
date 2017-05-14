@@ -112,8 +112,7 @@
     <string name="pref_developer">Entwickler</string>
 
     <string name="tutorial_title_01">Einrichten des Stundenplans</string>
-    <string name="tutorial_description_01">Um deinen Stundenplan einzurichen drücke auf eines der Felder bis
-ein Dialog erscheint.</string>
+    <string name="tutorial_description_01">Um deinen Stundenplan einzurichen, tippe auf eines der Felder.</string>
 
     <string name="tutorial_title_02">Lehrer einstellen</string>
     <string name="tutorial_description_02">Gib hier das Kürzel deines Lehrers ein.</string>
