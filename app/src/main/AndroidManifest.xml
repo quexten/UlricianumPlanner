@@ -50,6 +50,17 @@
             android:label="@string/title_activity_tutorial"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <service android:name=".sync.SubstitutionFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".sync.SubstitutionFirebaseInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
         <service
             android:name=".account.AccountAuthenticatorService"
             android:exported="true"
@@ -62,16 +73,20 @@
                 android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/authenticator" />
         </service>
-        <service android:name=".sync.SubstitutionFirebaseMessagingService">
+
+        <service android:name=".sync.SyncService"
+            android:exported="true">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="android.content.SyncAdapter" />
             </intent-filter>
+            <meta-data android:name="android.content.SyncAdapter"
+                android:resource="@xml/syncadapter" />
         </service>
-        <service android:name=".sync.SubstitutionFirebaseInstanceIdService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-            </intent-filter>
-        </service>
+        <provider
+            android:name=".sync.ProviderStub"
+            android:authorities="com.quexten.ulricianumplanner.authority"
+            android:exported="false" />
+
     </application>
 
 </manifest>
