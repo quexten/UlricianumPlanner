@@ -130,11 +130,13 @@
     <string name="share_button">Share</string>
     <string name="no_internet_connection">Keine Netzwerkverbindung möglich!</string>
 
+    <!-- Substitution type names -->
     <string name="event_cancelled">Entfall</string>
     <string name="event_delayed">Verlegung</string>
     <string name="event_roomchange">Raumänderung</string>
     <string name="event_substitution">Vertretung</string>
     <string name="event_swap">Tausch</string>
+
     <string name="tab_timetable">Stundenplan</string>
     <string name="tab_news">Neuigkeiten</string>
 
