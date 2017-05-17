@@ -111,6 +111,7 @@
     <string name="login_unsuccessful">Login fehlgeschlagen!</string>
     <string name="pref_developer">Entwickler</string>
 
+    <!-- Tutorial descriptions -->
     <string name="tutorial_title_01">Einrichten des Stundenplans</string>
     <string name="tutorial_description_01">Um deinen Stundenplan einzurichen, tippe auf eines der Felder.</string>
 
