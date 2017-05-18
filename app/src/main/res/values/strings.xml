@@ -35,6 +35,46 @@
         \n\nDer Stundenplan aktualisiert sich automatisch und Benachrichtigungen werden ausgesandt. Außerdem verändert sich der Stundenplan bei Einträgen im Vertretungsplan entsprechend.
     </string>
 
+    <string name="dialog_title">Bearbeiten</string>
+    <string name="dialog_positive">Ok</string>
+    <string name="dialog_negative">Abbrechen</string>
+    <string name="dialog_delete">Löschen</string>
+
+    <string name="builder_title">Klasse Auswählen</string>
+
+    <string name="synced">Synchronisiert!</string>
+    <string name="feedback_title">Feedback</string>
+    <string name="feedback_description">Was ist das Problem?</string>
+    <string name="feedback_attachtimetable">Stundenplan Anhängen</string>
+
+    <string name="fetch_timetable_dialog_title">Stundenplan Aktualisierung</string>
+    <string name="fetch_timetable_dialog_description">Es ist ein neuer Stundenplan verfügbar, soll dieser heruntergeladen werden?</string>
+    <string name="pref_timetable_refresh_display_name">Stundenplan Abrufen</string>
+
+    <string name="login_unsuccessful">Login fehlgeschlagen!</string>
+    <string name="pref_developer">Entwickler</string>
+
+    <!-- Tutorial descriptions -->
+    <string name="tutorial_title_01">Einrichten des Stundenplans</string>
+    <string name="tutorial_description_01">Um deinen Stundenplan einzurichen, tippe auf eines der Felder.</string>
+
+    <string name="tutorial_title_02">Lehrer einstellen</string>
+    <string name="tutorial_description_02">Gib hier das Kürzel deines Lehrers ein.</string>
+
+    <string name="tutorial_title_03">Fach einstellen</string>
+    <string name="tutorial_description_03">Hier kannst du das Fach einstellen.</string>
+
+    <string name="tutorial_title_04">Raum einstellen</string>
+    <string name="tutorial_description_04">Den Raum kannst du hier eintragen.</string>
+
+    <string name="tutorial_title_05">Aktualisierung</string>
+    <string name="tutorial_description_05">Der Stundenplan aktualisiert sich nun automatisch, und zeigt dir eine Pushnachricht, wenn du
+    Entfall, Raumänderung oder Änliches hast. Trage nun den Rest deiner Fächer ein und du bist fertig. </string>
+
+    <string name="share_button">Share</string>
+    <string name="no_internet_connection">Keine Netzwerkverbindung möglich!</string>
+
+    <!-- Subject names -->
     <string-array name="subjects">
         <item>BI</item>
         <item>CH</item>
@@ -91,45 +131,6 @@
         <item>Erdkunde-Bilingual</item>
         <item>Geschichte-Bilingual</item>
     </string-array>
-
-    <string name="dialog_title">Bearbeiten</string>
-    <string name="dialog_positive">Ok</string>
-    <string name="dialog_negative">Abbrechen</string>
-    <string name="dialog_delete">Löschen</string>
-
-    <string name="builder_title">Klasse Auswählen</string>
-
-    <string name="synced">Synchronisiert!</string>
-    <string name="feedback_title">Feedback</string>
-    <string name="feedback_description">Was ist das Problem?</string>
-    <string name="feedback_attachtimetable">Stundenplan Anhängen</string>
-
-    <string name="fetch_timetable_dialog_title">Stundenplan Aktualisierung</string>
-    <string name="fetch_timetable_dialog_description">Es ist ein neuer Stundenplan verfügbar, soll dieser heruntergeladen werden?</string>
-    <string name="pref_timetable_refresh_display_name">Stundenplan Abrufen</string>
-
-    <string name="login_unsuccessful">Login fehlgeschlagen!</string>
-    <string name="pref_developer">Entwickler</string>
-
-    <!-- Tutorial descriptions -->
-    <string name="tutorial_title_01">Einrichten des Stundenplans</string>
-    <string name="tutorial_description_01">Um deinen Stundenplan einzurichen, tippe auf eines der Felder.</string>
-
-    <string name="tutorial_title_02">Lehrer einstellen</string>
-    <string name="tutorial_description_02">Gib hier das Kürzel deines Lehrers ein.</string>
-
-    <string name="tutorial_title_03">Fach einstellen</string>
-    <string name="tutorial_description_03">Hier kannst du das Fach einstellen.</string>
-
-    <string name="tutorial_title_04">Raum einstellen</string>
-    <string name="tutorial_description_04">Den Raum kannst du hier eintragen.</string>
-
-    <string name="tutorial_title_05">Aktualisierung</string>
-    <string name="tutorial_description_05">Der Stundenplan aktualisiert sich nun automatisch, und zeigt dir eine Pushnachricht, wenn du
-    Entfall, Raumänderung oder Änliches hast. Trage nun den Rest deiner Fächer ein und du bist fertig. </string>
-
-    <string name="share_button">Share</string>
-    <string name="no_internet_connection">Keine Netzwerkverbindung möglich!</string>
 
     <!-- Substitution type names -->
     <string name="event_cancelled">Entfall</string>
