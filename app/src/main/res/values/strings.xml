@@ -8,26 +8,29 @@
     <string name="action_sign_in_short">Login</string>
     <string name="error_incorrect_password">Der Nutzername oder das Passwort ist falsch.</string>
     <string name="error_field_required">Eingabe notwendig</string>
+
+    <!-- Strings related to settings -->
     <string name="title_activity_settings">Einstellungen</string>
-
     <string name="pref_header_general">Allgemein</string>
-
     <string name="pref_title_display_name">Klasse</string>
-
     <string name="pref_title_system_sync_settings">Automatische Synchronisation</string>
-
     <string name="pref_header_notifications">Benachrichtigungen</string>
-
     <string name="pref_title_new_message_notifications">VPL-Benachrichtigungen</string>
 
     <string name="pref_title_ringtone">Benachrichtigungston</string>
     <string name="pref_ringtone_silent">Leise</string>
 
     <string name="pref_title_vibrate">Vibrieren</string>
-    <string name="title_activity_tutorial">Hilfe</string>
 
     <string name="pref_title_room_notifications">Raum Benachrichtigungen</string>
     <string name="pref_description_room_notifications">Benachrichtigungen zum jeweils nächsten Raum</string>
+
+    <!-- Strings related to notifications -->
+    <string name="share_button">Share</string>
+    <string name="no_internet_connection">Keine Netzwerkverbindung möglich!</string>
+
+
+    <string name="title_activity_tutorial">Hilfe</string>
 
     <string name="action_settings">Einstellungen</string>
     <string name="help_1">Damit die App automatisch Nachrichten zum Vertretungsplan senden kann muss der Stundenplan eingerichtet werden.
@@ -37,10 +40,6 @@
 
     <string name="tab_timetable">Stundenplan</string>
     <string name="tab_news">Neuigkeiten</string>
-
-    <string name="share_button">Share</string>
-    <string name="no_internet_connection">Keine Netzwerkverbindung möglich!</string>
-
 
     <string name="login_email_forward_notification">"Bitte richte eine Emailweiterleitung ein oder rufe regelmäßig deine Emails ab um keine Neuigkeiten zu verpassen."</string>
 
