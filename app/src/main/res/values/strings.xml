@@ -12,6 +12,7 @@
 
     <!-- Strings related to settings -->
     <string name="title_activity_settings">Einstellungen</string>
+    <string name="action_settings">Einstellungen</string>
     <string name="pref_header_general">Allgemein</string>
     <string name="pref_title_display_name">Klasse</string>
     <string name="pref_title_system_sync_settings">Automatische Synchronisation</string>
@@ -31,10 +32,8 @@
     <string name="no_internet_connection">Keine Netzwerkverbindung möglich!</string>
     <string name="synced">Synchronisiert!</string>
 
-
+    <!-- Strings related to help -->
     <string name="title_activity_tutorial">Hilfe</string>
-
-    <string name="action_settings">Einstellungen</string>
     <string name="help_1">Damit die App automatisch Nachrichten zum Vertretungsplan senden kann muss der Stundenplan eingerichtet werden.
         \n\nZum hinzufügen oder Bearbeiten von Einträgen im Stundenplan einfach auf den jeweiligen Eintrag tippen und gedrückt halten. Es öffnet sich ein Dialog zum bearbeiten des Faches. Lehrer, Fach und Raum müssen groß geschrieben werden.
         \n\nDer Stundenplan aktualisiert sich automatisch und Benachrichtigungen werden ausgesandt. Außerdem verändert sich der Stundenplan bei Einträgen im Vertretungsplan entsprechend.
@@ -43,13 +42,14 @@
     <string name="tab_timetable">Stundenplan</string>
     <string name="tab_news">Neuigkeiten</string>
 
-
+    <!-- Strings related to editing dialog -->
+    <string name="builder_title">Klasse Auswählen</string>
     <string name="dialog_title">Bearbeiten</string>
     <string name="dialog_positive">Ok</string>
     <string name="dialog_negative">Abbrechen</string>
     <string name="dialog_delete">Löschen</string>
 
-    <string name="builder_title">Klasse Auswählen</string>
+
 
     <string name="feedback_title">Feedback</string>
     <string name="feedback_description">Was ist das Problem?</string>
