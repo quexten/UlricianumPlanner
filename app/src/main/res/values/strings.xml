@@ -9,6 +9,7 @@
     <string name="error_incorrect_password">Der Nutzername oder das Passwort ist falsch.</string>
     <string name="error_field_required">Eingabe notwendig</string>
     <string name="login_email_forward_notification">"Bitte richte eine Emailweiterleitung ein oder rufe regelmäßig deine Emails ab um keine Neuigkeiten zu verpassen."</string>
+    <string name="login_unsuccessful">Login fehlgeschlagen!</string>
 
     <!-- Strings related to settings -->
     <string name="title_activity_settings">Einstellungen</string>
@@ -18,6 +19,8 @@
     <string name="pref_title_system_sync_settings">Automatische Synchronisation</string>
     <string name="pref_header_notifications">Benachrichtigungen</string>
     <string name="pref_title_new_message_notifications">VPL-Benachrichtigungen</string>
+    <string name="pref_developer">Entwickler</string>
+
 
     <string name="pref_title_ringtone">Benachrichtigungston</string>
     <string name="pref_ringtone_silent">Leise</string>
@@ -49,18 +52,15 @@
     <string name="dialog_negative">Abbrechen</string>
     <string name="dialog_delete">Löschen</string>
 
-
-
+    <!-- Strings related to feedback dialog -->
     <string name="feedback_title">Feedback</string>
     <string name="feedback_description">Was ist das Problem?</string>
     <string name="feedback_attachtimetable">Stundenplan Anhängen</string>
 
+    <!-- Strings related to fetch timetable dialog -->
     <string name="fetch_timetable_dialog_title">Stundenplan Aktualisierung</string>
     <string name="fetch_timetable_dialog_description">Es ist ein neuer Stundenplan verfügbar, soll dieser heruntergeladen werden?</string>
     <string name="pref_timetable_refresh_display_name">Stundenplan Abrufen</string>
-
-    <string name="login_unsuccessful">Login fehlgeschlagen!</string>
-    <string name="pref_developer">Entwickler</string>
 
     <!-- Tutorial descriptions -->
     <string name="tutorial_title_01">Einrichten des Stundenplans</string>
