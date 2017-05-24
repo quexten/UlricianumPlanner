@@ -21,15 +21,11 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.crash.FirebaseCrash;
-import com.quexten.ulricianumplanner.NewsListener;
 import com.quexten.ulricianumplanner.R;
 import com.quexten.ulricianumplanner.substitutions.Substitutions;
-import com.quexten.ulricianumplanner.sync.SyncTask;
-import com.quexten.ulricianumplanner.sync.SynchronizationListener;
-import com.quexten.ulricianumplanner.substitutions.TableEntry;
+import com.quexten.ulricianumplanner.sync.iserv.TableEntry;
 import com.quexten.ulricianumplanner.courseplan.TeacherManager;
 import com.quexten.ulricianumplanner.courseplan.Course;
 import com.quexten.ulricianumplanner.courseplan.CoursePlan;
@@ -52,7 +48,7 @@ public class TimetableManager {
     public Substitutions substitutions;
     private TeacherManager teacherManager;
 
-    public TimetableManager(final Activity activity, CoursePlan coursePlan, Substitutions substitutions, final NewsListener newsListener, TeacherManager teacherManager) {
+    public TimetableManager(final Activity activity, CoursePlan coursePlan, Substitutions substitutions, TeacherManager teacherManager) {
         this.activity = activity;
         this.coursePlan = coursePlan;
         this.substitutions = substitutions;
@@ -68,7 +64,8 @@ public class TimetableManager {
                         swipeRefreshLayout.setRefreshing(true);
                     }
                 });
-                new SyncTask(activity, newsListener, new SynchronizationListener() {
+
+                /*new SyncTask(activity, newsListener, new SynchronizationListener() {
                     @Override
                     public void onSync(boolean successful) {
                         final boolean wasSuccessful = successful;
@@ -91,7 +88,7 @@ public class TimetableManager {
                             }
                         });
                     }
-                }).execute();
+                }).execute();*/
             }
         });
         swipeRefreshLayout.setColorSchemeColors(activity.getResources().getColor(R.color.colorPrimary));
@@ -125,6 +122,7 @@ public class TimetableManager {
             }
         }
 
+        /*
         //Highlight Plan Days
         if(substitutions.getTodayDay() != null) {
             int dayBackgroundColor = Color.parseColor("#eeeeee");
@@ -141,7 +139,7 @@ public class TimetableManager {
 
             getViewForDay(currentDay).setBackgroundColor(currentPlanDayBackgroundColor);
             getViewForDay(tomorrowDay).setBackgroundColor(currentPlanDayBackgroundColor);
-        }
+        }*/
 
         //Visualize Overrides
         visualizeOverrides(false);
@@ -167,7 +165,7 @@ public class TimetableManager {
             }
         }
 
-        for(TableEntry entry : (today ? substitutions.getTodaySubstitutions() : substitutions.getTomorrowSubstitutions())) {
+        /*for(TableEntry entry : (today ? substitutions.getTodaySubstitutions() : substitutions.getTomorrowSubstitutions())) {
             Day day = today ? substitutions.getTodayDay() : substitutions.getTomorrowDay();
             Hour hour = Hour.fromString(entry.getTime() == null ? "" : entry.getTime());
 
@@ -185,7 +183,7 @@ public class TimetableManager {
                 roomView.setText(entry.getRoom());
 
             subjectView.setBackgroundColor(getColorForSubstitution(activity, entry.getType()));
-        }
+        }*/
     }
 
     LinearLayout getTableEntryLayout(Day day, Hour hour) {

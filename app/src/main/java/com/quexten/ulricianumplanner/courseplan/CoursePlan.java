@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 import com.quexten.ulricianumplanner.sync.SubscriptionManager;
-import com.quexten.ulricianumplanner.substitutions.TableEntry;
+import com.quexten.ulricianumplanner.sync.iserv.TableEntry;
 
 import java.util.ArrayList;
 

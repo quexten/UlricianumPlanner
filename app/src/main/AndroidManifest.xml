@@ -87,6 +87,24 @@
             android:authorities="com.quexten.ulricianumplanner.authority"
             android:exported="false" />
 
+
+        <receiver android:name=".news.NewsBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="com.quexten.ulricianumplanner.newsreceived" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".sync.SubstitutionBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="com.quexten.ulricianumplanner.substitutionreceived" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".notifications.NewsBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="com.quexten.ulricianumplanner.newsreceived" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

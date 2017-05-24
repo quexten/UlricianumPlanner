@@ -5,14 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 
 /**
- * Created by Quexten on 15-Sep-16.
+ * Created by Quexten on 20-May-17.
  */
 
-public class SyncReceiver extends BroadcastReceiver {
+public class SubstitutionBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        //new SyncTask(context, newsListener).execute();
+
     }
 
 }

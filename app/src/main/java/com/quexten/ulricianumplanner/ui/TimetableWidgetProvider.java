@@ -10,8 +10,9 @@ import android.os.Bundle;
 import android.widget.RemoteViews;
 
 import com.quexten.ulricianumplanner.R;
+import com.quexten.ulricianumplanner.substitutions.SubstitutionHandler;
 import com.quexten.ulricianumplanner.substitutions.Substitutions;
-import com.quexten.ulricianumplanner.substitutions.TableEntry;
+import com.quexten.ulricianumplanner.sync.iserv.TableEntry;
 import com.quexten.ulricianumplanner.courseplan.Course;
 import com.quexten.ulricianumplanner.courseplan.CoursePlan;
 import com.quexten.ulricianumplanner.courseplan.Hour;
@@ -68,8 +69,7 @@ public class TimetableWidgetProvider extends AppWidgetProvider {
         CoursePlan coursePlan = new CoursePlan(context, null);
         coursePlan.read();
         coursePlan.readClassName();
-        Substitutions substitutions = new Substitutions(context);
-        substitutions.readSubstitutions();
+        Substitutions substitutions = new SubstitutionHandler(context).load();
 
         RemoteViews views = new RemoteViews(context.getPackageName(),
                 LAYOUT_IDS[rows - 1]);
@@ -82,7 +82,7 @@ public class TimetableWidgetProvider extends AppWidgetProvider {
             views.setInt(SUBJECTVIEW_IDS_RIGHT[i], "setBackgroundColor",
                     Color.parseColor("#e0e0e0"));
 
-            String todayRoom = coursePlan.getCourse(substitutions.getTodayDay(), Hour.fromInt(i)).getCurrentRoom();
+            /*String todayRoom = coursePlan.getCourse(substitutions.getTodayDay(), Hour.fromInt(i)).getCurrentRoom();
             String todaySubject = coursePlan.getCourse(substitutions.getTodayDay(), Hour.fromInt(i)).getCurrentSubject();
             String tomorrowRoom = coursePlan.getCourse(substitutions.getTomorrowDay(), Hour.fromInt(i)).getCurrentRoom();
             String tomorrowSubject = coursePlan.getCourse(substitutions.getTomorrowDay(), Hour.fromInt(i)).getCurrentSubject();
@@ -112,7 +112,7 @@ public class TimetableWidgetProvider extends AppWidgetProvider {
             views.setTextViewText(ROOMVIEW_IDS_LEFT[i], todayRoom);
             views.setTextViewText(SUBJECTVIEW_IDS_LEFT[i], todaySubject);
             views.setTextViewText(ROOMVIEW_IDS_RIGHT[i], tomorrowRoom);
-            views.setTextViewText(SUBJECTVIEW_IDS_RIGHT[i], tomorrowSubject);
+            views.setTextViewText(SUBJECTVIEW_IDS_RIGHT[i], tomorrowSubject);*/
         }
 
         return views;

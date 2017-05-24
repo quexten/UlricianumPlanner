@@ -7,7 +7,7 @@ package com.quexten.ulricianumplanner.courseplan;
 public enum Hour {
 
     ONETWO, THREFOUR, FIVESIX, EIGHTNINE, TENELEVEN;
-    
+
     public static Hour fromString(String string) {
         switch(string) {
             case "3":

@@ -2,11 +2,6 @@ package com.quexten.ulricianumplanner.sync;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-import com.quexten.ulricianumplanner.NotificationPoster;
-import com.quexten.ulricianumplanner.substitutions.Substitutions;
-import com.quexten.ulricianumplanner.substitutions.TableEntry;
-import com.quexten.ulricianumplanner.courseplan.TeacherManager;
-import com.quexten.ulricianumplanner.courseplan.Day;
 
 /**
  * Created by Quexten on 21-Dec-16.
@@ -45,17 +40,17 @@ public class SubstitutionFirebaseMessagingService extends FirebaseMessagingServi
         String substituteSubject = message.getData().get("subject");
         String substituteTeacher = message.getData().get("teacher");
 
-        TableEntry entry = new TableEntry("", time, teacher, subject, type);
+        /*TableEntry entry = new TableEntry("", time, teacher, subject, type);
         entry.setRoom(room);
         entry.setSubstituteSubject(substituteSubject.toUpperCase());
         entry.setSubstituteTeacher(substituteTeacher.toUpperCase());
 
         Substitutions substitutions = new Substitutions(this.getApplicationContext());
-        substitutions.readSubstitutions();
-        substitutions.insertSubstitution(entry, Day.fromString(day));
-        substitutions.saveSubstitutions();
+        substitutions.load();
+        substitutions.add(new Substitution());
+        substitutions.save();
         TeacherManager teacherManager = new TeacherManager(getApplicationContext());
-        new NotificationPoster(this.getApplicationContext(), teacherManager).postSubstitutionNotification(entry);
+        new NotificationPoster(this.getApplicationContext(), teacherManager).postSubstitutionNotification(entry);*/
     }
 
 }
