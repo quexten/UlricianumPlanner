@@ -30,7 +30,6 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".sync.SyncReceiver" />
         <receiver android:name=".RoomReceiver" />
         <receiver android:name=".ui.TimetableWidgetProvider">
             <intent-filter>

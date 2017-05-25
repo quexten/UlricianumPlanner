@@ -46,6 +46,10 @@ class SyncAdapter extends AbstractThreadedSyncAdapter {
             context.sendBroadcast(intent);
         }
 
+        Intent intent = new Intent("com.quexten.ulricianumplanner.synced");
+        intent.putExtra("com.quexten.ulricianumplanner.synced.sucessful", sync);
+        context.sendBroadcast(intent);
+
         if(sync == false)
             syncResult.databaseError = true;
     }

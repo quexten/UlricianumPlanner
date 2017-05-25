@@ -45,4 +45,12 @@ public class AccountManager {
         return null;
     }
 
+    public Account getAccount() {
+        Account[] accounts = accountManager.getAccounts();
+        for (Account account : accounts)
+            if(account.type.equals(ACCOUNT_TYPE))
+                return account;
+        return null;
+    }
+
 }

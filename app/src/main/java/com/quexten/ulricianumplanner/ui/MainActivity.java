@@ -21,6 +21,8 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.google.firebase.crash.FirebaseCrash;
+import com.google.firebase.crash.internal.FirebaseCrashOptions;
 import com.quexten.ulricianumplanner.BuildConfig;
 import com.quexten.ulricianumplanner.FeedbackManager;
 import com.quexten.ulricianumplanner.R;
@@ -33,7 +35,6 @@ import com.quexten.ulricianumplanner.substitutions.SubstitutionHandler;
 import com.quexten.ulricianumplanner.substitutions.SubstitutionType;
 import com.quexten.ulricianumplanner.sync.SubscriptionManager;
 import com.quexten.ulricianumplanner.substitutions.Substitutions;
-import com.quexten.ulricianumplanner.sync.SyncReceiver;
 import com.quexten.ulricianumplanner.courseplan.TeacherManager;
 import com.quexten.ulricianumplanner.account.AccountManager;
 import com.quexten.ulricianumplanner.courseplan.CoursePlan;
@@ -100,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 if(MainActivity.this.timetableManager == null) {
                     MainActivity.this.timetableManager = new TimetableManager(MainActivity.this, coursePlan, substitutions, teacherManager);
                     MainActivity.this.timetableManager.generateVisuals();
+                    registerTimetableReceiver();
 
                     //Load news
                     News news = new NewsHandler(MainActivity.this).load();
@@ -241,10 +243,6 @@ public class MainActivity extends AppCompatActivity {
         setDailyTask(11, 15, 5, new Intent(MainActivity.this, RoomReceiver.class));
         setDailyTask(13, 45, 6, new Intent(MainActivity.this, RoomReceiver.class));
         setDailyTask(15, 35, 7, new Intent(MainActivity.this, RoomReceiver.class));
-
-        setDailyTask(6, 00, 0, new Intent(MainActivity.this, SyncReceiver.class));
-        setDailyTask(9, 30, 1, new Intent(MainActivity.this, SyncReceiver.class));
-        setDailyTask(15, 30, 2, new Intent(MainActivity.this, SyncReceiver.class));
     }
 
     private boolean hasClassName() {
@@ -299,6 +297,7 @@ public class MainActivity extends AppCompatActivity {
     public void onDestroy() {
         super.onDestroy();
         unregisterNewsListener();
+        unregisterTimetableReceiver();
     }
 
     private void registerNewsListener() {
@@ -310,6 +309,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void unregisterNewsListener() {
         unregisterReceiver(uiNewsBroadcastReceiver);
+    }
+
+    private void registerTimetableReceiver() {
+        timetableManager.registerSyncReceiver();
+    }
+
+    private void unregisterTimetableReceiver() {
+        timetableManager.unregisterSyncReceiver();
     }
 
     public void setNews(News news) {

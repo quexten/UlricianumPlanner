@@ -1,11 +1,19 @@
 package com.quexten.ulricianumplanner.ui;
 
+import android.accounts.Account;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.SyncRequest;
+import android.content.SyncStatusObserver;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -21,9 +29,12 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.crash.FirebaseCrash;
 import com.quexten.ulricianumplanner.R;
+import com.quexten.ulricianumplanner.account.AccountManager;
+import com.quexten.ulricianumplanner.substitutions.SubstitutionHandler;
 import com.quexten.ulricianumplanner.substitutions.Substitutions;
 import com.quexten.ulricianumplanner.sync.iserv.TableEntry;
 import com.quexten.ulricianumplanner.courseplan.TeacherManager;
@@ -47,14 +58,17 @@ public class TimetableManager {
     public CoursePlan coursePlan;
     public Substitutions substitutions;
     private TeacherManager teacherManager;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private SyncBroadcastReceiver syncBroadcastReceiver;
 
     public TimetableManager(final Activity activity, CoursePlan coursePlan, Substitutions substitutions, TeacherManager teacherManager) {
         this.activity = activity;
         this.coursePlan = coursePlan;
         this.substitutions = substitutions;
         this.teacherManager = teacherManager;
+        this.syncBroadcastReceiver = new SyncBroadcastReceiver();
 
-        final SwipeRefreshLayout swipeRefreshLayout = ((SwipeRefreshLayout) activity.findViewById(R.id.swiperefreshlayout));
+        swipeRefreshLayout = ((SwipeRefreshLayout) activity.findViewById(R.id.swiperefreshlayout));
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -64,31 +78,12 @@ public class TimetableManager {
                         swipeRefreshLayout.setRefreshing(true);
                     }
                 });
-
-                /*new SyncTask(activity, newsListener, new SynchronizationListener() {
-                    @Override
-                    public void onSync(boolean successful) {
-                        final boolean wasSuccessful = successful;
-
-                        TimetableManager.this.activity.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                TimetableManager.this.substitutions.readSubstitutions();
-                                TimetableManager.this.generateVisuals();
-                                try {
-                                    int text = wasSuccessful ? R.string.synced : R.string.no_internet_connection;
-                                    int duration = Toast.LENGTH_SHORT;
-
-                                    Toast toast = Toast.makeText(TimetableManager.this.activity.getApplicationContext(), text, duration);
-                                    toast.show();
-                                } catch (Exception ex) {
-                                    ex.printStackTrace();
-                                }
-                                swipeRefreshLayout.setRefreshing(false);
-                            }
-                        });
-                    }
-                }).execute();*/
+                Bundle settingsBundle = new Bundle();
+                settingsBundle.putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true);
+                settingsBundle.putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true);
+                Account account = new AccountManager(activity).getAccount();
+                account.describeContents();
+                ContentResolver.requestSync(account, "com.quexten.ulricianumplanner.authority", settingsBundle);
             }
         });
         swipeRefreshLayout.setColorSchemeColors(activity.getResources().getColor(R.color.colorPrimary));
@@ -467,6 +462,41 @@ public class TimetableManager {
         });
         builderSingle.show();
         return child;
+    }
+
+    public void registerSyncReceiver() {
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("com.quexten.ulricianumplanner.synced");
+        activity.registerReceiver(syncBroadcastReceiver, filter);
+    }
+
+    public void unregisterSyncReceiver() {
+        activity.unregisterReceiver(syncBroadcastReceiver);
+    }
+
+    private class SyncBroadcastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(final Context context, Intent intent) {
+            final boolean wasSuccessful = intent.getBooleanExtra("com.quexten.ulricianumplanner.synced.sucessful", false);
+
+            TimetableManager.this.activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    TimetableManager.this.substitutions = new SubstitutionHandler(context).load();
+                    TimetableManager.this.generateVisuals();
+                    try {
+                        int text = wasSuccessful ? R.string.synced : R.string.no_internet_connection;
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(TimetableManager.this.activity.getApplicationContext(), text, duration);
+                        toast.show();
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+            });
+        }
     }
 
 }
