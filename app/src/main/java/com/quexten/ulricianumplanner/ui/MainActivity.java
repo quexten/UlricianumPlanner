@@ -21,8 +21,6 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.google.firebase.crash.FirebaseCrash;
-import com.google.firebase.crash.internal.FirebaseCrashOptions;
 import com.quexten.ulricianumplanner.BuildConfig;
 import com.quexten.ulricianumplanner.FeedbackManager;
 import com.quexten.ulricianumplanner.R;
