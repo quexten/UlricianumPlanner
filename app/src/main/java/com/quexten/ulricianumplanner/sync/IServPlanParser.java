@@ -83,7 +83,6 @@ public class IServPlanParser {
         private int pageNum;
         private String news;
 
-
         public void setEntries(TableEntry[] entries) {
             this.entries = entries;
         }
