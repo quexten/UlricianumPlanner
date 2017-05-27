@@ -8,9 +8,10 @@ import com.quexten.ulricianumplanner.courseplan.CoursePlan;
 import com.quexten.ulricianumplanner.courseplan.Day;
 import com.quexten.ulricianumplanner.courseplan.Hour;
 import com.quexten.ulricianumplanner.courseplan.TeacherManager;
+import com.quexten.ulricianumplanner.notifications.NotificationPoster;
+import com.quexten.ulricianumplanner.substitutions.SubstitutionHandler;
 import com.quexten.ulricianumplanner.substitutions.Substitutions;
-import com.quexten.ulricianumplanner.substitutions.TableEntry;
-import com.quexten.ulricianumplanner.sync.NetworkManager;
+import com.quexten.ulricianumplanner.sync.iserv.TableEntry;
 
 import java.util.Calendar;
 
@@ -21,12 +22,12 @@ import java.util.Calendar;
 class NextRoomTask extends AsyncTask<String, Boolean, Boolean> {
 
     private CoursePlan coursePlan;
-    private NetworkManager networkManager;
     private NotificationPoster notificationPoster;
+    private Substitutions substitutions;
 
     public NextRoomTask(Context context) {
         coursePlan = new CoursePlan(context, null);
-        networkManager = new NetworkManager(context);
+        substitutions = new SubstitutionHandler(context).load();
         TeacherManager teacherManager = new TeacherManager(context);
         notificationPoster = new NotificationPoster(context, teacherManager);
     }
@@ -35,16 +36,6 @@ class NextRoomTask extends AsyncTask<String, Boolean, Boolean> {
     protected Boolean doInBackground(String... params) {
         coursePlan.readClassName();
         coursePlan.read();
-
-        Substitutions substitutions = networkManager.getSubstitutions();
-        substitutions.setTodaySubstitutions(coursePlan.getMatching(substitutions.getTodaySubstitutions(), substitutions.getTodayDay()));
-        substitutions.setTomorrowSubstitutions(coursePlan.getMatching(substitutions.getTomorrowSubstitutions(), substitutions.getTomorrowDay()));
-        substitutions.saveSubstitutions();
-
-        Day todayDay = substitutions.getTodayDay();
-        Day tomorrowDay = substitutions.getTomorrowDay();
-        TableEntry[] todaySubstitutions = substitutions.getTodaySubstitutions();
-        TableEntry[] tomorrowSubstitutions = substitutions.getTomorrowSubstitutions();
 
         Calendar calendar = Calendar.getInstance();
         int day = calendar.get(Calendar.DAY_OF_WEEK);
@@ -64,10 +55,6 @@ class NextRoomTask extends AsyncTask<String, Boolean, Boolean> {
             return true;
 
         TableEntry[] currentSubstitutions = new TableEntry[0];
-        if(todayDay.ordinal() == currentDayIndex)
-            currentSubstitutions = todaySubstitutions;
-        if(tomorrowDay.ordinal() == currentDayIndex)
-            currentSubstitutions = tomorrowSubstitutions;
 
         for(TableEntry entry : currentSubstitutions) {
             if(Hour.fromString(entry.getTime()).equals(getNextHour())) {

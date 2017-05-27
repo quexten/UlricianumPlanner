@@ -19,9 +19,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.quexten.ulricianumplanner.sync.NetworkManager;
 import com.quexten.ulricianumplanner.R;
 import com.quexten.ulricianumplanner.account.AccountManager;
+import com.quexten.ulricianumplanner.sync.iserv.IServ;
+import com.quexten.ulricianumplanner.sync.iserv.IServSubstitutionProvider;
 
 /**
  * A login screen that offers login via email/password.
@@ -37,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     private View mLoginFormView;
 
     private AccountManager accountManager;
-    private NetworkManager networkManager;
+    IServ iServ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
         mProgressView = findViewById(R.id.login_progress);
 
         accountManager = new AccountManager(this.getApplicationContext());
-        networkManager = new NetworkManager(this.getApplicationContext());
+        iServ = new IServ(IServSubstitutionProvider.ENDPOINT_URL, IServSubstitutionProvider.SUBSTITUTION_URL);
 
         mUsernameView.setText(accountManager.getUsername());
         mPasswordView.setText(accountManager.getPassword());
@@ -170,7 +171,7 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            return networkManager.login(username, password);
+            return iServ.login(username, password);
         }
 
         @Override

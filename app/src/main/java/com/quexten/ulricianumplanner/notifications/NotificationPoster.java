@@ -1,4 +1,4 @@
-package com.quexten.ulricianumplanner;
+package com.quexten.ulricianumplanner.notifications;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -13,9 +13,11 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 
+import com.quexten.ulricianumplanner.R;
 import com.quexten.ulricianumplanner.courseplan.Course;
 import com.quexten.ulricianumplanner.courseplan.TeacherManager;
-import com.quexten.ulricianumplanner.substitutions.TableEntry;
+import com.quexten.ulricianumplanner.substitutions.Substitution;
+import com.quexten.ulricianumplanner.sync.iserv.TableEntry;
 import com.quexten.ulricianumplanner.ui.MainActivity;
 
 /**
@@ -33,6 +35,82 @@ public class NotificationPoster {
     public NotificationPoster(Context context, TeacherManager teacherManager) {
         this.context = context;
         this.teacherManager = teacherManager;
+    }
+
+    public void post(Substitution substitution) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        if(!sharedPref.getBoolean("notifications_enabled", true))
+            return;
+
+        //Vibration
+        if(sharedPref.getBoolean("notifications_vibrate", true));
+        ((Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE)).vibrate(new long[] {200, 100, 200, 100, 200, 100, 200}, -1);
+
+        String header = getHeader(substitution);
+        String message = getMessage(substitution);
+
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(context)
+                        .setSmallIcon(Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP ? R.drawable.ic_school_black_24dp :
+                                R.mipmap.icon)
+                        .setLargeIcon(BitmapFactory.decodeResource(context.getResources(),
+                                R.mipmap.icon))
+                        .setContentTitle(header)
+                        .setContentText(message)
+                        .setColor(Color.argb(255, 196, 0, 0))
+                        .setLights(Color.argb(255, 255, 255, 0), 500, 500)
+                        .addAction(R.drawable.ic_share, context.getResources().getString(R.string.share_button), getSharingIntent(context, message));
+
+        Intent resultIntent = new Intent(context, MainActivity.class);
+
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
+        stackBuilder.addParentStack(MainActivity.class);
+
+        stackBuilder.addNextIntent(resultIntent);
+        PendingIntent resultPendingIntent =
+                stackBuilder.getPendingIntent(
+                        0,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+        builder.setContentIntent(resultPendingIntent);
+        NotificationManager notificationManager =
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(notificationId++, builder.build());
+
+    }
+
+    private String getMessage(Substitution substitution) {
+        switch(substitution.getSubstitutionType()) {
+            case CANCELLED:
+                return "entfall-m";
+            case DELAYED:
+                return "entfall-m";
+            case ROOMCHANGED:
+                return "entfall-m";
+            case SUBSTITUTION:
+                return "entfall-m";
+            case SWAP:
+                return "entfall-m";
+            default:
+                return "Oops something went wrong";
+        }
+    }
+
+    private String getHeader(Substitution substitution) {
+        switch(substitution.getSubstitutionType()) {
+            case CANCELLED:
+                return "entfall";
+            case DELAYED:
+                return "entfall";
+            case ROOMCHANGED:
+                return "entfall";
+            case SUBSTITUTION:
+                return "entfall";
+            case SWAP:
+                return "entfall";
+            default:
+                return "Oops something went wrong";
+        }
     }
 
     public void postSubstitutionNotification(TableEntry entry) {

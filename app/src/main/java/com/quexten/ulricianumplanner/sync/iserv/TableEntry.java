@@ -1,4 +1,8 @@
-package com.quexten.ulricianumplanner.substitutions;
+package com.quexten.ulricianumplanner.sync.iserv;
+
+import com.quexten.ulricianumplanner.courseplan.Hour;
+import com.quexten.ulricianumplanner.substitutions.Substitution;
+import com.quexten.ulricianumplanner.substitutions.SubstitutionType;
 
 import org.jsoup.nodes.Element;
 
@@ -14,14 +18,6 @@ public class TableEntry {
     private String teacher;
     private String subject;
     private String extraText;
-
-    public TableEntry(String className, String time, String teacher, String subject, String type) {
-        this.className = className;
-        this.time = time;
-        this.teacher = teacher;
-        this.subject = subject;
-        this.type = type;
-    }
 
     public TableEntry(Element entry) {
         className = entry.child(0).html();
@@ -110,6 +106,38 @@ public class TableEntry {
 
     public void setExtraText(String extraText) {
         this.extraText = extraText;
+    }
+
+    /**
+     * Creates a new Substitution object from this TableEntry
+     * @return - the new substitution object
+     */
+    public Substitution toSubstitution() {
+        Substitution substitution = new Substitution();
+        substitution.setHour(Hour.fromString(time));
+        substitution.setSubstitutionType(getSubstitutionType());
+        return substitution;
+    }
+
+    private SubstitutionType getSubstitutionType() {
+        switch(getType()) {
+            case "Entfall":
+                return SubstitutionType.CANCELLED;
+            case "Verleg.":
+                return SubstitutionType.DELAYED;
+            case "Raumä.":
+                return SubstitutionType.ROOMCHANGED;
+            case "Vertret.":
+                return SubstitutionType.SUBSTITUTION;
+            case "Tausch":
+                return SubstitutionType.SWAP;
+            case "trotz A.":
+                return SubstitutionType.SUBSTITUTION;
+            case "Betreu.":
+                return SubstitutionType.SUBSTITUTION;
+            default:
+                return SubstitutionType.SUBSTITUTION;
+        }
     }
 
     @Override

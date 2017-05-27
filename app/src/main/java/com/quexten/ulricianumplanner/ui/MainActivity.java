@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -20,13 +21,21 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.google.firebase.crash.FirebaseCrash;
+import com.google.firebase.crash.internal.FirebaseCrashOptions;
+import com.google.gson.Gson;
+import com.quexten.ulricianumplanner.BuildConfig;
 import com.quexten.ulricianumplanner.FeedbackManager;
-import com.quexten.ulricianumplanner.NewsListener;
 import com.quexten.ulricianumplanner.R;
 import com.quexten.ulricianumplanner.RoomReceiver;
+import com.quexten.ulricianumplanner.courseplan.Hour;
+import com.quexten.ulricianumplanner.news.News;
+import com.quexten.ulricianumplanner.news.NewsHandler;
+import com.quexten.ulricianumplanner.substitutions.Substitution;
+import com.quexten.ulricianumplanner.substitutions.SubstitutionHandler;
+import com.quexten.ulricianumplanner.substitutions.SubstitutionType;
 import com.quexten.ulricianumplanner.sync.SubscriptionManager;
 import com.quexten.ulricianumplanner.substitutions.Substitutions;
-import com.quexten.ulricianumplanner.sync.SyncReceiver;
 import com.quexten.ulricianumplanner.courseplan.TeacherManager;
 import com.quexten.ulricianumplanner.account.AccountManager;
 import com.quexten.ulricianumplanner.courseplan.CoursePlan;
@@ -42,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
     private Substitutions substitutions;
     private TimetableManager timetableManager;
     private TeacherManager teacherManager;
+
+    private UiNewsBroadcastReceiver uiNewsBroadcastReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,41 +93,20 @@ public class MainActivity extends AppCompatActivity {
         coursePlan = new CoursePlan(this.getApplicationContext(), subscriptionManager);
         feedbackManager = new FeedbackManager(this, coursePlan);
         teacherManager = new TeacherManager(this.getApplicationContext());
-        substitutions = new Substitutions(this.getApplicationContext());
+        substitutions = new SubstitutionHandler(this.getApplicationContext()).load();
 
         View myView = findViewById(R.id.pager);
         myView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
                 if(MainActivity.this.timetableManager == null) {
-                    NewsListener newsListener = new NewsListener(MainActivity.this.getApplicationContext()) {
-                        @Override
-                        public void newsReceived(String news) {
-                            final String newsContent = news;
-
-                            MainActivity.this.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    LinearLayout newsView = ((LinearLayout) MainActivity.this.findViewById(R.id.news_layout));
-                                    newsView.removeAllViews();
-
-                                    if(newsContent.isEmpty())
-                                        return;
-
-                                    String[] news = newsContent.split("\n");
-                                    for(String entry : news) {
-                                        View child = getLayoutInflater().inflate(R.layout.news_entry, null);
-                                        ((TextView) child.findViewById(R.id.info_text)).setText(entry);
-                                        newsView.addView(child);
-                                    }
-                                }
-                            });
-                            this.saveNews(news);
-                        }
-                    };
-                    MainActivity.this.timetableManager = new TimetableManager(MainActivity.this, coursePlan, substitutions, newsListener, teacherManager);
-                    newsListener.newsReceived(newsListener.loadNews());
+                    MainActivity.this.timetableManager = new TimetableManager(MainActivity.this, coursePlan, substitutions, teacherManager);
                     MainActivity.this.timetableManager.generateVisuals();
+                    registerTimetableReceiver();
+
+                    //Load news
+                    News news = new NewsHandler(MainActivity.this).load();
+                    setNews(news);
                 }
             }
         });
@@ -129,8 +119,6 @@ public class MainActivity extends AppCompatActivity {
             MainActivity.this.startActivity(myIntent);
         }
 
-        substitutions.readSubstitutions();
-
         setBackgroundTasks();
 
         new TutorialManager(this);
@@ -139,11 +127,48 @@ public class MainActivity extends AppCompatActivity {
 
         coursePlan.read();
         subscriptionManager.subscribeToPlan(coursePlan);
+
+        registerNewsListener();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
+
+        //Debug Test Options
+        if(BuildConfig.DEBUG) {
+            menu.add("TestNews")
+                    .setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem menuItem) {
+                            String[] testNews = {"News item 1", "News item 2"};
+
+                            Intent intent = new Intent("com.quexten.ulricianumplanner.newsreceived");
+                            intent.putExtra("news", new News(testNews).asStringArray());
+                            MainActivity.this.sendBroadcast(intent);
+                            return false;
+                        }
+                    });
+            menu.add("TestSubstiutiton")
+                    .setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem menuItem) {
+                            Substitutions substitutions = new Substitutions();
+                            Substitution testSubstitution = new Substitution();
+                            testSubstitution.setDate(Calendar.getInstance().getTime());
+                            testSubstitution.setHour(Hour.THREFOUR);
+                            testSubstitution.setSubstitutionType(SubstitutionType.CANCELLED);
+                            substitutions.add(testSubstitution);
+
+                            for(Substitution substitution : substitutions.asArray()) {
+                                Intent intent = new Intent("com.quexten.ulricianumplanner.substitutionreceived");
+                                intent.putExtra("substitution", new Gson().toJson(substitution));
+                                MainActivity.this.sendBroadcast(intent);
+                            }
+                            return false;
+                        }
+                    });
+        }
         return true;
     }
 
@@ -219,10 +244,6 @@ public class MainActivity extends AppCompatActivity {
         setDailyTask(11, 15, 5, new Intent(MainActivity.this, RoomReceiver.class));
         setDailyTask(13, 45, 6, new Intent(MainActivity.this, RoomReceiver.class));
         setDailyTask(15, 35, 7, new Intent(MainActivity.this, RoomReceiver.class));
-
-        setDailyTask(6, 00, 0, new Intent(MainActivity.this, SyncReceiver.class));
-        setDailyTask(9, 30, 1, new Intent(MainActivity.this, SyncReceiver.class));
-        setDailyTask(15, 30, 2, new Intent(MainActivity.this, SyncReceiver.class));
     }
 
     private boolean hasClassName() {
@@ -272,5 +293,43 @@ public class MainActivity extends AppCompatActivity {
         });
         builderSingle.show();
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unregisterNewsListener();
+        unregisterTimetableReceiver();
+    }
+
+    private void registerNewsListener() {
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("com.quexten.ulricianumplanner.newsreceived");
+        uiNewsBroadcastReceiver = new UiNewsBroadcastReceiver();
+        registerReceiver(uiNewsBroadcastReceiver, filter);
+    }
+
+    private void unregisterNewsListener() {
+        unregisterReceiver(uiNewsBroadcastReceiver);
+    }
+
+    private void registerTimetableReceiver() {
+        timetableManager.registerSyncReceiver();
+    }
+
+    private void unregisterTimetableReceiver() {
+        timetableManager.unregisterSyncReceiver();
+    }
+
+    public void setNews(News news) {
+        LinearLayout newsView = ((LinearLayout) findViewById(R.id.news_layout));
+        newsView.removeAllViews();
+
+        for(String entry : news.asStringArray()) {
+            View child = getLayoutInflater().inflate(R.layout.news_entry, null);
+            ((TextView) child.findViewById(R.id.info_text)).setText(entry);
+            newsView.addView(child);
+        }
+    }
+
 
 }
