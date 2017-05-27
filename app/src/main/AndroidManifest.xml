@@ -103,6 +103,11 @@
                 <action android:name="com.quexten.ulricianumplanner.newsreceived" />
             </intent-filter>
         </receiver>
+        <receiver android:name=".notifications.SubstitutionBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="com.quexten.ulricianumplanner.substitutionreceived" />
+            </intent-filter>
+        </receiver>
 
     </application>
 

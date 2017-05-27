@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.google.firebase.crash.FirebaseCrash;
 import com.google.firebase.crash.internal.FirebaseCrashOptions;
+import com.google.gson.Gson;
 import com.quexten.ulricianumplanner.BuildConfig;
 import com.quexten.ulricianumplanner.FeedbackManager;
 import com.quexten.ulricianumplanner.R;
@@ -161,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
 
                             for(Substitution substitution : substitutions.asArray()) {
                                 Intent intent = new Intent("com.quexten.ulricianumplanner.substitutionreceived");
-                                intent.putExtra("substitution", "");
+                                intent.putExtra("substitution", new Gson().toJson(substitution));
                                 MainActivity.this.sendBroadcast(intent);
                             }
                             return false;
