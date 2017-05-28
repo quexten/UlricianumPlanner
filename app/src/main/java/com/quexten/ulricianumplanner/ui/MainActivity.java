@@ -21,8 +21,6 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.google.firebase.crash.FirebaseCrash;
-import com.google.firebase.crash.internal.FirebaseCrashOptions;
 import com.google.gson.Gson;
 import com.quexten.ulricianumplanner.BuildConfig;
 import com.quexten.ulricianumplanner.FeedbackManager;
@@ -158,6 +156,10 @@ public class MainActivity extends AppCompatActivity {
                             testSubstitution.setDate(Calendar.getInstance().getTime());
                             testSubstitution.setHour(Hour.THREFOUR);
                             testSubstitution.setSubstitutionType(SubstitutionType.CANCELLED);
+                            testSubstitution.setSubstituteTeacher("TestTeacher");
+                            testSubstitution.setSubstituteSubject("TestSubstituteSubject");
+                            testSubstitution.setSubstituteRoom("TestRoom");
+                            testSubstitution.setSubject("TestSubject");
                             substitutions.add(testSubstitution);
 
                             for(Substitution substitution : substitutions.asArray()) {

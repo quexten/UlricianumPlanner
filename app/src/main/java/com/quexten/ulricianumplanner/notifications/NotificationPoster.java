@@ -82,15 +82,15 @@ public class NotificationPoster {
     private String getMessage(Substitution substitution) {
         switch(substitution.getSubstitutionType()) {
             case CANCELLED:
-                return "entfall-m";
+                return context.getString(R.string.notification_message_cancelled, substitution.getHour());
             case DELAYED:
-                return "entfall-m";
+                return context.getString(R.string.notification_message_delayed);
             case ROOMCHANGED:
-                return "entfall-m";
+                return context.getString(R.string.notification_message_roomchange, substitution.getSubstituteRoom());
             case SUBSTITUTION:
-                return "entfall-m";
+                return context.getString(R.string.notification_message_substitution, substitution.getSubstituteRoom(), substitution.getSubstituteTeacher());
             case SWAP:
-                return "entfall-m";
+                return context.getString(R.string.notification_message_swap);
             default:
                 return "Oops something went wrong";
         }
@@ -99,102 +99,18 @@ public class NotificationPoster {
     private String getHeader(Substitution substitution) {
         switch(substitution.getSubstitutionType()) {
             case CANCELLED:
-                return "entfall";
+                return context.getString(R.string.notification_title_cancelled, substitution.getSubject());
             case DELAYED:
-                return "entfall";
+                return context.getString(R.string.notification_title_delayed, substitution.getSubject());
             case ROOMCHANGED:
-                return "entfall";
+                return context.getString(R.string.notification_title_roomchange, substitution.getSubject());
             case SUBSTITUTION:
-                return "entfall";
+                return context.getString(R.string.notification_title_substitution, substitution.getSubject());
             case SWAP:
-                return "entfall";
+                return context.getString(R.string.notification_title_swap, substitution.getSubject());
             default:
                 return "Oops something went wrong";
         }
-    }
-
-    public void postSubstitutionNotification(TableEntry entry) {
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        if(!sharedPref.getBoolean("notifications_enabled", true))
-            return;
-
-        //Vibration
-        if(sharedPref.getBoolean("notifications_vibrate", true))
-            ((Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE)).vibrate(new long[] {200, 100, 200, 100, 200, 100, 200}, -1);
-
-        //Notification
-        String message = "";
-        String header = "";
-
-        String substitutionTeacher = teacherManager.getFullTeacherName(entry.getSubstituteTeacher());
-        substitutionTeacher = (substitutionTeacher != null) ? substitutionTeacher : entry.getSubstituteTeacher();
-        String teacher = teacherManager.getFullTeacherName(entry.getTeacher());
-        teacher = (teacher != null) ? teacher : entry.getTeacher();
-        String substituteSubject = Course.getLongSubjectName(context, entry.getSubstituteSubject());
-        String subject = Course.getLongSubjectName(context, entry.getSubject());
-        String time = entry.getTime();
-        String room = entry.getRoom();
-
-        switch(entry.getType()) {
-            case "Entfall":
-                message = time + " entfällt " + subject + " bei " + teacher;
-                header = time + " Entfall";
-                break;
-            case "Verleg.":
-                message = subject + " wird verlegt.";
-                header = subject + " Verlegung";
-                break;
-            case "Raumä.":
-                message = "Nach " + room;
-                header = subject + " Raumänderung";
-                break;
-            case "Vertret.":
-                message = "Durch " + substitutionTeacher;
-                header = subject + " Vertretung";
-                break;
-            case "Tausch":
-                message = "Mit " + substituteSubject + " bei " + substitutionTeacher;
-                header = subject + " Tausch";
-                break;
-            case "trotz A.":
-                message = "in " + room;
-                header = subject + " findet statt.";
-                break;
-            case "Betreu.":
-                message = "Bei " + substitutionTeacher + " in " + entry.getRoom();
-                header = subject + " Betreuung";
-                break;
-            default:
-                break;
-        }
-
-        NotificationCompat.Builder builder =
-                new NotificationCompat.Builder(context)
-                        .setSmallIcon(Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP ? R.drawable.ic_school_black_24dp :
-                                R.mipmap.icon)
-                        .setLargeIcon(BitmapFactory.decodeResource(context.getResources(),
-                                R.mipmap.icon))
-                        .setContentTitle(header)
-                        .setContentText(message)
-                        .setColor(Color.argb(255, 196, 0, 0))
-                        .setLights(Color.argb(255, 255, 255, 0), 500, 500)
-                        .addAction(R.drawable.ic_share, context.getResources().getString(R.string.share_button), getSharingIntent(context, message));
-
-        Intent resultIntent = new Intent(context, MainActivity.class);
-
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-        stackBuilder.addParentStack(MainActivity.class);
-
-        stackBuilder.addNextIntent(resultIntent);
-        PendingIntent resultPendingIntent =
-                stackBuilder.getPendingIntent(
-                        0,
-                        PendingIntent.FLAG_UPDATE_CURRENT
-                );
-        builder.setContentIntent(resultPendingIntent);
-        NotificationManager notificationManager =
-                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(notificationId++, builder.build());
     }
 
     public void postNextRoomNotification(Course course) {

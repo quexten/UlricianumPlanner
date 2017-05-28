@@ -116,6 +116,10 @@ public class TableEntry {
         Substitution substitution = new Substitution();
         substitution.setHour(Hour.fromString(time));
         substitution.setSubstitutionType(getSubstitutionType());
+        substitution.setSubject(getSubject());
+        substitution.setSubstituteRoom(getRoom());
+        substitution.setSubstituteSubject(getSubstituteSubject());
+        substitution.setSubstituteTeacher(getSubstituteTeacher());
         return substitution;
     }
 

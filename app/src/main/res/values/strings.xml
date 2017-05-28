@@ -35,6 +35,17 @@
     <string name="no_internet_connection">Keine Netzwerkverbindung möglich!</string>
     <string name="synced">Synchronisiert!</string>
 
+    <string name="notification_title_cancelled">%1$s entfällt!</string>
+    <string name="notification_title_delayed">%1$s wird verlegt!</string>
+    <string name="notification_title_roomchange">Raumänderung in %1$s!</string>
+    <string name="notification_title_substitution">%1$s wird vertreten!</string>
+    <string name="notification_title_swap">%1$s wird getauscht!</string>
+    <string name="notification_message_cancelled">in der %1$s</string>
+    <string name="notification_message_delayed"></string>
+    <string name="notification_message_roomchange">nach %1$s</string>
+    <string name="notification_message_substitution">in %1$s bei %2$s</string>
+    <string name="notification_message_swap"></string>
+
     <!-- Strings related to help -->
     <string name="title_activity_tutorial">Hilfe</string>
     <string name="help_1">Damit die App automatisch Nachrichten zum Vertretungsplan senden kann muss der Stundenplan eingerichtet werden.

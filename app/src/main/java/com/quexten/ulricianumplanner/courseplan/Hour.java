@@ -34,6 +34,23 @@ public enum Hour {
         }
     }
 
+    @Override
+    public String toString() {
+        switch(this) {
+            case ONETWO:
+                return "1 - 2";
+            case THREFOUR:
+                return "3 - 4";
+            case FIVESIX:
+                return "5 - 6";
+            case EIGHTNINE:
+                return "9 - 10";
+            case TENELEVEN:
+                return "10 - 11";
+        }
+        return null;
+    }
+
     public static Hour fromInt(int integer) {
         Hour hour = integer == 0 ? Hour.ONETWO
                 : integer == 1 ? Hour.THREFOUR

@@ -16,6 +16,8 @@ public class Substitution {
     Date date;
     Hour hour;
 
+    String subject;
+
     String substituteTeacher;
     String substituteSubject;
     String substituteRoom;
@@ -52,4 +54,37 @@ public class Substitution {
     public Hour getHour() {
         return hour;
     }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getSubject() {
+        return this.subject;
+    }
+
+    public void setSubstituteTeacher(String substituteTeacher) {
+        this.substituteTeacher = substituteTeacher;
+    }
+
+    public String getSubstituteTeacher() {
+        return substituteTeacher;
+    }
+
+    public void setSubstituteSubject(String substituteSubject) {
+        this.substituteSubject = substituteSubject;
+    }
+
+    public String getSubstituteSubject() {
+        return substituteSubject;
+    }
+
+    public void setSubstituteRoom(String substituteRoom) {
+        this.substituteRoom = substituteRoom;
+    }
+
+    public String getSubstituteRoom() {
+        return substituteRoom;
+    }
+
 }
