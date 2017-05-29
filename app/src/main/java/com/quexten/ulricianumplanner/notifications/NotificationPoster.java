@@ -97,17 +97,19 @@ public class NotificationPoster {
     }
 
     private String getHeader(Substitution substitution) {
+        String subjectName = Course.getLongSubjectName(context, substitution.getSubject());
+
         switch(substitution.getSubstitutionType()) {
             case CANCELLED:
-                return context.getString(R.string.notification_title_cancelled, substitution.getSubject());
+                return context.getString(R.string.notification_title_cancelled, subjectName);
             case DELAYED:
-                return context.getString(R.string.notification_title_delayed, substitution.getSubject());
+                return context.getString(R.string.notification_title_delayed, subjectName);
             case ROOMCHANGED:
-                return context.getString(R.string.notification_title_roomchange, substitution.getSubject());
+                return context.getString(R.string.notification_title_roomchange, subjectName);
             case SUBSTITUTION:
-                return context.getString(R.string.notification_title_substitution, substitution.getSubject());
+                return context.getString(R.string.notification_title_substitution, subjectName);
             case SWAP:
-                return context.getString(R.string.notification_title_swap, substitution.getSubject());
+                return context.getString(R.string.notification_title_swap, subjectName);
             default:
                 return "Oops something went wrong";
         }
