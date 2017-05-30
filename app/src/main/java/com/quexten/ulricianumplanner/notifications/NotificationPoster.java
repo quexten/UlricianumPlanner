@@ -80,6 +80,8 @@ public class NotificationPoster {
     }
 
     private String getMessage(Substitution substitution) {
+        String substituteTeacher = teacherManager.getFullTeacherName(substitution.getSubstituteTeacher());
+
         switch(substitution.getSubstitutionType()) {
             case CANCELLED:
                 return context.getString(R.string.notification_message_cancelled, substitution.getHour());
@@ -88,7 +90,7 @@ public class NotificationPoster {
             case ROOMCHANGED:
                 return context.getString(R.string.notification_message_roomchange, substitution.getSubstituteRoom());
             case SUBSTITUTION:
-                return context.getString(R.string.notification_message_substitution, substitution.getSubstituteRoom(), substitution.getSubstituteTeacher());
+                return context.getString(R.string.notification_message_substitution, substitution.getSubstituteRoom(), substituteTeacher);
             case SWAP:
                 return context.getString(R.string.notification_message_swap);
             default:
