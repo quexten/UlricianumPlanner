@@ -152,7 +152,10 @@ public class MainActivity extends AppCompatActivity {
                         public boolean onMenuItemClick(MenuItem menuItem) {
                             Substitutions substitutions = new Substitutions();
                             Substitution testSubstitution = new Substitution();
-                            testSubstitution.setDate(Calendar.getInstance().getTime());
+
+                            Calendar calendar = Calendar.getInstance();
+                            calendar.set(2017, 5, 29);
+                            testSubstitution.setDate(calendar.getTime());
                             testSubstitution.setHour(Hour.THREFOUR);
                             testSubstitution.setSubstitutionType(SubstitutionType.CANCELLED);
                             substitutions.add(testSubstitution);
